@@ -1,0 +1,25 @@
+name: Run Newman Tests
+
+on:
+  push:
+    branches:
+      - '**' # This will run on push to any branch
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # Set the desired Node.js version here
+
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Run Newman tests
+      run: newman run https://raw.githubusercontent.com/Significant-Gravitas/devtool-postman/master/Postman%20Collections/devtool_experience.json --env-var "url=https://f8667c67-ea79-447d-9d03-47f97dfae498.mock.pstmn.io"
