@@ -21,7 +21,7 @@
 					}
 				}
 			],
-			"_postman_id": "361b0f79-6e14-4f49-9180-13029944f686",
+			"id": "361b0f79-6e14-4f49-9180-13029944f686",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -131,7 +131,7 @@
 					}
 				}
 			],
-			"_postman_id": "65a7f715-f1f9-4c31-a577-a4cfc1e4bb60",
+			"id": "65a7f715-f1f9-4c31-a577-a4cfc1e4bb60",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -246,7 +246,7 @@
 					}
 				}
 			],
-			"_postman_id": "bb90d0ed-5e5c-4324-88d4-4704b50dae2f",
+			"id": "bb90d0ed-5e5c-4324-88d4-4704b50dae2f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -400,7 +400,7 @@
 					}
 				}
 			],
-			"_postman_id": "dca2df6a-13bc-41d8-8d94-71edd10b1c4d",
+			"id": "dca2df6a-13bc-41d8-8d94-71edd10b1c4d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -415,10 +415,7 @@
 							"type": "file",
 							"src": "file_to_read.txt"
 						}
-					],
-					"options": {
-						"formdata": {}
-					}
+					]
 				},
 				"url": "{{url}}/agent/tasks/{{task_id}}/artifacts"
 			},
@@ -560,7 +557,7 @@
 					}
 				}
 			],
-			"_postman_id": "d22a4c1c-9766-45d7-853f-3348f4641f52",
+			"id": "d22a4c1c-9766-45d7-853f-3348f4641f52",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -667,6 +664,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "c43bf0f7-f625-4b79-99a1-24708247fa49",
 						"exec": [
 							"",
 							"",
@@ -708,7 +706,7 @@
 					}
 				}
 			],
-			"_postman_id": "3083778b-7e4b-4cde-9bdb-b2e2b36f646e",
+			"id": "3083778b-7e4b-4cde-9bdb-b2e2b36f646e",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -717,7 +715,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"user_input\": \"y\",\n    \"useless_field\": \"ignore this field, it's here to match with the mocked response-1\"\n}",
+					"raw": "{\n    \"user_input\": \"y\",\n    \"useless_field\": \"ignore this field, it's here to match with the mocked response-1. Test github integration\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -856,7 +854,7 @@
 					}
 				}
 			],
-			"_postman_id": "3d600826-bdec-4ad2-87d7-9fe699e8a50c",
+			"id": "3d600826-bdec-4ad2-87d7-9fe699e8a50c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1005,7 +1003,7 @@
 					}
 				}
 			],
-			"_postman_id": "c6c6d9c9-72fd-42c3-b68b-5e51e707daf0",
+			"id": "c6c6d9c9-72fd-42c3-b68b-5e51e707daf0",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
