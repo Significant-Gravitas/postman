@@ -773,8 +773,6 @@
 					"script": {
 						"id": "2d26beaa-93a5-4cf4-8b49-f608f0092f3a",
 						"exec": [
-							"",
-							"",
 							"pm.test(\"Response status code is 200\", function () {",
 							"  pm.response.to.have.status(200);",
 							"});",
