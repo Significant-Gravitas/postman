@@ -245,7 +245,7 @@
 							"    pm.expect(responseData.task_id).to.exist;",
 							"    pm.globals.set(\"taskId\", responseData.task_id);",
 							"});",
-							"const requestData = pm.request.body.raw.json();",
+							"const requestData = pm.request.body;",
 							"const responseData = pm.response.json();",
 							"console.log(requestData);",
 							"console.log(responseData);",
