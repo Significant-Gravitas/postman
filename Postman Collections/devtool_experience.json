@@ -259,7 +259,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"input\": \"test:TestReadFile\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
