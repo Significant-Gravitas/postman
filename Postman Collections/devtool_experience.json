@@ -16,6 +16,9 @@
 							"Object.keys(pm.globals.toObject()).forEach((key) => {",
 							"    pm.globals.unset(key);",
 							"});",
+							"Object.keys(pm.collectionVariables.toObject()).forEach((key) => {",
+							"    pm.globals.unset(key);",
+							"});",
 							"",
 							"",
 							"var jsonData = pm.response.json();",
@@ -842,12 +845,12 @@
 	],
 	"variable": [
 		{
-			"id": "d909fc7a-675e-4fb7-8497-0569fd2c6275",
+			"id": "dc522de5-5cf5-4b19-b36b-d1e2c77358bf",
 			"key": "TestReadFile_challenge_id",
 			"value": ""
 		},
 		{
-			"id": "185f6aef-bf37-4d83-9fbf-552083a36706",
+			"id": "77287c5b-f2dd-4775-9525-b01e89accd0a",
 			"key": "testReadFileTaskInput",
 			"value": ""
 		}
