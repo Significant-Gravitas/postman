@@ -831,12 +831,12 @@
 	],
 	"variable": [
 		{
-			"id": "16a21cca-234b-445b-b96a-4478c0ddc566",
+			"id": "f0329dbd-a324-4c3e-b72a-30b3c88edfec",
 			"key": "TestReadFile_challenge_id",
 			"value": ""
 		},
 		{
-			"id": "f2a5005a-363e-42c9-b859-ce5f5787493c",
+			"id": "9939fb08-f31c-44fc-88aa-2952b0b05275",
 			"key": "testReadFileTaskInput",
 			"value": ""
 		}
