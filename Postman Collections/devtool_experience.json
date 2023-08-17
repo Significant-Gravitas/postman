@@ -812,7 +812,7 @@
 			]
 		},
 		{
-			"name": "Step: Write File [agent] Copy",
+			"name": "Evaluate",
 			"event": [
 				{
 					"listen": "test",
