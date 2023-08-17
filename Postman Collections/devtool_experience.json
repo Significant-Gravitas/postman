@@ -385,7 +385,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"input\": \"Read the file called file_to_read.txt and write its content to a file called output.txt.\"\n}",
+					"raw": "{\n    \"input\": \"{{testReadFileTaskInput}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
