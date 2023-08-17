@@ -146,7 +146,7 @@
 						}
 					}
 				},
-				"url": "{{url}}/agent/tasks/{{TestReadFile_challenge_id}}/artifacts/{{challenge_artifact_id}}"
+				"url": "{{url}}/agent/challenges/{{TestReadFile_challenge_id}}/artifacts/{{challenge_artifact_id}}"
 			},
 			"response": [
 				{
