@@ -251,8 +251,8 @@
 							"pm.test(\"Verify additional_input field matches the request\", function () {",
 							"    const requestData = pm.request.body.raw.json();",
 							"    const responseData = pm.response.json();",
-							"    console.log(requestData.additional_input);",
-							"    console.log(responseData.additional_input);",
+							"    console.log(requestData);",
+							"    console.log(responseData);",
 							"    pm.expect(responseData.additional_input).to.equal(requestData.additional_input);",
 							"});"
 						],
