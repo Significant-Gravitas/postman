@@ -13,9 +13,10 @@
 					"script": {
 						"id": "e2f658e3-8e67-4dad-8a7f-d595bac72118",
 						"exec": [
-							"pm.globals.toObject().forEach((key) => {",
+							"Object.keys(pm.globals.toObject()).forEach((key) => {",
 							"    pm.globals.unset(key);",
 							"});",
+							"",
 							"",
 							"var jsonData = pm.response.json();",
 							"pm.collectionVariables.set(\"testReadFileTaskInput\", jsonData.graph.nodes.TestReadFile.task_id);",
@@ -830,12 +831,12 @@
 	],
 	"variable": [
 		{
-			"id": "d03fb1f5-2c0c-4034-a168-385db191814e",
+			"id": "858ce85c-1924-49b1-9db0-ab184edfcf3f",
 			"key": "TestReadFile_challenge_id",
 			"value": ""
 		},
 		{
-			"id": "53a3677c-1509-40ee-990f-d0e95c4f3686",
+			"id": "766b7b57-d3c0-4ae5-9a73-64ca6b9bc35f",
 			"key": "testReadFileTaskInput",
 			"value": ""
 		}
