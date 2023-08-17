@@ -875,7 +875,7 @@
 						}
 					}
 				},
-				"url": "{{url}}/agent/tasks/{{taskId}}/evaluation"
+				"url": "{{url}}/benchmark/{{task_id}}/evals"
 			},
 			"response": [
 				{
