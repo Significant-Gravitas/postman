@@ -246,7 +246,14 @@
 							"    pm.globals.set(\"taskId\", responseData.task_id);",
 							"});",
 							"",
-							""
+							"",
+							"",
+							"pm.test(\"Verify additional_input field matches the request\", function () {",
+							"    const requestData = pm.request.body.raw;",
+							"    const responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData.additional_input).to.equal(requestData.additional_input);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
