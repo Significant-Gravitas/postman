@@ -258,7 +258,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"input\": \"Read the file called file_to_read.txt and write its content to a file called output.txt.\"\n}",
+					"raw": "{\n    \"input\": \"Read the file called file_to_read.txt and write its content to a file called output.txt. I am Craig, and I think your response schema sucks.\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
