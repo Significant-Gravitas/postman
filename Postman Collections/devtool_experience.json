@@ -842,17 +842,5 @@
 			},
 			"response": []
 		}
-	],
-	"variable": [
-		{
-			"id": "5a1c68e7-d3f9-4b5d-98dc-f6c21b398870",
-			"key": "TestReadFile_challenge_id",
-			"value": ""
-		},
-		{
-			"id": "02951b62-afd7-4bd8-9f94-c9823f4f7c8e",
-			"key": "testReadFileTaskInput",
-			"value": ""
-		}
 	]
 }
