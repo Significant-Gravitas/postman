@@ -780,6 +780,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "2d26beaa-93a5-4cf4-8b49-f608f0092f3a",
 						"exec": [
 							"",
 							"",
@@ -838,7 +839,7 @@
 						}
 					}
 				},
-				"url": "{{url}}/agent/tasks/{{task_id}}/steps"
+				"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 			},
 			"response": []
 		}
