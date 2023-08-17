@@ -242,7 +242,7 @@
 						}
 					}
 				},
-				"url": "{{url}}/agent/tasks"
+				"url": "{{url}}/agent/tasks/{{task_id}}/steps"
 			},
 			"response": [
 				{
@@ -845,12 +845,12 @@
 	],
 	"variable": [
 		{
-			"id": "8efd7581-d7c1-4921-9aee-7d3edba8f0ec",
+			"id": "3c103f02-4e25-4116-a1fb-e1a1a61c352d",
 			"key": "TestReadFile_challenge_id",
 			"value": ""
 		},
 		{
-			"id": "30f1748e-19c8-48ec-a851-0dbaf07c1e51",
+			"id": "8e70c20e-ddf5-416e-837c-5a314839144a",
 			"key": "testReadFileTaskInput",
 			"value": ""
 		}
