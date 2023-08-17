@@ -206,7 +206,17 @@
 					"script": {
 						"id": "e2f658e3-8e67-4dad-8a7f-d595bac72118",
 						"exec": [
-							""
+							"pm.globals.set(\"testReadFileTaskInput\", jsonData.graph.nodes.TestReadFile.input);",
+							"",
+							"pm.test(\"Response matches with request\", function () {",
+							"    var requestData = pm.request.json();",
+							"    var responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData.input).to.eql(requestData.input);",
+							"    pm.expect(responseData.additional_input).to.eql(requestData.additional_input);",
+							"    pm.expect(responseData.task_id).to.eql(requestData.task_id);",
+							"    pm.expect(responseData.artifacts).to.eql(requestData.artifacts);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -221,7 +231,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"input\": \"Read the file called file_to_read.txt and write its content to a file called output.txt.\",\n    \"additional_input\": \"challenge:fde559f8-3ab8-11ee-be56-0242ac120002\"\n}",
+					"raw": "{\n    \"input\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"additional_input\": \"challenge:fde559f8-3ab8-11ee-be56-0242ac120002\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -831,12 +841,12 @@
 	],
 	"variable": [
 		{
-			"id": "296fdd09-f40b-4398-9063-dd5ee33e7893",
+			"id": "1415ce2d-8e47-4e51-9bd2-39f264ba79aa",
 			"key": "TestReadFile_challenge_id",
 			"value": ""
 		},
 		{
-			"id": "d088af93-3f4d-4a44-af63-ffb96f5eb051",
+			"id": "b8ab3554-0bc3-408b-9d8e-ebbf4b1e584f",
 			"key": "testReadFileTaskInput",
 			"value": ""
 		}
