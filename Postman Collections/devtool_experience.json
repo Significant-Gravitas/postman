@@ -259,7 +259,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\n    \"input\": \"{{testReadFileTaskInput}}\",\n    \"additional_input\": \"challenge:{{testReadFileChallengeId}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
