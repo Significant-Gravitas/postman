@@ -22,7 +22,7 @@
 							"",
 							"",
 							"var jsonData = pm.response.json();",
-							"pm.globals.set(\"testReadFileTaskInput\", jsonData.graph.nodes.TestReadFile.input);",
+							"pm.globals.set(\"test_read_file_task_input\", jsonData.graph.nodes.TestReadFile.input);",
 							"",
 							"pm.test(\"Schema is valid\", function () {",
 							"    var schema = {",
