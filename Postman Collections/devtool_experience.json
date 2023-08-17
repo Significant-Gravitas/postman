@@ -170,7 +170,7 @@
 								}
 							}
 						},
-						"url": "{{url}}/agent/tasks/{{challenge_artifact_id}}/artifacts/{{challenge_artifact_id}}"
+						"url": "{{url}}/agent/challenges/{{TestReadFile_challenge_id}}/artifacts/{{challenge_artifact_id}}"
 					},
 					"status": "OK",
 					"code": 200,
