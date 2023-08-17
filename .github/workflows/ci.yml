@@ -3,7 +3,7 @@ name: Run Newman Tests
 on:
   push:
     branches:
-      - '**' # This will run on push to any branch
+      - 'another-branch' # For now we don't use this CI
 
 jobs:
   run-tests:
