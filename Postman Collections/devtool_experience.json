@@ -743,7 +743,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_input\": \"y\",\n    \"useless_field\": \"ignore this field, it's here to match with the mocked response-2\"\n}",
+							"raw": "{\n    \"input\": \"y\",\n    \"useless_field\": \"ignore this field, it's here to match with the mocked response-2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
