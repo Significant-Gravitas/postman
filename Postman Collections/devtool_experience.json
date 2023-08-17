@@ -747,7 +747,7 @@
 								}
 							}
 						},
-						"url": "{{url}}/agent/tasks/fde559f8-3ab8-11ee-be56-0242ac120002/steps"
+						"url": "{{url}}/agent/tasks/{{task_id}}/steps"
 					},
 					"status": "OK",
 					"code": 200,
