@@ -14,7 +14,7 @@
 						"id": "e2f658e3-8e67-4dad-8a7f-d595bac72118",
 						"exec": [
 							"var jsonData = pm.response.json();",
-							"pm.collectionVariables.set(\"TestReadFile_challenge_id\", jsonData.graph.nodes.TestReadFile.task_id);",
+							"pm.collectionVariables.set(\"testReadFileTaskInput\", jsonData.graph.nodes.TestReadFile.task_id);",
 							"pm.globals.set(\"challenge_artifact_id\", jsonData.graph.nodes.TestReadFile.artifacts[0].artifact_id)",
 							"",
 							"pm.test(\"Schema is valid\", function () {",
@@ -826,7 +826,7 @@
 	],
 	"variable": [
 		{
-			"id": "684d547c-7cc3-4885-ba6b-bd7699a509a1",
+			"id": "0634fb74-6823-4652-af78-cc2e2d4c4f89",
 			"key": "TestReadFile_challenge_id",
 			"value": ""
 		}
