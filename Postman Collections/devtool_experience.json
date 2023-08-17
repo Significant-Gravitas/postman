@@ -823,5 +823,12 @@
 			},
 			"response": []
 		}
+	],
+	"variable": [
+		{
+			"id": "684d547c-7cc3-4885-ba6b-bd7699a509a1",
+			"key": "TestReadFile_challenge_id",
+			"value": ""
+		}
 	]
 }
