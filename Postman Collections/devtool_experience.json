@@ -19,7 +19,7 @@
 							"",
 							"",
 							"var jsonData = pm.response.json();",
-							"pm.collectionVariables.set(\"testReadFileTaskInput\", jsonData.graph.nodes.TestReadFile.task_id);",
+							"pm.global.set(\"testReadFileTaskInput\", jsonData.graph.nodes.TestReadFile.input);",
 							"pm.globals.set(\"challenge_artifact_id\", jsonData.graph.nodes.TestReadFile.artifacts[0].artifact_id)",
 							"",
 							"pm.test(\"Schema is valid\", function () {",
@@ -831,12 +831,12 @@
 	],
 	"variable": [
 		{
-			"id": "f0329dbd-a324-4c3e-b72a-30b3c88edfec",
+			"id": "2475da75-e81c-4441-a88c-1f57e34f797d",
 			"key": "TestReadFile_challenge_id",
 			"value": ""
 		},
 		{
-			"id": "9939fb08-f31c-44fc-88aa-2952b0b05275",
+			"id": "dd44eacf-a02e-40db-a2ff-e9139a1f272e",
 			"key": "testReadFileTaskInput",
 			"value": ""
 		}
