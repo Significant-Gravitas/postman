@@ -23,7 +23,6 @@
 							"",
 							"var jsonData = pm.response.json();",
 							"pm.globals.set(\"testReadFileTaskInput\", jsonData.graph.nodes.TestReadFile.input);",
-							"pm.globals.set(\"challenge_artifact_id\", jsonData.graph.nodes.TestReadFile.artifacts[0].artifact_id)",
 							"",
 							"pm.test(\"Schema is valid\", function () {",
 							"    var schema = {",
