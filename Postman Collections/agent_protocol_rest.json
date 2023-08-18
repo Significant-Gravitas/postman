@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "04c2e950-8053-48c5-83cc-31157d87a121",
+		"_postman_id": "8d04ce1c-685e-4837-aaed-3fd505623948",
 		"name": "Agent Protocol - REST",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -14,7 +14,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"Object.keys(pm.globals.toObject()).forEach((key) => {",
 									"    pm.globals.unset(key);",
@@ -28,11 +27,12 @@
 									"    pm.response.to.have.status(200);",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "4e683aa5-1568-4a76-9c2b-ca73b1955139"
 							}
 						}
 					],
-					"id": "20bf074d-97ca-46bb-976c-845936b7cdc2",
+					"_postman_id": "6acd6d66-5695-44d9-a29a-fd91a2fbc4f6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -48,25 +48,16 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks"
+						"url": "{{url}}/agent/tasks"
 					},
 					"response": [
 						{
-							"id": "7f76303c-988e-4349-8fc0-7bf911d59810",
+							"id": "90029390-7291-4114-b639-0b3dcfac093c",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{basic_agent_url}}/agent/tasks"
+								"url": "{{url}}/agent/tasks"
 							},
 							"status": "OK",
 							"code": 200,
@@ -133,7 +124,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e2f658e3-8e67-4dad-8a7f-d595bac72118",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"taskId\", jsonData.task_id);",
@@ -179,11 +169,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "fea7645b-7f05-4243-aa87-0391da566054"
 							}
 						}
 					],
-					"id": "e52b4e28-0057-456b-b0e3-9962df029773",
+					"_postman_id": "03bb2274-8c2f-4b62-a812-85442e8db060",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -199,11 +190,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks"
+						"url": "{{url}}/agent/tasks"
 					},
 					"response": [
 						{
-							"id": "a0060aef-d1de-430a-bd8d-e7ecb7afe743",
+							"id": "a4cbccfc-819c-4069-b557-c3be71408572",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -223,7 +214,7 @@
 										}
 									}
 								},
-								"url": "{{basic_agent_url}}/agent/tasks"
+								"url": "{{url}}/agent/tasks"
 							},
 							"status": "OK",
 							"code": 200,
@@ -290,7 +281,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -354,11 +344,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "c0332b9a-6e59-4814-96c1-01867f0a574d"
 							}
 						}
 					],
-					"id": "2ff29dca-905d-476d-86ca-9f4bff28a48f",
+					"_postman_id": "3ff65ed9-2bc0-4df3-9a4d-2785010c07ad",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -374,11 +365,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+						"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 					},
 					"response": [
 						{
-							"id": "ae1cb602-5148-4424-9a26-b481e8604179",
+							"id": "87a379b0-ba6a-4730-a76a-93c8a81d290e",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -398,7 +389,7 @@
 										}
 									}
 								},
-								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+								"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 							},
 							"status": "OK",
 							"code": 200,
@@ -465,7 +456,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -521,11 +511,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "2183cebd-e59e-4007-8715-1c0ed22d56f9"
 							}
 						}
 					],
-					"id": "f53450a8-c8bd-401b-9ae7-2c2ba711b5ce",
+					"_postman_id": "8bef178d-34f4-4cb9-801d-05b06b474014",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -547,11 +538,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+						"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 					},
 					"response": [
 						{
-							"id": "dc0c5e56-57e1-4596-a5f8-1ffb370c4274",
+							"id": "9056d4ac-0958-41b5-9a7f-6d224d1eff43",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -576,7 +567,7 @@
 										}
 									}
 								},
-								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+								"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 							},
 							"status": "OK",
 							"code": 200,
@@ -643,7 +634,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -699,11 +689,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "50ee4724-c82d-44ce-b313-9df01ca1e193"
 							}
 						}
 					],
-					"id": "fa2ab141-645e-44ac-b72a-989bd9ee24ff",
+					"_postman_id": "10d458d2-8c50-4737-81b9-77fa80a2c804",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -725,11 +716,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+						"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 					},
 					"response": [
 						{
-							"id": "0d7ca16d-0c25-48f8-95da-0c9a733e399e",
+							"id": "65ec4780-7e54-4d27-a641-b492b3d44954",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -755,9 +746,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps",
+									"raw": "{{url}}/agent/tasks/{{taskId}}/steps",
 									"host": [
-										"{{basic_agent_url}}"
+										"{{url}}"
 									],
 									"path": [
 										"agent",
@@ -839,7 +830,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -895,11 +885,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "6b5e755f-025f-4a49-b046-3334d44376c7"
 							}
 						}
 					],
-					"id": "62997978-489a-421a-979b-16936bb11406",
+					"_postman_id": "955c9f12-5d1b-4207-983b-185cc47da4bc",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -921,11 +912,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+						"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 					},
 					"response": [
 						{
-							"id": "725496a3-3585-45bd-af44-024f531137bd",
+							"id": "e90dd4bb-93a3-4c98-b386-5ec50672017a",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -951,9 +942,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps",
+									"raw": "{{url}}/agent/tasks/{{taskId}}/steps",
 									"host": [
-										"{{basic_agent_url}}"
+										"{{url}}"
 									],
 									"path": [
 										"agent",
@@ -1035,7 +1026,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -1092,11 +1082,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "d237fa03-c84d-40bf-af9b-2ecb420d3825"
 							}
 						}
 					],
-					"id": "fe70fa6e-2ff4-46a4-848a-c11a39849a21",
+					"_postman_id": "cd6bb5eb-9d63-4a05-a374-aa0bb8e0a71b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1118,11 +1109,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+						"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 					},
 					"response": [
 						{
-							"id": "2a3b6f4b-9656-4e98-b472-807c16fe330a",
+							"id": "9321f0b5-6017-48d2-bb93-633715010a41",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -1147,7 +1138,7 @@
 										}
 									}
 								},
-								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+								"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 							},
 							"status": "OK",
 							"code": 200,
@@ -1214,7 +1205,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -1270,11 +1260,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "14368159-50cf-4ac2-bf32-e3e5380d5a1a"
 							}
 						}
 					],
-					"id": "336681c5-f562-4808-b88d-34d7d7f8c587",
+					"_postman_id": "c3cfcc6f-67be-43a7-a5e4-96911ff057bf",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1296,11 +1287,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+						"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 					},
 					"response": [
 						{
-							"id": "93aa8e92-3581-405b-8ee6-9776f128c42d",
+							"id": "ed3258a4-2371-4622-854d-0b91460d2951",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -1326,9 +1317,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps",
+									"raw": "{{url}}/agent/tasks/{{taskId}}/steps",
 									"host": [
-										"{{basic_agent_url}}"
+										"{{url}}"
 									],
 									"path": [
 										"agent",
@@ -1410,7 +1401,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -1466,11 +1456,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "73b2c61b-7fb4-4629-95fb-9184d054a407"
 							}
 						}
 					],
-					"id": "0fbe3c07-277d-4983-a75c-3a0e2d4bfa39",
+					"_postman_id": "2d08b3bc-2ef9-4774-8cef-acc7c14e80d0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1492,11 +1483,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+						"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 					},
 					"response": [
 						{
-							"id": "52c5b065-826f-4220-9154-87dcef72b34e",
+							"id": "04156f09-c72a-4787-bf62-f9a81d7f2481",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -1521,7 +1512,7 @@
 										}
 									}
 								},
-								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+								"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 							},
 							"status": "OK",
 							"code": 200,
@@ -1588,7 +1579,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -1644,11 +1634,12 @@
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "c874988c-2ba4-40c0-b1c3-38cc21039f6b"
 							}
 						}
 					],
-					"id": "b94b6f4f-358f-4d6e-8932-237ec4c6c0c2",
+					"_postman_id": "aede82d7-0b0c-4b49-9b85-50620916b66c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1670,11 +1661,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+						"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 					},
 					"response": [
 						{
-							"id": "f99a8b97-6e99-4479-8ba3-fd93cca2eb14",
+							"id": "ed0ab791-bee4-49ad-94ea-96a4f74cb4f6",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "POST",
@@ -1699,7 +1690,7 @@
 										}
 									}
 								},
-								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+								"url": "{{url}}/agent/tasks/{{taskId}}/steps"
 							},
 							"status": "OK",
 							"code": 200,
@@ -1766,18 +1757,18 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"id": "5eea7bce-42b2-4472-a99f-4995fb78cbe6"
 							}
 						}
 					],
-					"id": "63bbd7a9-d23c-48eb-b3c4-24c06eca53b1",
+					"_postman_id": "0e4fe009-3d77-4c99-9c41-2d6f6c5d7da3",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1799,11 +1790,11 @@
 								}
 							}
 						},
-						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
+						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
 					},
 					"response": [
 						{
-							"id": "a30301d8-e55f-4487-872a-9c7867da90f3",
+							"id": "0142826f-6d62-4dbf-93cd-44d58f59147c",
 							"name": "mock response",
 							"originalRequest": {
 								"method": "GET",
@@ -1814,16 +1805,7 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
+								"url": "{{url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
 							},
 							"status": "OK",
 							"code": 200,
@@ -1885,7 +1867,7 @@
 					]
 				}
 			],
-			"id": "d51d9e6e-4dc0-44e0-a6a7-23c04fc23966"
+			"_postman_id": "14d024f2-516c-4d66-b0d9-e856b10acb06"
 		},
 		{
 			"name": "Tasks",
@@ -1899,7 +1881,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ef79e6f4-b997-47c7-8663-a61744a81840",
 										"exec": [
 											"Object.keys(pm.globals.toObject()).forEach((key) => {",
 											"    pm.globals.unset(key);",
@@ -1912,11 +1893,12 @@
 											"pm.globals.set(\"taskId\", jsonData.task_id);",
 											"pm.globals.set(\"taskInput\", JSON.parse(pm.request.body.raw).input);"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"id": "66f06529-a1e4-4848-8edb-2a7eed07ee15"
 									}
 								}
 							],
-							"id": "e454140b-fac7-4934-acde-1889a8f2460f",
+							"_postman_id": "28045ab8-9eff-451a-8bba-c14e113eb75f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1936,7 +1918,7 @@
 							},
 							"response": [
 								{
-									"id": "42f3e423-f16e-4e26-acbb-c24e2fa2c595",
+									"id": "66721609-85fa-4660-b710-9571eb5fa792",
 									"name": "mock response",
 									"originalRequest": {
 										"method": "POST",
@@ -1956,7 +1938,7 @@
 												}
 											}
 										},
-										"url": "{{basic_agent_url}}/agent/tasks"
+										"url": "{{url}}/agent/tasks"
 									},
 									"status": "OK",
 									"code": 200,
@@ -2018,7 +2000,8 @@
 							]
 						}
 					],
-					"id": "da25e5eb-0544-4689-bca4-0d3de958712d"
+					"_postman_id": "ff043ee7-ef92-48ff-af47-e30c730aa987",
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "JSON SCHEMA (IN PROGRESS)",
@@ -2029,7 +2012,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ef79e6f4-b997-47c7-8663-a61744a81840",
 										"exec": [
 											"Object.keys(pm.globals.toObject()).forEach((key) => {",
 											"    pm.globals.unset(key);",
@@ -2042,11 +2024,12 @@
 											"pm.globals.set(\"taskId\", jsonData.task_id);",
 											"pm.globals.set(\"taskInput\", JSON.parse(pm.request.body.raw).input);"
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"id": "22fe720a-1ad6-4d71-840d-2764bebf0137"
 									}
 								}
 							],
-							"id": "eb7ca9e6-86d2-48f5-b281-04f383c6f091",
+							"_postman_id": "4e74cb2f-2354-4645-abff-7f25eb0d00ef",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -2066,7 +2049,7 @@
 							},
 							"response": [
 								{
-									"id": "98993349-c81e-4c17-bc2f-81e8241e3b51",
+									"id": "6e749257-820c-4229-8253-29286fceb7c3",
 									"name": "mock response",
 									"originalRequest": {
 										"method": "POST",
@@ -2086,7 +2069,7 @@
 												}
 											}
 										},
-										"url": "{{basic_agent_url}}/agent/tasks"
+										"url": "{{url}}/agent/tasks"
 									},
 									"status": "OK",
 									"code": 200,
@@ -2148,10 +2131,11 @@
 							]
 						}
 					],
-					"id": "75e95f8e-4bbe-4815-a7c5-3d0cb7c7ea7a"
+					"_postman_id": "9e9b5893-b903-4d6b-b8d8-9239023f4c71",
+					"_postman_isSubFolder": true
 				}
 			],
-			"id": "eceb4fd2-ab98-49e9-8085-1d66bd6cc980"
+			"_postman_id": "78590868-6b08-4336-88f7-0a0dc0cdbd0d"
 		}
 	]
 }
