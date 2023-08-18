@@ -1677,41 +1677,70 @@
 			"id": "14d024f2-516c-4d66-b0d9-e856b10acb06"
 		},
 		{
-			"name": "Tasks",
+			"name": "CRUD + load test (IN PROGRESS)",
 			"item": [
 				{
-					"name": "CRUD + load test (IN PROGRESS)",
-					"item": [
+					"name": "Create a new task",
+					"event": [
 						{
-							"name": "Create a new task",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"Object.keys(pm.globals.toObject()).forEach((key) => {",
-											"    pm.globals.unset(key);",
-											"});",
-											"Object.keys(pm.collectionVariables.toObject()).forEach((key) => {",
-											"    pm.collectionVariables.unset(key);",
-											"});",
-											"",
-											"var jsonData = pm.response.json();",
-											"pm.globals.set(\"taskId\", jsonData.task_id);",
-											"pm.globals.set(\"taskInput\", JSON.parse(pm.request.body.raw).input);"
-										],
-										"type": "text/javascript",
-										"id": "66f06529-a1e4-4848-8edb-2a7eed07ee15"
-									}
+							"listen": "test",
+							"script": {
+								"exec": [
+									"Object.keys(pm.globals.toObject()).forEach((key) => {",
+									"    pm.globals.unset(key);",
+									"});",
+									"Object.keys(pm.collectionVariables.toObject()).forEach((key) => {",
+									"    pm.collectionVariables.unset(key);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"taskId\", jsonData.task_id);",
+									"pm.globals.set(\"taskInput\", JSON.parse(pm.request.body.raw).input);"
+								],
+								"type": "text/javascript",
+								"id": "66f06529-a1e4-4848-8edb-2a7eed07ee15"
+							}
+						}
+					],
+					"id": "28045ab8-9eff-451a-8bba-c14e113eb75f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "mock-match",
+								"value": "34"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							],
-							"id": "28045ab8-9eff-451a-8bba-c14e113eb75f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
+							}
+						},
+						"url": "{{url}}/agent/tasks"
+					},
+					"response": [
+						{
+							"id": "66721609-85fa-4660-b710-9571eb5fa792",
+							"name": "mock response",
+							"originalRequest": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "mock-match",
+										"value": "34"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
@@ -1723,92 +1752,296 @@
 								},
 								"url": "{{url}}/agent/tasks"
 							},
-							"response": [
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
 								{
-									"id": "66721609-85fa-4660-b710-9571eb5fa792",
-									"name": "mock response",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{url}}/agent/tasks"
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Date",
-											"value": "Sun, 13 Aug 2023 23:23:05 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "28"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "x-srv-trace",
-											"value": "v=1;t=daef761e243c402b"
-										},
-										{
-											"key": "x-srv-span",
-											"value": "v=1;s=2c0bd88502372360"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "X-RateLimit-Limit",
-											"value": "120"
-										},
-										{
-											"key": "X-RateLimit-Remaining",
-											"value": "115"
-										},
-										{
-											"key": "X-RateLimit-Reset",
-											"value": "1691968334"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
-										},
-										{
-											"key": "Vary",
-											"value": "Accept-Encoding"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"task_id\": \"a1b259f8-3ab8-11ee-be56-0242ac121234\"\n}"
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
 								}
-							]
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"artifacts\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get the task",
+					"id": "165d9b54-2e01-4b46-9e36-053194330197",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks/{{taskId}}"
+					},
+					"response": [
+						{
+							"id": "82c20321-4f43-4390-bc9a-69c2e55402f3",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks/{{taskId}}"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"121\",\n    \"artifacts\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all the tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66f06529-a1e4-4848-8edb-2a7eed07ee15",
+								"exec": [
+									"Object.keys(pm.globals.toObject()).forEach((key) => {",
+									"    pm.globals.unset(key);",
+									"});",
+									"Object.keys(pm.collectionVariables.toObject()).forEach((key) => {",
+									"    pm.collectionVariables.unset(key);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"taskId\", jsonData.task_id);",
+									"pm.globals.set(\"taskInput\", JSON.parse(pm.request.body.raw).input);"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
-					"id": "ff043ee7-ef92-48ff-af47-e30c730aa987"
-				},
+					"id": "7484f0c1-a49d-410b-b4cb-3c690e7a538e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks"
+					},
+					"response": [
+						{
+							"id": "f50d79cb-f9bc-4a8b-8728-792ecbc340ef",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"121\",\n    \"artifacts\": []\n}"
+						}
+					]
+				}
+			],
+			"id": "ff043ee7-ef92-48ff-af47-e30c730aa987"
+		},
+		{
+			"name": "Tasks OpenAPI Compliance",
+			"item": [
 				{
 					"name": "JSON SCHEMA (IN PROGRESS)",
 					"item": [
