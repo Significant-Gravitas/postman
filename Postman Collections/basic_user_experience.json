@@ -991,7 +991,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps",
+									"raw": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps?step=6",
 									"host": [
 										"{{basic_agent_url}}"
 									],
@@ -1004,8 +1004,8 @@
 									"query": [
 										{
 											"key": "step",
-											"value": "3",
-											"disabled": true
+											"value": "6",
+											"type": "text"
 										}
 									]
 								}
