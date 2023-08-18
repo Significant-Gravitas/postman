@@ -1590,6 +1590,9 @@
 							"script": {
 								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
 								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript"
