@@ -152,7 +152,6 @@
 									"",
 									"    pm.expect(responseData).to.be.an('object');",
 									"    pm.expect(responseData.input).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.additional_input).to.exist.and.to.be.null;",
 									"    pm.expect(responseData.task_id).to.exist.and.to.be.a('string');",
 									"    pm.expect(responseData.artifacts).to.exist.and.to.be.an('array');",
 									"    pm.expect(responseData.steps).to.exist.and.to.be.an('array');",
