@@ -714,11 +714,6 @@
 								"key": "mock-match",
 								"value": "3",
 								"type": "text"
-							},
-							{
-								"key": "test",
-								"value": "2",
-								"type": "text"
 							}
 						],
 						"body": {
