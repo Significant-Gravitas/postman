@@ -851,7 +851,7 @@
 									},
 									{
 										"key": "step",
-										"value": "3",
+										"value": "5",
 										"type": "text"
 									}
 								],
@@ -864,25 +864,7 @@
 										}
 									}
 								},
-								"url": {
-									"raw": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps",
-									"host": [
-										"{{basic_agent_url}}"
-									],
-									"path": [
-										"agent",
-										"tasks",
-										"{{taskId}}",
-										"steps"
-									],
-									"query": [
-										{
-											"key": "step",
-											"value": "3",
-											"disabled": true
-										}
-									]
-								}
+								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
 							},
 							"status": "OK",
 							"code": 200,
