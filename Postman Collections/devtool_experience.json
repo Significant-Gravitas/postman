@@ -966,7 +966,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2d26beaa-93a5-4cf4-8b49-f608f0092f3a",
+						"id": "ba8c67a4-1ced-4239-a3d5-d7dc07cc1a53",
 						"exec": [
 							"pm.test(\"Response status code is 200\", function () {",
 							"  pm.response.to.have.status(200);",
@@ -999,9 +999,7 @@
 							"    const responseData = pm.response.json();",
 							"    ",
 							"    pm.expect(responseData.output).to.exist.and.to.not.be.empty;",
-							"});",
-							"",
-							""
+							"});"
 						],
 						"type": "text/javascript"
 					}
