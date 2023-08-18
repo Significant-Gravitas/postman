@@ -1677,7 +1677,7 @@
 			"id": "14d024f2-516c-4d66-b0d9-e856b10acb06"
 		},
 		{
-			"name": "CRUD + load test (IN PROGRESS)",
+			"name": "Tasks Load Test",
 			"item": [
 				{
 					"name": "Create a new task",
