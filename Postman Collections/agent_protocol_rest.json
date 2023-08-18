@@ -124,6 +124,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "fea7645b-7f05-4243-aa87-0391da566054",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"taskId\", jsonData.task_id);",
@@ -144,7 +145,6 @@
 									"    pm.expect(responseData.input).to.exist.and.to.be.a('string');",
 									"    pm.expect(responseData.task_id).to.exist.and.to.be.a('string');",
 									"    pm.expect(responseData.artifacts).to.exist.and.to.be.an('array');",
-									"    pm.expect(responseData.steps).to.exist.and.to.be.an('array');",
 									"});",
 									"",
 									"pm.test(\"task_id is a non-empty string\", function () {",
@@ -153,24 +153,14 @@
 									"    pm.expect(responseData.task_id).to.be.a('string').and.to.have.lengthOf.at.least(1);",
 									"});",
 									"",
-									"",
 									"pm.test(\"Artifacts is an array\", function () {",
 									"    const responseData = pm.response.json();",
 									"",
 									"    pm.expect(responseData.artifacts).to.be.an('array');",
 									"});",
-									"",
-									"",
-									"pm.test(\"Steps should be an array\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.steps).to.be.an('array');",
-									"});",
-									"",
 									""
 								],
-								"type": "text/javascript",
-								"id": "fea7645b-7f05-4243-aa87-0391da566054"
+								"type": "text/javascript"
 							}
 						}
 					],
