@@ -1201,58 +1201,31 @@
 							"body": "{\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"step_id\": \"c4179290-3abc-11ee-be56-0242ac12002d\",\n    \"status\": \"completed\",\n    \"output\": \"I am already done with my work! Is there anything else I can help you with ?\",\n    \"artifacts\": [\n    ],\n    \"is_last\": true\n}"
 						}
 					]
-				}
-			],
-			"id": "d51d9e6e-4dc0-44e0-a6a7-23c04fc23966"
-		},
-		{
-			"name": "Download Artifact",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "63bbd7a9-d23c-48eb-b3c4-24c06eca53b1",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
-			},
-			"response": [
 				{
-					"id": "a30301d8-e55f-4487-872a-9c7867da90f3",
-					"name": "mock response",
-					"originalRequest": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+					"name": "Download Artifact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
 							}
-						],
+						}
+					],
+					"id": "63bbd7a9-d23c-48eb-b3c4-24c06eca53b1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [],
+							"mode": "raw",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1261,64 +1234,96 @@
 						},
 						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "text",
-					"header": [
+					"response": [
 						{
-							"key": "Date",
-							"value": "Mon, 14 Aug 2023 16:28:55 GMT"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "275"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "x-srv-trace",
-							"value": "v=1;t=daef761e243c402b"
-						},
-						{
-							"key": "x-srv-span",
-							"value": "v=1;s=2c0bd88502372360"
-						},
-						{
-							"key": "Access-Control-Allow-Origin",
-							"value": "*"
-						},
-						{
-							"key": "X-RateLimit-Limit",
-							"value": "120"
-						},
-						{
-							"key": "X-RateLimit-Remaining",
-							"value": "115"
-						},
-						{
-							"key": "X-RateLimit-Reset",
-							"value": "1691968334"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
-						},
-						{
-							"key": "Vary",
-							"value": "Accept-Encoding"
+							"id": "a30301d8-e55f-4487-872a-9c7867da90f3",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 14 Aug 2023 16:28:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "275"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "Washington"
 						}
-					],
-					"cookie": [],
-					"responseTime": null,
-					"body": "Washington"
+					]
 				}
-			]
+			],
+			"id": "d51d9e6e-4dc0-44e0-a6a7-23c04fc23966"
+		},
+		{
+			"name": "New Folder",
+			"item": [],
+			"id": "eceb4fd2-ab98-49e9-8085-1d66bd6cc980"
 		}
 	]
 }
