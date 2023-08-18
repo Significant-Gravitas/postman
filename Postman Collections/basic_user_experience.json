@@ -123,7 +123,7 @@
 					]
 				},
 				{
-					"name": "Create a new task Copy",
+					"name": "Create a new task",
 					"event": [
 						{
 							"listen": "test",
