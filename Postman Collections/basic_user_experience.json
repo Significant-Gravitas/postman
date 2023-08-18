@@ -133,7 +133,6 @@
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"taskId\", jsonData.task_id);",
 									"",
-									"const ;",
 									"pm.globals.set(\"taskInput\", JSON.parse(pm.request.body.raw).input);"
 								],
 								"type": "text/javascript"
