@@ -493,7 +493,7 @@
 									"",
 									"    pm.expect(responseData.artifacts).to.exist;",
 									"    pm.expect(responseData.artifacts).to.be.an('array');",
-									"    pm.expect(responseData.artifacts).to.have.lengthOf(0);",
+									"    pm.expect(responseData.artifacts).to.have.lengthOf(1);",
 									"});",
 									"",
 									"",
