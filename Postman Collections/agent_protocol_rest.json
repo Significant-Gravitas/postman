@@ -1583,6 +1583,184 @@
 					]
 				},
 				{
+					"name": "Continue the task after it's done 5 Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "72f6da2a-07b0-4ef6-a4c1-a1964af242d5",
+								"exec": [
+									"var artifacts = pm.response.json().artifacts;",
+									"",
+									"if (artifacts && artifacts.length > 0) {",
+									"    pm.globals.set(\"artifactId\", artifacts[0].artifact_id);",
+									"}",
+									"",
+									"var artifacts = pm.response.json().artifacts;",
+									"var existingArtifactId = pm.globals.get(\"artifactId\");",
+									"",
+									"if (artifacts && artifacts.length > 0) {",
+									"    if (artifacts.length > 1) {",
+									"        pm.test(\"The task should only create 1 artifact\", function () {",
+									"            pm.expect.fail(\"More than one artifact was created.\");",
+									"        });",
+									"    } else {",
+									"        pm.globals.set(\"artifactId\", artifacts[0].artifact_id);",
+									"    }",
+									"}",
+									"",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Task ID is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.task_id).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Step ID is not empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.step_id).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Status should not be empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.status).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Output should not be empty\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData.output).to.exist.and.to.not.be.empty;",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "b94b6f4f-358f-4d6e-8932-237ec4c6c0c2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "mock-match",
+								"value": "7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"y\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+					},
+					"response": [
+						{
+							"id": "f99a8b97-6e99-4479-8ba3-fd93cca2eb14",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "mock-match",
+										"value": "7",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"y\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{basic_agent_url}}/agent/tasks/{{taskId}}/steps"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 14 Aug 2023 16:28:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "275"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"step_id\": \"74179290-3abc-11ee-be56-0242ac12002d\",\n    \"status\": \"completed\",\n    \"output\": \"I am already done with my work! Is there anything else I can help you with ?\",\n    \"artifacts\": [\n    ],\n    \"is_last\": true\n}"
+						}
+					]
+				},
+				{
 					"name": "Download Artifact",
 					"event": [
 						{
@@ -1713,7 +1891,7 @@
 			"name": "Tasks",
 			"item": [
 				{
-					"name": "CRUD + load test",
+					"name": "CRUD + load test (IN PROGRESS)",
 					"item": [
 						{
 							"name": "Create a new task",
@@ -1843,7 +2021,7 @@
 					"id": "da25e5eb-0544-4689-bca4-0d3de958712d"
 				},
 				{
-					"name": "JSON SCHEMA",
+					"name": "JSON SCHEMA (IN PROGRESS)",
 					"item": [
 						{
 							"name": "Create a new task",
