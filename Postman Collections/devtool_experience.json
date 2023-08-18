@@ -278,7 +278,7 @@
 						}
 					}
 				},
-				"url": "{{url}}/agent/tasks"
+				"url": "{{url}}/agent/tasks/{{task_id}}/steps"
 			},
 			"response": [
 				{
