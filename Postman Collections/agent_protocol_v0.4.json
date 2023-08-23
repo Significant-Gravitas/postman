@@ -1,0 +1,3718 @@
+{
+	"info": {
+		"_postman_id": "84d6bd70-4a9f-4470-be02-f2f9089ec69b",
+		"name": "Agent Protocol - REST v0.4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Contract Test Generator",
+			"item": [
+				{
+					"name": "API Validation",
+					"item": [
+						{
+							"name": "Cleanup Previous Run",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// See https://blog.postman.com/2019/05/28/pro-tip-dynamically-unset-postman-environment-variables/\r",
+											"// for more details on what we're doing here. \r",
+											"\r",
+											"cleanupCollectionVariables();\r",
+											"\r",
+											"function cleanupCollectionVariables() {\r",
+											"    const clean = _.keys(pm.collectionVariables.toObject());\r",
+											"\r",
+											"    _.each(clean, (arrItem) => {\r",
+											"        pm.collectionVariables.unset(arrItem);\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"id": "0044fae0-e397-4e8d-9e10-8e5cf6ddd721"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"id": "e5f01bc1-57fd-4a47-9291-cde6be37e344"
+									}
+								}
+							],
+							"_postman_id": "3eb1be93-d644-43f0-8b14-7d08d819611d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://postman-echo.com/delay/0"
+							},
+							"response": []
+						},
+						{
+							"name": "Initialize",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const providedSchema = pm.environment.get('env-schema');\r",
+											"if(providedSchema){\r",
+											"    let success = true;\r",
+											"    try{\r",
+											"        const yaml = pm.environment.get('env-jsonToYaml');\r",
+											"        (new Function(yaml))();\r",
+											"\r",
+											"        const schema = jsyaml.load(providedSchema);\r",
+											"        pm.collectionVariables.set('coll-schema', JSON.stringify(schema));\r",
+											"        postman.setNextRequest('Verify Component Adherence');\r",
+											"    }\r",
+											"    catch(err){\r",
+											"        console.log(err);\r",
+											"        success = false;\r",
+											"        postman.setNextRequest(null);\r",
+											"    }\r",
+											"\r",
+											"    pm.test('Successfully converted provided schema', function(){\r",
+											"        pm.expect(success).to.be.true;\r",
+											"    });    \r",
+											"}"
+										],
+										"type": "text/javascript",
+										"id": "69536df4-cde3-44bd-825c-37e02f4a446e"
+									}
+								}
+							],
+							"_postman_id": "f59c4756-2e13-493e-9b06-4459c3d64e0d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://postman-echo.com/delay/0"
+							},
+							"response": []
+						},
+						{
+							"name": "Validate API In Workspace",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const minApiCount = Number(pm.environment.get('env-minApiCount'));\r",
+											"const maxApiCount = Number(pm.environment.get('env-maxApiCount'));\r",
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(`Workspace API count is between ${minApiCount} and ${maxApiCount}. (Count: ${jsonData.apis.length})`, function () {    \r",
+											"    pm.expect(jsonData.apis.length).to.be.at.least(minApiCount);    \r",
+											"    pm.expect(jsonData.apis.length).to.be.at.most(maxApiCount);\r",
+											"});\r",
+											"\r",
+											"let apiIds = [];\r",
+											"_.forEach(jsonData.apis, function(api){\r",
+											"    apiIds.push(api.id);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.set('coll-apiIds', JSON.stringify(apiIds));"
+										],
+										"type": "text/javascript",
+										"id": "6fc842e2-4224-430f-94cb-d7bd1c7b704c"
+									}
+								}
+							],
+							"_postman_id": "b513f2bb-a8b3-4ac4-adb6-e396ef261f70",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{env-apiKey}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.getpostman.com/apis?workspace={{env-workspaceId}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"apis"
+									],
+									"query": [
+										{
+											"key": "workspace",
+											"value": "{{env-workspaceId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Current API Version",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test('API has one or more versions', function(){\r",
+											"    pm.expect(jsonData).to.have.property('versions').and.to.be.an('array');\r",
+											"    pm.expect(jsonData.versions.length).to.be.above(0);\r",
+											"});\r",
+											"\r",
+											"const version = jsonData.versions[0];\r",
+											"pm.collectionVariables.set('coll-versionId', version.id);"
+										],
+										"type": "text/javascript",
+										"id": "a05c691a-d86b-461d-88ce-c8c82528f331"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let apiIds = pm.collectionVariables.get('coll-apiIds');\r",
+											"if(apiIds){\r",
+											"    apiIds = JSON.parse(apiIds);\r",
+											"    const apiId = apiIds.pop();\r",
+											"\r",
+											"    pm.collectionVariables.set('coll-apiId', apiId);\r",
+											"    pm.collectionVariables.set('coll-apiIds', JSON.stringify(apiIds));\r",
+											"}\r",
+											"else {\r",
+											"    pm.request.url = 'https://postman-echo.com/delay/0'\r",
+											"    pm.request.name = 'No APIs found in the workspace. Skipping execution';\r",
+											"    postman.setNextRequest(null);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"id": "2e9f68b2-7235-4ba0-b531-c10eaa242a5f"
+									}
+								}
+							],
+							"_postman_id": "80e4bd33-12ef-4d4e-b812-7be6a0e9d94f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{env-apiKey}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.getpostman.com/apis/:apiId/versions",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"apis",
+										":apiId",
+										"versions"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"id": "54bcda2c-7e66-4e6d-95da-d0d945bb5906",
+											"key": "apiId",
+											"value": "{{coll-apiId}}",
+											"type": "string"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Current API Schema",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test('Has schema for current version', function(){\r",
+											"    pm.expect(jsonData).to.have.property('version');\r",
+											"    pm.expect(jsonData.version).to.have.property('schema').and.to.be.an('array');\r",
+											"    pm.expect(jsonData.version.schema.length).to.be.above(0);\r",
+											"\r",
+											"    pm.collectionVariables.set('coll-schemaId', jsonData.version.schema[0]);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"id": "2d218742-f1f9-4732-b324-56246d6cde12"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"id": "33157e70-38c1-4d71-a87b-83a4c8ced303"
+									}
+								}
+							],
+							"_postman_id": "65414e93-b424-4738-b573-397a4dc645c4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"type": "text",
+										"value": "{{env-apiKey}}"
+									}
+								],
+								"url": {
+									"raw": "https://api.getpostman.com/apis/:apiId/versions/:versionId",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"apis",
+										":apiId",
+										"versions",
+										":versionId"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": "",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"id": "c07808f4-05aa-4a3a-8e93-0d1d69248379",
+											"key": "apiId",
+											"value": "{{coll-apiId}}",
+											"type": "string"
+										},
+										{
+											"id": "8b8ca830-03c7-43ac-8983-1ec8f9f48e06",
+											"key": "versionId",
+											"value": "{{coll-versionId}}",
+											"type": "string"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Schema From URL",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1591034a-71c3-4e65-a91d-60da6c568ef0",
+										"exec": [
+											"let responseSchema = pm.response.text();",
+											"",
+											"if(responseSchema.length != 0) {",
+											"    let success = true;",
+											"    try{",
+											"        const yaml = pm.environment.get('env-jsonToYaml');",
+											"        (new Function(yaml))();",
+											"",
+											"        const schema = jsyaml.load(responseSchema);",
+											"        pm.collectionVariables.set('coll-schema', JSON.stringify(schema));",
+											"        postman.setNextRequest('Get API Base Url');",
+											"    }",
+											"    catch(err){",
+											"        console.log(err);",
+											"        success = false;",
+											"        postman.setNextRequest(null);",
+											"    }",
+											"",
+											"    pm.test('Successfully converted provided schema', function(){",
+											"        pm.expect(success).to.be.true;",
+											"    }); ",
+											"} else {",
+											"    console.log(\"Error retrieving schema from URL - \" + pm.environment.get(\"env-schemaUrl\"));",
+											"    postman.setNextRequest(null);",
+											"}",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "878b5361-1804-4c2d-a659-ad26dc290887",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "{{env-schemaUrl}}"
+							},
+							"response": []
+						},
+						{
+							"name": "Get API Base Url",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ba96f354-aec7-4191-a445-d3c29ab680b8",
+										"exec": [
+											"const schema = JSON.parse(pm.collectionVariables.get('coll-schema'));\r",
+											"const server = pm.environment.get('env-server');\r",
+											"\r",
+											"pm.test('Environment has test server defined', function () {\r",
+											"    pm.expect(server).to.not.be.undefined;\r",
+											"});\r",
+											"\r",
+											"pm.test('Schema has server/baseUrl defined', function () {\r",
+											"    const servers = schema.servers;\r",
+											"    pm.expect(servers).to.not.be.undefined;\r",
+											"    const serverToTest = servers.find(s => s.url.toLowerCase() == server.toLowerCase());\r",
+											"    pm.expect(serverToTest).to.not.be.undefined;\r",
+											"\r",
+											"    pm.expect(serverToTest).to.have.property('url');\r",
+											"    pm.collectionVariables.set('coll-baseUrl', serverToTest.url);\r",
+											"});\r",
+											"\r",
+											"const runComponentTests = pm.environment.get('env-runComponentTests') == 'true';\r",
+											"if(!runComponentTests){   \r",
+											"    const runContractTests = pm.environment.get('env-runContractTests') == 'true';\r",
+											"    if(runContractTests){\r",
+											"        postman.setNextRequest('Build Schema Tests');\r",
+											"    } else {\r",
+											"        postman.setNextRequest('More APIs to Process?');\r",
+											"    }   \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "1845a39d-7b5e-44a6-a66f-a93f4b220b2d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://postman-echo.com/delay/0"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "d9486ecc-6456-4fd8-aaef-06624487a204",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Components",
+					"item": [
+						{
+							"name": "Verify Component Adherence",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = JSON.parse(pm.collectionVariables.get('coll-schema'));\r",
+											"\r",
+											"const requireParamDescription = Boolean(pm.environment.get('env-requireParamDescription'));\r",
+											"const requireParamExample = Boolean(pm.environment.get('env-requireParamExample'));\r",
+											"\r",
+											"let paramDescriptionMinLength = pm.environment.get('env-paramDescriptionMinLength');\r",
+											"if (paramDescriptionMinLength) {\r",
+											"    paramDescriptionMinLength = Number(paramDescriptionMinLength);\r",
+											"}\r",
+											"\r",
+											"let paramDescriptionMaxLength = pm.environment.get('env-paramDesciptionMaxLength');\r",
+											"if (paramDescriptionMaxLength) {\r",
+											"    paramDescriptionMaxLength = Number(paramDescriptionMaxLength);\r",
+											"}\r",
+											"\r",
+											"var testedSchemaRefs = [];\r",
+											"\r",
+											"if (schema.components.parameters) {\r",
+											"    for (let prop in schema.components.parameters) {\r",
+											"        let parameter = schema.components.parameters[prop];\r",
+											"\r",
+											"        pm.test(`Parameter '${prop}' starts with a lowercase letter`, function () {\r",
+											"            pm.expect(prop.charAt(0)).to.equal(prop.charAt(0).toLowerCase());\r",
+											"        });\r",
+											"\r",
+											"        if (requireParamDescription) {\r",
+											"            pm.test(`Parameter '${prop}' has a description between ${paramDescriptionMinLength} and ${paramDescriptionMaxLength} characters`, function () {\r",
+											"                pm.expect(parameter).to.have.property('description').and.to.be.a('string');\r",
+											"                pm.expect(parameter.description.length).to.be.at.least(paramDescriptionMinLength);\r",
+											"                pm.expect(parameter.description.length).to.be.at.most(paramDescriptionMaxLength);\r",
+											"            });\r",
+											"        }\r",
+											"\r",
+											"        if (requireParamExample) {\r",
+											"            pm.test(`Parameter '${prop}' has an example`, function () {\r",
+											"                pm.expect(parameter).to.have.property('schema');\r",
+											"                pm.expect(parameter.schema).to.have.property('example');\r",
+											"            });\r",
+											"        }\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"if (schema.components.schemas) {\r",
+											"    for (let prop in schema.components.schemas) {\r",
+											"        pm.test(`Schema '${prop}' begins with an uppercase letter`, function () {\r",
+											"            pm.expect(prop.charAt(0)).to.equal(prop.charAt(0).toUpperCase());\r",
+											"        });\r",
+											"\r",
+											"        const testedSchema = testedSchemaRefs.find(tsr => tsr == prop);\r",
+											"        if (!testedSchema) {\r",
+											"            const schemaObject = schema.components.schemas[prop];\r",
+											"            testSchemaObject(schema, schemaObject, prop);\r",
+											"            testedSchemaRefs.push(prop);\r",
+											"        }\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"if (schema.components.responses) {\r",
+											"    for (let prop in schema.components.responses) {\r",
+											"        pm.test(`Response '${prop}' begins with an uppercase letter`, function () {\r",
+											"            pm.expect(prop.charAt(0)).to.equal(prop.charAt(0).toUpperCase());\r",
+											"        });\r",
+											"\r",
+											"        if (requireParamDescription) {\r",
+											"            const response = schema.components.responses[prop];\r",
+											"            pm.test(`Response '${prop}' has a description between ${paramDescriptionMinLength} and ${paramDescriptionMaxLength} characters`, function () {\r",
+											"                pm.expect(response).to.have.property('description').and.to.be.a('string');\r",
+											"                pm.expect(response.description.length).to.be.at.least(paramDescriptionMinLength);\r",
+											"                pm.expect(response.description.length).to.be.at.most(paramDescriptionMaxLength);\r",
+											"            });\r",
+											"        }\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"const runContractTests = pm.environment.get('env-runContractTests') == 'true';\r",
+											"if (runContractTests) {\r",
+											"    postman.setNextRequest('Build Schema Tests');\r",
+											"} else {\r",
+											"    postman.setNextRequest('More APIs to Process?');\r",
+											"}\r",
+											"\r",
+											"\r",
+											"function testSchemaObject(schema, object, objectName) {\r",
+											"    if (object.type && object.type.toLowerCase() == 'object') {\r",
+											"        if (object.required) {\r",
+											"            for (let i = 0; i < object.required.length; i++) {\r",
+											"                const requiredProp = object.required[i];\r",
+											"                pm.test(`Schema '${objectName}' has required property '${requiredProp}' defined`, function () {\r",
+											"                    pm.expect(object.properties).to.have.property(requiredProp);\r",
+											"                });\r",
+											"            }\r",
+											"        }\r",
+											"\r",
+											"        let schemaPropertyExceptions = [];\r",
+											"        if (pm.environment.has('env-schemaPropertyExceptions')) {\r",
+											"            schemaPropertyExceptions = JSON.parse(pm.environment.get('env-schemaPropertyExceptions'));\r",
+											"        }\r",
+											"\r",
+											"        for (let prop in object.properties) {\r",
+											"            const property = object.properties[prop];\r",
+											"\r",
+											"            if (!schemaPropertyExceptions.some(pe => pe === prop)) {\r",
+											"                pm.test(`Schema property '${objectName}.${prop}' is lowercase`, function () {\r",
+											"                    pm.expect(prop.charAt(0)).to.equal(prop.charAt(0).toLowerCase());\r",
+											"                });\r",
+											"            }\r",
+											"\r",
+											"            if (property.type && property.type.toLowerCase() == 'object') {\r",
+											"                testSchemaObject(schema, property, `${objectName}.${prop}`);\r",
+											"            }\r",
+											"            else if (property.type && property.type.toLowerCase() == 'array') {\r",
+											"                testSchemaObject(schema, property, `${objectName}.${prop}(list)`);\r",
+											"            }\r",
+											"            else if (property.oneOf) {\r",
+											"                _.forEach(property.oneOf, (oneOf, i) => {\r",
+											"                    testSchemaObject(schema, oneOf, `${objectName}.${prop}(oneOf).${i}`)\r",
+											"                });\r",
+											"            }\r",
+											"            else if (property.allOf) {\r",
+											"                _.forEach(property.allOf, (allOf, i) => {\r",
+											"                    testSchemaObject(schema, allOf, `${objectName}.${prop}(allOf).${i}`)\r",
+											"                });\r",
+											"            }\r",
+											"            else if (property.anyOf) {\r",
+											"                _.forEach(property.anyOf, (anyOf, i) => {\r",
+											"                    testSchemaObject(schema, anyOf, `${objectName}.${prop}(anyOf).${i}`)\r",
+											"                });\r",
+											"            }\r",
+											"            else {\r",
+											"                if (requireParamDescription && !property.$ref) {\r",
+											"                    pm.test(`Schema property '${objectName}.${prop}' has a description between ${paramDescriptionMinLength} and ${paramDescriptionMaxLength} characters`, function () {\r",
+											"                        pm.expect(property).to.have.property('description').and.to.be.a('string');\r",
+											"                        pm.expect(property.description.length).to.be.at.least(paramDescriptionMinLength);\r",
+											"                        pm.expect(property.description.length).to.be.at.most(paramDescriptionMaxLength);\r",
+											"                    });\r",
+											"\r",
+											"                    if (property.description) {\r",
+											"                        pm.test(`Schema property '${objectName}.${prop}' description is not just the name`, function () {\r",
+											"                            pm.expect(prop.toLowerCase()).to.not.equal(property.description.toLowerCase());\r",
+											"                        });\r",
+											"                    }\r",
+											"                }\r",
+											"\r",
+											"                if (requireParamExample && !property.$ref) {\r",
+											"                    pm.test(`Schema property '${objectName}.${prop}' has an example`, function () {\r",
+											"                        pm.expect(property).to.have.property('example');\r",
+											"                    });\r",
+											"                }\r",
+											"            }\r",
+											"        }\r",
+											"    }\r",
+											"    else if (object.type && object.type.toLowerCase() == 'array') {\r",
+											"        pm.test(`Schema '${objectName}' has items defined`, function () {\r",
+											"            pm.expect(object).to.have.property('items');\r",
+											"        });\r",
+											"\r",
+											"        testSchemaObject(schema, object.items, `${objectName}.list`);\r",
+											"    }\r",
+											"    else if (object.oneOf) {\r",
+											"        handleSchemaArray(schema, object, objectName, 'oneOf');\r",
+											"    } else if (object.allOf) {\r",
+											"        handleSchemaArray(schema, object, objectName, 'allOf');\r",
+											"    }\r",
+											"    else if (object.anyOf) {\r",
+											"        handleSchemaArray(schema, object, objectName, 'anyOf');\r",
+											"    }\r",
+											"    else if (object.$ref) {\r",
+											"        const name = getName(object.$ref);\r",
+											"        const testedRef = testedSchemaRefs.find(tsr => tsr == name);\r",
+											"        if (!testedRef) {\r",
+											"            testSchemaObject(schema, schema.components.schemas[name], objectName);\r",
+											"            testedSchemaRefs.push(name);\r",
+											"        }\r",
+											"    }\r",
+											"    else {\r",
+											"        pm.test(`Schema '${objectName}' has a declared type`, function () {\r",
+											"            pm.expect(object).to.have.property('type');\r",
+											"        });\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"function handleSchemaArray(schema, object, objectName, arrayType) {\r",
+											"    for (let i = 0; i < object[arrayType].length; i++) {\r",
+											"        const arraySchema = object[arrayType][i];\r",
+											"        if (arraySchema.$ref) {\r",
+											"            const name = getName(arraySchema.$ref);\r",
+											"            const testedRef = testedSchemaRefs.find(tsr => tsr == name);\r",
+											"            if (!testedRef) {\r",
+											"                testSchemaObject(schema, schema.components.schemas[name], `${objectName}[${i}](ref ${name})`);\r",
+											"                testedSchemaRefs.push(name);\r",
+											"            }\r",
+											"        }\r",
+											"        else {\r",
+											"            testSchemaObject(schema, arraySchema, `${objectName}[${i}]`);\r",
+											"        }\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"function getName(ref) {\r",
+											"    let pieces = ref.split('/');\r",
+											"    return pieces[pieces.length - 1];\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript",
+										"id": "0630f0e9-d172-4787-9024-be7ffd546196"
+									}
+								}
+							],
+							"_postman_id": "a36619b8-267c-4bf9-b960-66502c04cd8b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://postman-echo.com/delay/0"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "a2e03bbe-bd0f-44a2-bff2-f56c343fcda0",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Contract Tests",
+					"item": [
+						{
+							"name": "Build Schema Tests",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a993ad61-cce5-49eb-b426-131767819f73",
+										"exec": [
+											"const schema = JSON.parse(pm.collectionVariables.get('coll-schema'));\r",
+											"\r",
+											"let schemaTests = [];\r",
+											"for (let prop in schema.paths) {\r",
+											"  const pathName = prop;\r",
+											"  let path = {\r",
+											"    path: `${pm.collectionVariables.get('coll-baseUrl')}${pathName}`,\r",
+											"    parameters: schema.paths[prop].parameters,\r",
+											"  };\r",
+											"\r",
+											"  for (let method in schema.paths[prop]) {\r",
+											"    if (method.toLowerCase() == 'parameters' || isMockEndpoint(schema.paths[prop][method])) {\r",
+											"      continue;\r",
+											"    }\r",
+											"\r",
+											"    let currentPath = _.cloneDeep(path);\r",
+											"    currentPath.method = method.toUpperCase();\r",
+											"    let pathMethod = schema.paths[prop][method];\r",
+											"    currentPath.parameters = combineParameters(currentPath.parameters, pathMethod.parameters);\r",
+											"    let securityExtension = pm.environment.get('env-securityExtensionName');\r",
+											"    if (securityExtension && pathMethod[securityExtension] && pathMethod[securityExtension].length > 0) {\r",
+											"      currentPath.allowedRole = pathMethod[securityExtension][0];\r",
+											"    }\r",
+											"\r",
+											"    const expectedResponses = getExpectedResponses(pathMethod);\r",
+											"    currentPath.responses = expectedResponses;\r",
+											"\r",
+											"    if (pathMethod.requestBody) {\r",
+											"      let bodyModel;\r",
+											"      if (pathMethod.requestBody.content['application/json']?.schema?.$ref) {\r",
+											"        bodyModel = getSchemaReference(schema, pathMethod.requestBody.content['application/json'].schema.$ref);\r",
+											"      }\r",
+											"      else if (pathMethod.requestBody.content['application/json']?.schema) {\r",
+											"        bodyModel = pathMethod.requestBody.content['application/json'].schema;\r",
+											"      }\r",
+											"      else {\r",
+											"        continue;\r",
+											"      }\r",
+											"\r",
+											"      const models = buildModels(schema, bodyModel);\r",
+											"      const mutations = buildModelMutations(models);\r",
+											"\r",
+											"      mutations.forEach((mutation) => {\r",
+											"        let schemaTest = _.cloneDeep(currentPath);\r",
+											"        Object.assign(schemaTest, mutation);\r",
+											"        schemaTest.name = `${schemaTest.method} - ${pathName} - ${schemaTest.description} - SUCCESS: ${schemaTest.success}`;\r",
+											"        schemaTests.push(schemaTest);\r",
+											"      });\r",
+											"    }\r",
+											"    else {\r",
+											"      currentPath.name = `${currentPath.method} - ${pathName} - No Request Body - SUCCESS: true`;\r",
+											"      currentPath.success = true;\r",
+											"      schemaTests.push(currentPath);\r",
+											"    }\r",
+											"  }\r",
+											"}\r",
+											"schemaTests = moveDeleteEndpointsToEnd(schemaTests);\r",
+											"pm.collectionVariables.set('coll-schemaTests', JSON.stringify(schemaTests));\r",
+											"\r",
+											"// \r",
+											"// Move delete endpoints to the end for cleanup\r",
+											"//\r",
+											"function moveDeleteEndpointsToEnd(schemaTests) {\r",
+											"  let sortedTests = [...schemaTests];\r",
+											"  try {\r",
+											"    let successfulDeletes = sortedTests.filter(schemaTest => schemaTest.method == 'DELETE' && schemaTest.success);\r",
+											"\r",
+											"    if (successfulDeletes) {\r",
+											"      // order deletes from the deepest entity to highest level entity based on path\r",
+											"      successfulDeletes.sort((a, b) => b.path.split('/').length - a.path.split('/').length);\r",
+											"      sortedTests = sortedTests.filter(schemaTest => !successfulDeletes.find(sd => sd == schemaTest));\r",
+											"      sortedTests = sortedTests.concat(successfulDeletes);\r",
+											"    }\r",
+											"  }\r",
+											"  catch (err) {\r",
+											"    console.log('An error occurred when sorting delete tests', err);\r",
+											"  }\r",
+											"\r",
+											"  return sortedTests;\r",
+											"}\r",
+											"\r",
+											"//\r",
+											"// Supporting Methods Below\r",
+											"//\r",
+											"function buildModels(schema, object) {\r",
+											"  let models = [];\r",
+											"\r",
+											"  if (object['$ref']) {\r",
+											"    object = getSchemaReference(schema, object['$ref']);\r",
+											"  }\r",
+											"\r",
+											"  if (object.type && object.type.toLowerCase() == 'object') {\r",
+											"    if (object.required && object.required.length > 0) {\r",
+											"      models.push({});\r",
+											"      _.forEach(object.required, function (param) {\r",
+											"        const property = object.properties[param];\r",
+											"\r",
+											"        if (property.type && ['string', 'number', 'integer', 'boolean'].includes(property.type.toLowerCase())) {\r",
+											"          for (let modelIndex = 0; modelIndex < models.length; modelIndex++) {\r",
+											"            let model = models[modelIndex];\r",
+											"            model[param] = property.example;\r",
+											"          }\r",
+											"        }\r",
+											"        else {\r",
+											"          const nestedObjects = buildModels(schema, property);\r",
+											"          models = addToModels(models, nestedObjects, param);\r",
+											"        }\r",
+											"      });\r",
+											"    }\r",
+											"\r",
+											"    if (object.minProperties) {\r",
+											"      _.forEach(models, function (model) {\r",
+											"        if (Object.keys(model).length < object.minProperties) {\r",
+											"          for (let i = Object.keys(model).length; i < object.minProperties; i++) {\r",
+											"            for (const [key, value] of Object.entries(object.properties)) {\r",
+											"              if (['string', 'number', 'integer', 'boolean'].includes(value.type.toLowerCase()) && model[key] == undefined) {\r",
+											"                model[key] = value.example;\r",
+											"                break;\r",
+											"              }\r",
+											"            }\r",
+											"          }\r",
+											"        }\r",
+											"      })\r",
+											"    }\r",
+											"  }\r",
+											"  else if (object.type && object.type.toLowerCase() == 'array') {\r",
+											"    let items = buildModels(schema, object.items);\r",
+											"    if (Array.isArray(items)) {\r",
+											"      for (let i = 0; i < items.length; i++) {\r",
+											"        models.push([items[i]]);\r",
+											"      }\r",
+											"    }\r",
+											"    else {\r",
+											"      models.push([items]);\r",
+											"    }\r",
+											"  }\r",
+											"  else if (object.oneOf) {\r",
+											"    _.forEach(object.oneOf, function (component) {\r",
+											"      let items = buildModels(schema, component);\r",
+											"      models = models.concat(items);\r",
+											"    });\r",
+											"  }\r",
+											"  else if (object.allOf) {\r",
+											"    let pieces = [{}];\r",
+											"    _.forEach(object.allOf, function (component) {\r",
+											"      let componentModels = buildModels(schema, component);\r",
+											"      pieces = addToModels(pieces, componentModels);\r",
+											"    });\r",
+											"\r",
+											"    models = pieces;\r",
+											"  }\r",
+											"  else if (object.anyOf) {\r",
+											"    let pieces = [];\r",
+											"    let combinedPieces = [{}];\r",
+											"    _.forEach(object.anyOf, function (component) {\r",
+											"      let componentModels = buildModels(schema, component);\r",
+											"      combinedPieces = addToModels(combinedPieces, componentModels);\r",
+											"      pieces = pieces.concat(componentModels);\r",
+											"    });\r",
+											"\r",
+											"    models = pieces.concat(combinedPieces);\r",
+											"  }\r",
+											"  else {\r",
+											"    // All other options are primitive values\r",
+											"    return object.example;\r",
+											"  }\r",
+											"  return models;\r",
+											"}\r",
+											"\r",
+											"function getSchemaReference(schema, referenceName) {\r",
+											"  const refPieces = referenceName.split('/');\r",
+											"  let reference = schema;\r",
+											"  for (let i = 1; i < refPieces.length; i++) {\r",
+											"    reference = reference[refPieces[i]];\r",
+											"  }\r",
+											"\r",
+											"  return reference;\r",
+											"}\r",
+											"\r",
+											"function addToModels(models, newPieces, name) {\r",
+											"  let newModels = [];\r",
+											"  _.forEach(models, function (model) {\r",
+											"    _.forEach(newPieces, function (newPiece) {\r",
+											"      let newModel = _.cloneDeep(model);\r",
+											"      if (name) {\r",
+											"        newModel[name] = newPiece;\r",
+											"      }\r",
+											"      else {\r",
+											"        Object.assign(newModel, newPiece);\r",
+											"      }\r",
+											"      newModels.push(newModel);\r",
+											"    });\r",
+											"  });\r",
+											"\r",
+											"  return newModels;\r",
+											"}\r",
+											"\r",
+											"function buildModelMutations(models) {\r",
+											"  let modelMutations = [];\r",
+											"  _.forEach(models, function (model) {\r",
+											"    addMutation(true, 'Has all required fields', model, modelMutations);\r",
+											"    let mutations = buildMutation(model);\r",
+											"    modelMutations = modelMutations.concat(mutations);\r",
+											"  });\r",
+											"\r",
+											"  return modelMutations;\r",
+											"}\r",
+											"\r",
+											"function buildMutation(model) {\r",
+											"  let mutations = [];\r",
+											"\r",
+											"  for (const [key, value] of Object.entries(model)) {\r",
+											"    if (typeof value == 'object') {\r",
+											"      let nestedMutations = buildMutation(value);\r",
+											"      nestedMutations.forEach((nestedMutation) => {\r",
+											"        let mutation = _.cloneDeep(model);\r",
+											"        mutation[key] = nestedMutation.body;\r",
+											"        addMutation(false, `${nestedMutation.description} in ${key} object`, mutation, mutations);\r",
+											"      });\r",
+											"\r",
+											"      let mutation = _.cloneDeep(model);\r",
+											"      delete mutation[key];\r",
+											"      addMutation(false, `Missing ${key} object`, mutation, mutations);\r",
+											"\r",
+											"      let emptyMutation = _.cloneDeep(model);\r",
+											"      emptyMutation[key] = {};\r",
+											"      addMutation(false, `Empty ${key} object`, emptyMutation, mutations);\r",
+											"    }\r",
+											"    else {\r",
+											"      if (Array.isArray(value)) {\r",
+											"        console.log('probably an error');\r",
+											"      }\r",
+											"      let mutation = _.cloneDeep(model);\r",
+											"      delete mutation[key];\r",
+											"      addMutation(false, `Missing ${key} property`, mutation, mutations);\r",
+											"\r",
+											"      let blankMutation = _.cloneDeep(model);\r",
+											"      blankMutation[key] = '';\r",
+											"      addMutation(false, `Blank ${key} property`, blankMutation, mutations);\r",
+											"    }\r",
+											"  }\r",
+											"\r",
+											"  return mutations;\r",
+											"}\r",
+											"\r",
+											"function addMutation(isSuccess, description, mutation, mutations) {\r",
+											"  mutations.push({\r",
+											"    success: isSuccess,\r",
+											"    description: description,\r",
+											"    body: mutation\r",
+											"  });\r",
+											"}\r",
+											"\r",
+											"function getExpectedResponses(pathMethod) {\r",
+											"  const responses = [];\r",
+											"  for (const [statusCode, value] of Object.entries(pathMethod.responses)) {\r",
+											"    let response = {\r",
+											"      statusCode: Number(statusCode)\r",
+											"    };\r",
+											"\r",
+											"    if (value['x-postman-variables'] && Array.isArray(value['x-postman-variables'])) {\r",
+											"      response.variables = value['x-postman-variables'].filter(variable => variable.type.toLowerCase() === 'save');\r",
+											"    }\r",
+											"\r",
+											"    if (value.$ref) {\r",
+											"      response.$ref = value.$ref;\r",
+											"    }\r",
+											"    else {\r",
+											"      if (value.content?.['application/json']?.schema) {\r",
+											"        if (value.content['application/json'].schema.$ref) {\r",
+											"          response.$ref = value.content['application/json'].schema.$ref;\r",
+											"        }\r",
+											"        else {\r",
+											"          response.schema = value.content['application/json'].schema;\r",
+											"        }\r",
+											"      }\r",
+											"    }\r",
+											"\r",
+											"    responses.push(response);\r",
+											"  }\r",
+											"  return responses;\r",
+											"}\r",
+											"\r",
+											"function isMockEndpoint(pathMethod) {\r",
+											"  let isMock = false;\r",
+											"  if (pathMethod && pathMethod['x-amazon-apigateway-integration'] && pathMethod['x-amazon-apigateway-integration'].type\r",
+											"    && pathMethod['x-amazon-apigateway-integration'].type.toLowerCase() == 'mock') {\r",
+											"    isMock = true;\r",
+											"  }\r",
+											"\r",
+											"  return isMock;\r",
+											"}\r",
+											"\r",
+											"function combineParameters(endpointParameters, methodParameters) {\r",
+											"  if (!endpointParameters && !methodParameters) {\r",
+											"    return;\r",
+											"  }\r",
+											"  let parameters = [];\r",
+											"  if (endpointParameters && endpointParameters.length) {\r",
+											"    parameters = [...endpointParameters];\r",
+											"  }\r",
+											"\r",
+											"  if (methodParameters && methodParameters.length) {\r",
+											"    parameters = [...parameters, ...methodParameters];\r",
+											"  }\r",
+											"\r",
+											"  return parameters;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "258bc356-ed08-4151-b0fd-adaad79c8b09",
+										"exec": [
+											"let schemaTests = pm.collectionVariables.get('coll-schemaTests');\r",
+											"if(schemaTests){\r",
+											"    schemaTests = JSON.parse(schemaTests);\r",
+											"    if(!schemaTests || !schemaTests.length){\r",
+											"        postman.setNextRequest('More APIs to Process?');\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "53238c71-ca91-47db-819c-983aa5768eba",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://postman-echo.com/delay/0"
+							},
+							"response": []
+						},
+						{
+							"name": "Test Request",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "9fdc5c0e-feb9-4a23-9dc5-5d59540d197c",
+										"exec": [
+											"const url = require('url');\r",
+											"\r",
+											"console.log('Fetching schema and schema tests...');\r",
+											"const schema = JSON.parse(pm.collectionVariables.get('coll-schema'));\r",
+											"let schemaTests = JSON.parse(pm.collectionVariables.get('coll-schemaTests'));\r",
+											"console.log('Schema:', schema);\r",
+											"console.log('Initial Schema Tests:', schemaTests);\r",
+											"\r",
+											"const schemaTest = schemaTests.shift();\r",
+											"console.log('Current schemaTest:', schemaTest);\r",
+											"\r",
+											"pm.collectionVariables.set('coll-schemaTests', JSON.stringify(schemaTests));\r",
+											"pm.variables.set('currentSchemaTest', JSON.stringify(schemaTest));\r",
+											"\r",
+											"const path = replacePathParameters(schema, schemaTest.path, schemaTest.parameters);\r",
+											"console.log('Path after replacing parameters:', path);\r",
+											"pm.request.url.update(path);\r",
+											"\r",
+											"delete pm.request.url.auth;\r",
+											"delete pm.request.url.port;\r",
+											"delete pm.request.url.hash;\r",
+											"\r",
+											"if (pm.request.url.protocol) {\r",
+											"  pm.request.url.protocol = pm.request.url.protocol.replace(/\\:$/, '');\r",
+											"} else {\r",
+											"  pm.request.url.protocol = 'https';\r",
+											"}\r",
+											"\r",
+											"pm.request.method = schemaTest.method;\r",
+											"pm.request.name = schemaTest.name;\r",
+											"console.log('Updated request:', pm.request);\r",
+											"\r",
+											"pm.variables.set('requestName', schemaTest.name);\r",
+											"pm.variables.set('body', JSON.stringify(schemaTest.body));\r",
+											"\r",
+											"// Add top level parameters from the path\r",
+											"const roleHeaderName = pm.environment.get('env-roleHeaderName');\r",
+											"console.log('Role Header Name:', roleHeaderName);\r",
+											"\r",
+											"if (schemaTest.parameters) {\r",
+											"  for (let i = 0; i < schemaTest.parameters.length; i++) {\r",
+											"    let param = schemaTest.parameters[i];\r",
+											"\r",
+											"    if (param.$ref) {\r",
+											"      let pieces = param.$ref.split('/');\r",
+											"      const name = pieces[pieces.length - 1];\r",
+											"      const schemaParam = schema.components.parameters[name];\r",
+											"      const paramType = schemaParam.in.toLowerCase();\r",
+											"      const paramValue = loadParameterValue(schemaParam);\r",
+											"      if (paramType == 'header' && schemaParam.required == true) {\r",
+											"        if (roleHeaderName && schemaParam.name.toLowerCase() == roleHeaderName.toLowerCase()) {\r",
+											"          pm.request.headers.upsert({ key: schemaParam.name, value: schemaTest.allowedRole });\r",
+											"        }\r",
+											"        else {\r",
+											"          pm.request.headers.upsert({ key: schemaParam.name, value: paramValue });\r",
+											"        }\r",
+											"      } else if (paramType == 'query' && schemaParam.required == true) {\r",
+											"        pm.request.url.query.upsert({ key: schemaParam.name, value: paramValue });\r",
+											"      }\r",
+											"    } else {\r",
+											"      const paramType = param.in.toLowerCase();\r",
+											"      const paramValue = loadParameterValue(param);\r",
+											"      if (paramType == 'header') {\r",
+											"        pm.request.headers.upsert({ key: param.name, value: paramValue });\r",
+											"      } else if (paramType == 'query' && param.required == true) {\r",
+											"        pm.request.url.query.upsert({ key: param.name, value: paramValue });\r",
+											"      }\r",
+											"    }\r",
+											"  }\r",
+											"}\r",
+											"\r",
+											"function loadParameterValue(parameter) {\r",
+											"  let parameterValue;\r",
+											"  console.log('Loading parameter value for:', parameter);\r",
+											"  if (parameter['x-postman-variables']) {\r",
+											"    let variable = parameter['x-postman-variables'].find(v => v.type.toLowerCase() === 'load');\r",
+											"    if (variable && pm.collectionVariables.has(variable.name)) {\r",
+											"      parameterValue = pm.collectionVariables.get(variable.name);\r",
+											"    } else {\r",
+											"      parameterValue = resolveParameterExample(parameter);\r",
+											"    }\r",
+											"  } else {\r",
+											"    parameterValue = resolveParameterExample(parameter);\r",
+											"  }\r",
+											"\r",
+											"  console.log('Loaded value:', parameterValue);\r",
+											"  return parameterValue;\r",
+											"}\r",
+											"\r",
+											"function resolveParameterExample(parameter) {\r",
+											"  console.log(\"resolveParameterExample:\", JSON.stringify(parameter));\r",
+											"  let paramValue = (parameter.schema.example != undefined) ? parameter.schema.example : parameter.example;\r",
+											"  let value = paramValue;\r",
+											"  if (typeof paramValue !== 'number' && typeof paramValue !== 'boolean') {\r",
+											"    let pathVariableRegex = /^{{\\$.*}}$/;\r",
+											"    console.log(\"paramValue:\" + paramValue)\r",
+											"    let matches = paramValue.match(pathVariableRegex);\r",
+											"\r",
+											"    if (matches && matches.length) {\r",
+											"      value = pm.variables.replaceIn(paramValue);\r",
+											"    }\r",
+											"  }\r",
+											"\r",
+											"  console.log('Resolved parameter example value:', value);\r",
+											"  return encodeURIComponent(value);\r",
+											"}\r",
+											"\r",
+											"function replacePathParameters(schema, pathName, parameters) {\r",
+											"  console.log('Replacing Path Parameters - Path:', pathName, 'Parameters:', parameters);\r",
+											"  \r",
+											"  let replacedPathName = pathName;\r",
+											"  let pathVariableRegex = /{([^}]*)}/g;\r",
+											"  let matches = pathName.match(pathVariableRegex);\r",
+											"  _.forEach(matches, function (match) {\r",
+											"    let paramName = match.substring(1, match.length - 1);\r",
+											"    _.forEach(parameters, function (param) {\r",
+											"      if (param.$ref) {\r",
+											"        let parameter = getSchemaReference(schema, param.$ref);\r",
+											"        if (parameter.in && parameter.in.toLowerCase() == 'path' && parameter.name && parameter.name == paramName) {\r",
+											"          let parameterValue = loadParameterValue(parameter);\r",
+											"          replacedPathName = replacedPathName.replace(match, parameterValue);\r",
+											"          return false;\r",
+											"        }\r",
+											"      } else {\r",
+											"        if (param.in && param.in.toLowerCase() == 'path' && param.name && param.name == paramName) {\r",
+											"          let parameterValue = loadParameterValue(param);\r",
+											"          replacedPathName = replacedPathName.replace(match, parameterValue);\r",
+											"          return false;\r",
+											"        }\r",
+											"      }\r",
+											"    });\r",
+											"  });\r",
+											"\r",
+											"  console.log('Path after replacing:', replacedPathName);\r",
+											"  return url.parse(replacedPathName);\r",
+											"}\r",
+											"\r",
+											"function getSchemaReference(schema, referenceName) {\r",
+											"  console.log('Getting schema reference for:', referenceName);\r",
+											"\r",
+											"  const refPieces = referenceName.split('/');\r",
+											"  let reference = schema;\r",
+											"  for (let i = 1; i < refPieces.length; i++) {\r",
+											"    reference = reference[refPieces[i]];\r",
+											"  }\r",
+											"\r",
+											"  console.log('Schema reference found:', reference);\r",
+											"  return reference;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "496933af-eba8-459d-86e4-7883a8e23795",
+										"exec": [
+											"const schemaTests = JSON.parse(pm.collectionVariables.get('coll-schemaTests'));\r",
+											"if(schemaTests.length > 0){\r",
+											"    postman.setNextRequest('Test Request');\r",
+											"}\r",
+											"\r",
+											"const schemaTest = JSON.parse(pm.variables.get('currentSchemaTest'));\r",
+											"console.log(schemaTest.name);\r",
+											"\r",
+											"pm.test(`${schemaTest.name} - Has expected status code`, function () {\r",
+											"    // const errorOn500 = pm.environment.get('env-errorOn500');\r",
+											"    // if(errorOn500){\r",
+											"    //   pm.response.to.not.have.status(500);\r",
+											"    // }\r",
+											"\r",
+											"    if(schemaTest.success){\r",
+											"        try{\r",
+											"            if(pm.response.code >= 400) {\r",
+											"                const jsonData = pm.response.json();\r",
+											"                if(pm.response.code == 401)         {\r",
+											"                  pm.expect(pm.request.headers.get('Role')).to.equal('role');\r",
+											"                }\r",
+											"                pm.expect('').to.equal(jsonData.message);                \r",
+											"            }\r",
+											"            \r",
+											"            pm.expect(pm.response.code).to.not.equal(400);\r",
+											"        }\r",
+											"        catch(err) {\r",
+											"            console.log(err);\r",
+											"            pm.expect(pm.response.code).to.not.equal(400);\r",
+											"        }        \r",
+											"    }\r",
+											"    else {\r",
+											"        pm.response.to.have.status(400);\r",
+											"    }    \r",
+											"});\r",
+											"\r",
+											"const expectedResponse = schemaTest.responses.find(r => r.statusCode == pm.response.code);\r",
+											"pm.test(`${schemaTest.name} - Status code (${pm.response.code}) is allowed`, function(){\r",
+											"    pm.expect(expectedResponse).to.exist;\r",
+											"});\r",
+											"\r",
+											"if(expectedResponse){\r",
+											"    pm.test(`${schemaTest.name} - Has expected response body schema`, function(){\r",
+											"        const Ajv = require('ajv');\r",
+											"        const ajv = new Ajv({allErrors: true,format: false});\r",
+											"        \r",
+											"        if(pm.response.code == 204 || shouldResponseBeEmpty(expectedResponse)){\r",
+											"            checkForEmptyResponse();\r",
+											"        }\r",
+											"        else if(expectedResponse.$ref){            \r",
+											"            const jsonData = pm.response.json();\r",
+											"            const schema = JSON.parse(pm.collectionVariables.get('coll-schema'));\r",
+											"            ajv.addSchema(schema, 'OAS');\r",
+											"            \r",
+											"            const valid = ajv.validate({$ref: `OAS${expectedResponse.$ref}`}, jsonData);\r",
+											"            const errors = ajv.errorsText(valid.errors);\r",
+											"            pm.expect(errors).to.equal('No errors');\r",
+											"            if(errors !== 'No errors'){\r",
+											"                console.log(errors);\r",
+											"            }\r",
+											"        }\r",
+											"        else if(expectedResponse.schema){\r",
+											"            const jsonData = pm.response.json();\r",
+											"            const validate = ajv.compile(expectedResponse.schema);\r",
+											"            const valid = validate(jsonData);\r",
+											"            const errors = ajv.errorsText(valid.errors);\r",
+											"            pm.expect(errors).to.equal('No errors');\r",
+											"            if(errors !== 'No errors'){\r",
+											"                console.log(errors);\r",
+											"            }\r",
+											"        }\r",
+											"        else {\r",
+											"            checkForEmptyResponse();\r",
+											"        }\r",
+											"\r",
+											"        if(expectedResponse.variables){\r",
+											"            const jsonData = pm.response.json();\r",
+											"            _.forEach(expectedResponse.variables, function(variable){\r",
+											"                let pathPieces = variable.path.split('.').filter(piece => piece);\r",
+											"                let data = jsonData;\r",
+											"                let found = true;\r",
+											"                _.forEach(pathPieces, function(piece){\r",
+											"                    if(data[piece]){\r",
+											"                        data = data[piece];\r",
+											"                    }\r",
+											"                    else {\r",
+											"                        found = false;\r",
+											"                    }\r",
+											"                });\r",
+											"\r",
+											"                if(found){\r",
+											"                    pm.collectionVariables.set(variable.name, data);\r",
+											"                }\r",
+											"                else {\r",
+											"                    pm.test(`Unable to save dynamic variable ${variable.name} at the provided path.`, function() {\r",
+											"                        pm.expect(true).to.equal(variable.path);\r",
+											"                    });\r",
+											"                }\r",
+											"            });\r",
+											"        }\r",
+											"    });\r",
+											"}\r",
+											"\r",
+											"function checkForEmptyResponse() {\r",
+											"    let emptyBody = true;\r",
+											"    if(pm.response.text()){\r",
+											"        emptyBody = false; \r",
+											"    }\r",
+											"\r",
+											"    pm.expect(emptyBody).to.be.true;\r",
+											"}\r",
+											"\r",
+											"function shouldResponseBeEmpty(expectedResponse){\r",
+											"    let responseSchema = expectedResponse.schema;\r",
+											"    if(expectedResponse.$ref){\r",
+											"        let schema = JSON.parse(pm.collectionVariables.get('coll-schema'));\r",
+											"        responseSchema = getSchemaReference(schema, expectedResponse.$ref);\r",
+											"        if(expectedResponse.$ref.startsWith('#/components/responses')){\r",
+											"            return (!responseSchema || !responseSchema.content || !responseSchema.content['application/json'] \r",
+											"                || !responseSchema.content['application/json'].schema || Object.keys(responseSchema.content['application/json'].schema).length == 0);\r",
+											"        } else {\r",
+											"            return false;\r",
+											"        }\r",
+											"    }\r",
+											"    else {\r",
+											"        return (Object.keys(responseSchema).length == 0);\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"function getSchemaReference(schema, referenceName){  \r",
+											"  const refPieces = referenceName.split('/');\r",
+											"  let reference = schema;\r",
+											"  for(let i = 1; i < refPieces.length; i++){\r",
+											"    reference = reference[refPieces[i]];\r",
+											"  }\r",
+											"\r",
+											"  return reference;  \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"_postman_id": "1b8773e3-b51b-4f15-80d0-cb7f6a0c2a67",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{body}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://postman-echo.com/get"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "5533f3da-7019-4599-a9ab-b3d99cc2d5e5",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Finalize",
+					"item": [
+						{
+							"name": "More APIs to Process?",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let apis = pm.collectionVariables.get('coll-apiIds');\r",
+											"if(apis){\r",
+											"    try{\r",
+											"        apis = JSON.parse(apis);\r",
+											"        if(apis.length > 0){\r",
+											"            postman.setNextRequest('Get Current API Version');\r",
+											"        }\r",
+											"    }\r",
+											"    catch(err){}    \r",
+											"}"
+										],
+										"type": "text/javascript",
+										"id": "f2264683-137d-47be-8ea8-f77566aee228"
+									}
+								}
+							],
+							"_postman_id": "33bf683a-b089-45c3-82ce-7878bec4485e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": "https://postman-echo.com/delay/0"
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Test Variables",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// See https://blog.postman.com/2019/05/28/pro-tip-dynamically-unset-postman-environment-variables/\r",
+											"// for more details on what we're doing here. \r",
+											"\r",
+											"cleanupCollectionVariables();\r",
+											"\r",
+											"function cleanupCollectionVariables() {\r",
+											"    const clean = _.keys(pm.collectionVariables.toObject());\r",
+											"\r",
+											"    _.each(clean, (arrItem) => {\r",
+											"        pm.collectionVariables.unset(arrItem);\r",
+											"    });\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"id": "8926e280-9e41-455f-a41c-8f57e72e120f"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"id": "a19a578f-51fe-4da6-b701-147b6336967b"
+									}
+								}
+							],
+							"_postman_id": "8f675e4a-5f46-4688-9f01-53930c8803ee",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://postman-echo.com/delay/0"
+							},
+							"response": []
+						}
+					],
+					"_postman_id": "9d6ecd19-5353-4db4-a585-0142b93748f4",
+					"_postman_isSubFolder": true
+				}
+			],
+			"_postman_id": "da96935b-d33d-4a91-89a7-a47b218733ef"
+		},
+		{
+			"name": "Basic User Experience",
+			"item": [
+				{
+					"name": "Cleanup Previous Run",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0044fae0-e397-4e8d-9e10-8e5cf6ddd721",
+								"exec": [
+									"// See https://blog.postman.com/2019/05/28/pro-tip-dynamically-unset-postman-environment-variables/\r",
+									"// for more details on what we're doing here. \r",
+									"\r",
+									"cleanupCollectionVariables();\r",
+									"\r",
+									"function cleanupCollectionVariables() {\r",
+									"    const clean = _.keys(pm.collectionVariables.toObject());\r",
+									"\r",
+									"    _.each(clean, (arrItem) => {\r",
+									"        pm.collectionVariables.unset(arrItem);\r",
+									"    });\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e5f01bc1-57fd-4a47-9291-cde6be37e344",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "be8c9c14-40ff-484f-b328-f784098ec661",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://postman-echo.com/delay/0"
+					},
+					"response": []
+				},
+				{
+					"name": "Get API Schema",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "03f62ade-b066-4bfa-bb6f-4ffd5c98e63c",
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set('coll-schema', JSON.stringify(jsonData));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "31be2dae-5a9e-4e29-9e7a-c9a293a8df83",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "https://raw.githubusercontent.com/merwanehamadi/agent-protocol/0.4/postman/schemas/openapi.json"
+					},
+					"response": []
+				},
+				{
+					"name": "Give me all the tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "32b75035-2164-4ec1-b61c-a86515847037",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "98c48159-7553-4f9b-a1e7-dd66b961ec11",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "52fdb36d-66c1-41e9-b81a-1084ae813a2d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks"
+					},
+					"response": [
+						{
+							"id": "98f96c46-c680-4377-a681-27b93d8425cf",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 18:03:12 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"name": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "150",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=1c95cd08c248d38f",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2527ca982b2b7c75",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "117",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692295416",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n        \"step_id\": \"1a379290-3abc-11ee-be56-0242ac120002\",\n        \"status\": \"completed\",\n        \"output\": \"I am going to use the write_to_file method to write the word 'Washington' to a .txt file\",\n        \"artifacts\": [],\n        \"is_last\": false\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create a new task",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c5e90382-a818-4e98-9f9b-4a2877e0f129",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "683fd614-1610-4dab-bf88-6ae830186dac",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"task_id\", jsonData.task_id);",
+									"",
+									"pm.globals.set(",
+									"    \"step_body\",",
+									"    JSON.stringify(",
+									"        {",
+									"            \"inputs\": JSON.parse(pm.request.body.raw).input",
+									"        } ",
+									"    )",
+									"       ",
+									");",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "090b65b7-80e6-4a20-81d7-2a6f72644ad5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "mock-match",
+								"value": "34",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks"
+					},
+					"response": [
+						{
+							"id": "5aa13fc7-8099-43ac-81d4-87af8cdbb6fe",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "mock-match",
+										"value": "34"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "28",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"artifacts\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Execute the steps until completion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26426e07-115e-4841-9887-24fd9dccca2a",
+								"exec": [
+									"var artifacts = pm.response.json().artifacts;",
+									"",
+									"if (artifacts && artifacts.length > 0) {",
+									"    pm.globals.set(\"artifactId\", artifacts[0].artifact_id);",
+									"}",
+									"",
+									"var artifacts = pm.response.json().artifacts;",
+									"var existingArtifactId = pm.globals.get(\"artifactId\");",
+									"",
+									"if (artifacts && artifacts.length > 0) {",
+									"    if (artifacts.length > 1) {",
+									"        pm.test(\"This task should only create 1 artifact\", function () {",
+									"            pm.expect.fail(\"More than one artifact was created.\");",
+									"        });",
+									"    } else {",
+									"        pm.globals.set(\"artifactId\", artifacts[0].artifact_id);",
+									"    }",
+									"}",
+									"stepNumber = pm.collectionVariables.get(\"step-number\") ?? 1",
+									"if(!pm.response.json().is_last){",
+									"    pm.collectionVariables.set('step-number', stepNumber + 1);",
+									"    pm.globals.set(",
+									"        \"step_body\",",
+									"        JSON.stringify(",
+									"            {",
+									"                \"input\": \"y\"",
+									"            }",
+									"        )",
+									"    );",
+									"",
+									"    pm.collectionVariables.set('previous-step', pm.response.json().step_id)",
+									"    postman.setNextRequest('Execute the steps until completion');",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3bdd2e35-1745-439e-9ef1-ea2e003ddc42",
+								"exec": [
+									"stepNumber = pm.collectionVariables.get(\"step-number\") ?? 1",
+									"console.log(\"Step number:\" + stepNumber)",
+									"console.log(\"Task Input:\" + pm.globals.get(\"taskInput\"))",
+									"if (stepNumber) {",
+									"    pm.request.headers.upsert({ key: 'mock-match', value: stepNumber.toString() });",
+									"    console.log(pm.request)",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "c001b340-752c-45ea-aaa2-22cb52e47297",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{step_body}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks/{{task_id}}/steps"
+					},
+					"response": [
+						{
+							"id": "1def41e7-04a8-41d6-bcef-b0149882510d",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "mock-match",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks/{{task_id}}/steps"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 14 Aug 2023 16:28:55 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "275",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"step_id\": \"1a379290-3abc-11ee-be56-0242ac120002\",\n    \"status\": \"completed\",\n    \"output\": \"I am going to use the write_to_file method to write the word 'Washington' to a .txt file\",\n    \"artifacts\": [\n    ],\n    \"is_last\": false\n}"
+						},
+						{
+							"id": "0bca46fd-7401-48fa-b413-6357e53ae19d",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "mock-match",
+										"value": "2",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"y\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks/{{task_id}}/steps"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 14 Aug 2023 16:28:55 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "275",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"step_id\": \"2a479290-3abc-11ee-be56-0242ac1209c1\",\n    \"status\": \"completed\",\n    \"output\": \"I used the write_to_file method to write the file output.txt\",\n    \"artifacts\": [\n                {\n          \"artfifact_id\": \"2ba79290-3abc-11ee-be56-0242ac1209d3\",\n          \"agent_created\": true,\n          \"uri\": \"file://output.txt\"\n        }\n    ],\n    \"is_last\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Execute step after completion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26426e07-115e-4841-9887-24fd9dccca2a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3bdd2e35-1745-439e-9ef1-ea2e003ddc42",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "2db71ce6-f370-4e1e-83de-1990be2026ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "mock-match",
+								"value": "34",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"y\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks/{{task_id}}/steps"
+					},
+					"response": [
+						{
+							"id": "768252c5-a6aa-4ae5-91a1-253e653a287d",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "mock-match",
+										"value": "34",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"y\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks/{{task_id}}/steps"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 14 Aug 2023 16:28:55 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "275",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"step_id\": \"2d479290-3abc-11ee-be56-0242ac120b95\",\n    \"status\": \"completed\",\n    \"output\": \"I am already done with my work.\",\n    \"artifacts\": [\n    ],\n    \"is_last\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Download Artifact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0f7f41c0-bacd-4abb-9d9c-b85b2c1a0c6f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "3235877e-cb4b-4fa9-8df6-724e6d35482c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "mock-match",
+								"value": "11",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": ""
+							},
+							"options": {
+								"file": {}
+							}
+						},
+						"url": "{{url}}/agent/tasks/{{task_id}}/artifacts/{{artifactId}}"
+					},
+					"response": [
+						{
+							"id": "d243deea-d0a7-40a0-acd2-fe2e4183ceef",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "mock-match",
+										"value": "11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks/{{task_id}}/artifacts/{{artifactId}}"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 14 Aug 2023 16:28:55 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "275",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "Washington"
+						}
+					]
+				}
+			],
+			"_postman_id": "5ba23d82-afe2-41a2-b782-f41c903d45d6",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0f353253-4653-48c2-837e-9c20ad61af60",
+						"type": "text/javascript",
+						"exec": [
+							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
+							"    console.log (\"pm.request.body\")",
+							"    console.log (pm.request.body)",
+							"    // Get the schema from the collection variable",
+							"    const schemaString = pm.collectionVariables.get(\"coll-schema\");",
+							"    // Parse the schema if it's a string",
+							"    const api = JSON.parse(schemaString);",
+							"    requestBody = pm.variables.replaceIn(pm.request.body.raw)",
+							"    requestBody = JSON.parse(requestBody)",
+							"    ",
+							"    requestBody = pm.variables.replaceIn(requestBody)",
+							"    ",
+							"    console.log(\"RequestBody:\")",
+							"    console.log(requestBody)",
+							"    // Retrieve the correct schema for the given method and path",
+							"    console.log(\"debug\")",
+							"    console.log(pm.request.url.path.join('/'))",
+							"    console.log(api.paths)",
+							"    console.log(\"/\" + pm.request.url.path.join('/'))",
+							"    var updatedPaths = pm.request.url.path.map(function(path) {",
+							"        return path.replace(/{{/g, '{').replace(/}}/g, '}');",
+							"    });",
+							"",
+							"    const schema = api.paths[\"/\" + updatedPaths.join('/')][pm.request.method.toLowerCase()].requestBody.content['application/json'].schema;",
+							"    console.log(\"Schema:\")",
+							"    console.log(schema)",
+							"",
+							"    //pm.test(\"Validate JSON Schema\", () => {",
+							"    //    pm.expect(requestBody, \"Request Body: \" + JSON.stringify(requestBody) + \"\\nExpected Schema: \").to.have.jsonSchema(schema);",
+							"    //});",
+							"",
+							"    // First, test the JSON schema compliance",
+							"    // First, test the JSON schema compliance",
+							"    pm.test(\"Validate JSON Schema\", () => {",
+							"        let isSchemaValid = tv4.validate(requestBody, schema);",
+							"        ",
+							"        // If the schema is not valid, log the error details",
+							"        if (!isSchemaValid) {",
+							"            console.log(\"Validation Error:\", tv4.error);",
+							"            pm.expect(true, \"Schema validation failed. Please check the console for details.\").to.be.false;",
+							"        }",
+							"        ",
+							"        pm.expect(isSchemaValid).to.be.true;",
+							"    });",
+							"",
+							"    // If the schema doesn't comply, run this test to add more information",
+							"    if (!tv4.validate(requestBody, schema)) {",
+							"        pm.test(\"Additional Information Regarding JSON Schema Failure\", () => {",
+							"            let prettyRequestBody = JSON.stringify(requestBody, null, 2);",
+							"            let prettySchema = JSON.stringify(schema, null, 2);",
+							"            let errorMessage = \"Request Body:\\n\" + prettyRequestBody + \"\\nExpected Schema:\\n\" + prettySchema;",
+							"            ",
+							"            pm.expect(true, errorMessage).to.be.false;",
+							"        });",
+							"    }",
+							"} ",
+							"",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd5d8eb1-2939-478e-95fc-72aadd1aa9f3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create a new task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46ca258a-c625-4c17-b413-0c86023e705e",
+								"exec": [
+									"Object.keys(pm.globals.toObject()).forEach((key) => {",
+									"    pm.globals.unset(key);",
+									"});",
+									"Object.keys(pm.collectionVariables.toObject()).forEach((key) => {",
+									"    pm.collectionVariables.unset(key);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"taskId\", jsonData.task_id);",
+									"pm.globals.set(\"taskInput\", JSON.parse(pm.request.body.raw).input);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "eb9d0c96-18a1-4e95-8948-9c1894d56409",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "mock-match",
+								"value": "34"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "Get the task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dae8e511-e80d-478b-81ab-2d66dd6fd5b3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    var contentType = pm.response.headers.get('Content-Type');\r",
+									"    pm.expect(contentType).to.include('application/json');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has all required properties\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('task_id');\r",
+									"    pm.expect(jsonData).to.have.property('input');\r",
+									"    pm.expect(jsonData).to.have.property('additional_input');\r",
+									"    pm.expect(jsonData).to.have.property('artifacts');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "f84ed7b1-c97a-4968-a14c-88c231b187fa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks/{{taskId}}"
+					},
+					"response": [
+						{
+							"id": "ea9d8d69-ed12-4d2c-85d9-f56028bbc628",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks/{{taskId}}"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "28",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"121\",\n    \"artifacts\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all the tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e4ee6d8-e5d8-4112-be5c-ec8404f38ef0",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    var contentType = pm.response.headers.get('Content-Type');",
+									"    pm.expect(contentType).to.include('application/json');",
+									"});",
+									"",
+									"pm.test(\"Response has all required properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('items');",
+									"    pm.expect(jsonData).to.have.property('pagination');",
+									"});",
+									"",
+									"pm.test(\"Items is an array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.items).to.be.an('array');",
+									"});",
+									"",
+									"pm.test(\"Each item has required properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    jsonData.items.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('task_id');",
+									"        pm.expect(item).to.have.property('input');",
+									"        pm.expect(item).to.have.property('additional_input');",
+									"        pm.expect(item).to.have.property('artifacts');",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "ca583fa3-bec4-4c73-b989-47f3414a8d51",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks"
+					},
+					"response": [
+						{
+							"id": "034e662a-0c13-4a0f-aa82-5bba7130539f",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "28",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"121\",\n    \"artifacts\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a second task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2c8c047b-eec5-4015-86a8-0640f3315ce3",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"lastTaskId\", jsonData.task_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "0de5f275-995e-4eb5-b63c-0f2e8996fab1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "mock-match",
+								"value": "34"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks"
+					},
+					"response": [
+						{
+							"id": "9b8adc31-2b99-4127-84d6-642cec46205f",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "mock-match",
+										"value": "34"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "28",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"artifacts\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all the tasks Pagination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "697349ba-26c9-431c-a68d-a1c0efeeaeae",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"pm.test(\"Content-Type is present\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type is application/json\", function () {",
+									"    var contentType = pm.response.headers.get('Content-Type');",
+									"    pm.expect(contentType).to.include('application/json');",
+									"});",
+									"",
+									"pm.test(\"Response has all required properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('items');",
+									"    pm.expect(jsonData).to.have.property('pagination');",
+									"});",
+									"",
+									"pm.test(\"Pagination is set\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.pagination).to.be.an('object');",
+									"});",
+									"",
+									"pm.test(\"Page size is 1\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.pagination.pageSize).to.eql(1);",
+									"});",
+									"",
+									"pm.test(\"Items is an array with one item\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.items).to.be.an('array').that.has.lengthOf(1);",
+									"});",
+									"",
+									"pm.test(\"Each item has required properties\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    jsonData.items.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('task_id');",
+									"        pm.expect(item).to.have.property('input');",
+									"        pm.expect(item).to.have.property('additional_input');",
+									"        pm.expect(item).to.have.property('artifacts');",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response length respects pageSize\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.items.length).to.be.at.most(1);",
+									"});",
+									"",
+									"if (jsonData.items && jsonData.items.length > 0) {",
+									"    if (pm.variables.has(\"lastTaskId\") && pm.variables.get(\"page\") > 1) {",
+									"        pm.test(\"First task of page \" + pm.variables.get(\"page\") + \" is not the last task of page \" + (pm.variables.get(\"page\") - 1), function() {",
+									"            var jsonData = pm.response.json();",
+									"            pm.expect(jsonData.items[0].task_id).to.not.equal(pm.variables.get(\"lastTaskId\"));",
+									"        });",
+									"    }",
+									"    if (jsonData.items.length > 0) {",
+									"        pm.variables.set(\"lastTaskId\", jsonData.items[jsonData.items.length - 1].task_id);",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "f41e04c1-b266-4e90-909e-ebb0657958d9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/agent/tasks?pageSize=1&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"agent",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "c03d94f7-1f28-4e36-b010-c3dd89aece4e",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "28",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"121\",\n    \"artifacts\": []\n}"
+						}
+					]
+				}
+			],
+			"_postman_id": "4b743f46-e582-4565-ac7d-c6446a710ee1"
+		},
+		{
+			"name": "Artifacts",
+			"item": [
+				{
+					"name": "Create a new task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65ad57a3-b776-4d7c-86f9-be6fbf17cac6",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"taskId\", jsonData.task_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "1ee1eee8-cc2d-43a2-a6e1-7168b0559c45",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks"
+					},
+					"response": [
+						{
+							"id": "e45a69f5-1f22-4b08-8b7f-ad57fa84aef8",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 13 Aug 2023 23:23:05 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "28",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"task_id\": \"a1b259f8-3ab8-11ee-be56-0242ac121234\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Upload an artifact for the specified task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d049f95-85c3-46e0-bed4-831682f66d88",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "9b078c1e-42d1-4b10-ab62-0daa7ee9031d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "path/to/your/file.txt"
+								},
+								{
+									"key": "relative_path",
+									"value": "python/code",
+									"type": "text"
+								}
+							],
+							"options": {}
+						},
+						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload multiple artifacts for the specified task",
+					"_postman_id": "c9436f19-c266-4627-88b8-3eaf75257704",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file1",
+									"type": "file",
+									"src": "path/to/your/file1.txt"
+								},
+								{
+									"key": "file2",
+									"type": "file",
+									"src": "path/to/your/file2.txt"
+								},
+								{
+									"key": "relative_path",
+									"value": "python/code",
+									"type": "text"
+								}
+							],
+							"options": {}
+						},
+						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Artifact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3e7ee940-bef1-44e0-9c36-286aa059b5ae",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "bc5e731b-103e-439e-93bf-e960e6be59a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "mock-match",
+								"value": "11",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
+					},
+					"response": [
+						{
+							"id": "58ffcb9c-8c44-4b50-bc76-3573c3a2cde2",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "mock-match",
+										"value": "11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 14 Aug 2023 16:28:55 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "275",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "Washington"
+						}
+					]
+				},
+				{
+					"name": "Download Artifact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"id": "82829e0a-f8c7-4925-b28c-0513b018e83e"
+							}
+						}
+					],
+					"_postman_id": "b002580c-0d48-42c9-83e0-5fb5eaed38ce",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "mock-match",
+								"value": "11",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
+					},
+					"response": [
+						{
+							"id": "ade2dd37-0f84-45f0-881e-2224636a4956",
+							"name": "mock response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "mock-match",
+										"value": "11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks/{{taskId}}/artifacts/{{artifactId}}"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 14 Aug 2023 16:28:55 GMT",
+									"enabled": true
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"enabled": true
+								},
+								{
+									"key": "Content-Length",
+									"value": "275",
+									"enabled": true
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b",
+									"enabled": true
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360",
+									"enabled": true
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115",
+									"enabled": true
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334",
+									"enabled": true
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
+									"enabled": true
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"enabled": true
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "Washington"
+						}
+					]
+				}
+			],
+			"_postman_id": "48e93b55-d463-452f-9d56-f59ee5e95060"
+		}
+	],
+	"variable": [
+		{
+			"id": "9b3d2fc9-7f1b-4ef5-86ed-33137fa96c0c",
+			"key": "coll-schema",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "d700b5b2-955b-4fff-a3a1-bdcf2b54d825",
+			"key": "step-number",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "10ef4944-8e9a-4176-ab72-bfd52b86263d",
+			"key": "previous-step",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
