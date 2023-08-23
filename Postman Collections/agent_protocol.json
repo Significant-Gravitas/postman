@@ -299,6 +299,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "f9ffa478-c9b2-4448-b151-ba196516dee1",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -362,8 +363,7 @@
 									"",
 									""
 								],
-								"type": "text/javascript",
-								"id": "f9ffa478-c9b2-4448-b151-ba196516dee1"
+								"type": "text/javascript"
 							}
 						}
 					],
