@@ -3732,12 +3732,12 @@
 	],
 	"variable": [
 		{
-			"id": "e93b60aa-1370-42af-906b-9545a6d17140",
+			"id": "e197421f-aa4f-4d63-bc65-4bf6edf47ce2",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "3716ff32-5505-41fd-ab22-6dcbef473df6",
+			"id": "c1a32c4e-2cff-456b-b65e-af471f0a4cf6",
 			"key": "coll-schema",
 			"value": ""
 		}
