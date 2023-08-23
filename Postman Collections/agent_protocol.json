@@ -67,7 +67,7 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"url": "{{url}}/agent/tasks"
+								"url": "https://334b9cb4-dbab-4c9e-890b-fe1f62f64088.mock.pstmn.io/agent/tasks"
 							},
 							"status": "OK",
 							"code": 200,
