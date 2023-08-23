@@ -2424,9 +2424,15 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "13895508-4bed-4ee5-bb82-724cd5cc2d57",
+						"id": "2a69eda8-69b4-4e3b-b3af-f7814d968cd0",
 						"type": "text/javascript",
 						"exec": [
+							"",
+							"var updatedPaths = pm.request.url.path.map(function(path) {",
+							"    return path.replace(/{{/g, '{').replace(/}}/g, '}');",
+							"});",
+							"",
+							"pm.collectionVariables.set(\"request-path\", updatedPaths)",
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
 							"    console.log (\"pm.request.body\")",
 							"    console.log (pm.request.body)",
@@ -2491,7 +2497,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7b523d7f-5846-4d7b-8ae0-3da91be6e44b",
+						"id": "973366d0-eb6f-4884-a105-229764a139e0",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2546,10 +2552,12 @@
 							"    console.log(\"Accessing the response code in the responses...\");",
 							"    const responseCode = responses[pm.response.code];",
 							"    console.log(\"Response code in responses:\", responseCode);",
+							"    ",
+							"    console.log(\"Accessing the content part of the response code...\");",
+							"    const content = responseCode['content'];",
 							"",
 							"    console.log(\"Accessing the 'application/json' part of the response code...\");",
-							"    const content = responseCode['content'];",
-							"    const applicationJson = responseCode[content];",
+							"    const applicationJson = content['application/json'];",
 							"    console.log(\"'application/json' part of response code:\", applicationJson);",
 							"",
 							"    console.log(\"Accessing the schema of the 'application/json' part...\");",
@@ -3780,7 +3788,7 @@
 	],
 	"variable": [
 		{
-			"id": "d03d38e9-b39a-422d-beb6-1f446aade8e7",
+			"id": "7714271f-3b5c-48af-8281-f755a22a65cd",
 			"key": "coll-schema",
 			"value": ""
 		}
