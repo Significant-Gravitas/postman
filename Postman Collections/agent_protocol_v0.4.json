@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "cc287295-ad16-4a2a-92ea-36f7d42ed15f",
+						"id": "3d1d81cf-76ea-4849-a6f1-63d27a12670c",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2479,7 +2479,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "55a1832a-1299-46df-af3b-b30f630bbf97",
+						"id": "6de40283-ee94-4e5b-acb2-dcd572ae49d3",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2538,7 +2538,6 @@
 							"    const responseSchema = applicationJson.schema;",
 							"    console.log(\"Response Schema:\", responseSchema);",
 							"",
-							"    console.log(\"Response Schema:\");",
 							"    console.log(responseSchema);",
 							"",
 							"    pm.expect(responseBody).to.have.jsonSchema(schema)",
@@ -3738,12 +3737,12 @@
 	],
 	"variable": [
 		{
-			"id": "99b7698c-9cfe-4366-802d-edfc56176130",
+			"id": "e09384d9-dafb-40bb-a345-04c9d4a0e2ec",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "77bc61e4-3b68-4d06-83cd-34ed1b33be86",
+			"id": "b13c72b1-e2ab-4f26-95dc-7ee875d80402",
 			"key": "coll-schema",
 			"value": ""
 		}
