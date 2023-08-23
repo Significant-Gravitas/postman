@@ -3777,5 +3777,17 @@
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060"
 		}
+	],
+	"variable": [
+		{
+			"id": "964b8967-b8fb-448d-acef-e7f433c11337",
+			"key": "request-path",
+			"value": ""
+		},
+		{
+			"id": "01fdd270-59e1-40d3-be40-193174df1ef5",
+			"key": "coll-schema",
+			"value": ""
+		}
 	]
 }
