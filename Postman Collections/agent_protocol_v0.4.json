@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "52db9957-eb12-4636-b393-62e53b7fbfd8",
+						"id": "7e030c85-da9c-4bea-a8c4-412379e57512",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2479,11 +2479,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7c0189be-9328-4c83-90ac-5aafc27f9f76",
+						"id": "22cc11c1-e874-4d1f-a32a-49b4c3a0129e",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
-							"if (pm.request.url.path[0] == \"agent\") {",
+							"if (pm.request.url.path[0] == \"agent\" && pm.responseBody) {",
 							"    console.log(\"Response is JSON, proceeding with validation...\");",
 							"",
 							"    console.log(\"Retrieving schema from collection variable 'coll-schema'...\");",
@@ -3737,22 +3737,22 @@
 	],
 	"variable": [
 		{
-			"id": "700a825f-1407-4eb6-a965-f13f8806fbce",
+			"id": "c0fade4e-5697-4c03-9447-28d782fd2dde",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "525f0b54-1eef-4feb-9238-8a300bb87fc3",
+			"id": "d47416ef-24d6-4c94-9afe-9f56080687ee",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "ee9d21b1-5d28-4316-a541-d90cd4e29ece",
+			"id": "cac2b5af-b264-4958-b7c1-b530c413deb7",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "ed66f544-432c-4926-acec-0034bad4d536",
+			"id": "fa289996-b89d-4f2a-ac30-5aaf61f4511b",
 			"key": "previous-step",
 			"value": ""
 		}
