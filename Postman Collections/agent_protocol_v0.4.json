@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0dcd8279-2e3f-4cdd-a670-687cf3544e16",
+						"id": "30840eda-93a9-4c75-992d-57c22802fd9a",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2479,7 +2479,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "97579f25-dc44-493f-862a-39caf3036c3b",
+						"id": "1fee4c76-6bdf-4181-a7dc-d50b00492b07",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2538,8 +2538,10 @@
 							"    console.log(\"Response Schema:\", responseSchema);",
 							"",
 							"    console.log(responseSchema);",
-							"",
-							"    pm.expect(responseBody).to.have.jsonSchema(responseSchema)",
+							"    pm.test(\"Validate JSON Schema\", () => {",
+							"        pm.expect(responseBody).to.have.jsonSchema(responseSchema)",
+							"    });",
+							"    ",
 							"} else {",
 							"    console.log(\"Response is not JSON. Skipping validation.\");",
 							"}",
@@ -3736,12 +3738,12 @@
 	],
 	"variable": [
 		{
-			"id": "acd815a1-489b-4dd5-a11c-3ad97ea1d0e6",
+			"id": "85839860-da0a-499e-b010-6d273c92cdae",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "9c308452-4b48-475a-889c-80fc085a3f24",
+			"id": "f7ae6451-7fe2-4cd0-acf1-52bd27969420",
 			"key": "coll-schema",
 			"value": ""
 		}
