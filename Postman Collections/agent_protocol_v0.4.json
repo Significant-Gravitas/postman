@@ -1552,8 +1552,7 @@
 								"exec": [
 									"pm.test(\"Response status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
-									"});",
-									""
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -2425,9 +2424,15 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "52c62c31-80dc-4a51-a102-8f6d843a30d4",
+						"id": "4bd92a39-7c61-4560-94aa-618d442ff2e4",
 						"type": "text/javascript",
 						"exec": [
+							"",
+							"var updatedPaths = pm.request.url.path.map(function(path) {",
+							"    return path.replace(/{{/g, '{').replace(/}}/g, '}');",
+							"});",
+							"",
+							"pm.collectionVariables.set(\"request-path\", \"/\" + updatedPaths.join('/'))",
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
 							"    console.log (\"pm.request.body\")",
 							"    console.log (pm.request.body)",
@@ -2492,7 +2497,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8e4b6f80-c441-4446-a8b7-0696c3593390",
+						"id": "6a4a0910-dfdd-4166-b709-e382eaa6c8e0",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2513,16 +2518,8 @@
 							"    console.log(\"ResponseBody:\");",
 							"    console.log(responseBody);",
 							"",
-							"    console.log(\"Updating paths...\");",
-							"    var updatedPaths = pm.request.url.path.map(function(path) {",
-							"        return path.replace(/{{/g, '{').replace(/}}/g, '}');",
-							"    });",
-							"    console.log(\"Updated Paths:\", updatedPaths);",
-							"",
-							"    console.log(\"Retrieving the response schema...\");",
-							"    console.log(\"Constructing the path for the response schema...\");",
-							"    const pathWithUpdatedPaths = \"/\" + updatedPaths.join('/');",
-							"    console.log(\"Path with updated paths:\", pathWithUpdatedPaths);",
+							"    requestPath = pm.collectionVariables.get(\"request-path\")",
+							"    console.log(\"requestPath\", requestPath);",
 							"",
 							"    console.log(\"Converting request method to lower case...\");",
 							"    const methodLowerCase = pm.request.method.toLowerCase();",
@@ -2533,7 +2530,7 @@
 							"    console.log(\"Paths in API schema:\", paths);",
 							"",
 							"    console.log(\"Accessing the specific path in the API schema...\");",
-							"    const specificPath = paths[pathWithUpdatedPaths];",
+							"    const specificPath = paths[requestPath];",
 							"    console.log(\"Specific path in API schema:\", specificPath);",
 							"",
 							"    console.log(\"Accessing the specific method in the API schema...\");",
@@ -2547,9 +2544,12 @@
 							"    console.log(\"Accessing the response code in the responses...\");",
 							"    const responseCode = responses[pm.response.code];",
 							"    console.log(\"Response code in responses:\", responseCode);",
+							"    ",
+							"    console.log(\"Accessing the content part of the response code...\");",
+							"    const content = responseCode['content'];",
 							"",
 							"    console.log(\"Accessing the 'application/json' part of the response code...\");",
-							"    const applicationJson = responseCode['application/json'];",
+							"    const applicationJson = content['application/json'];",
 							"    console.log(\"'application/json' part of response code:\", applicationJson);",
 							"",
 							"    console.log(\"Accessing the schema of the 'application/json' part...\");",
@@ -3780,8 +3780,23 @@
 	],
 	"variable": [
 		{
-			"id": "efb518ff-e159-4644-abc5-4514f415582d",
+			"id": "ddbee24e-6d4f-47cb-aa95-a40f26dec6d3",
+			"key": "request-path",
+			"value": ""
+		},
+		{
+			"id": "c902ee7a-b0a5-489b-aba5-86523f5bc1b1",
 			"key": "coll-schema",
+			"value": ""
+		},
+		{
+			"id": "9fd1d932-313f-4176-b0e6-74f76000d4ca",
+			"key": "step-number",
+			"value": ""
+		},
+		{
+			"id": "b24d08c9-1c2b-4d78-8bc5-c80cf36514bf",
+			"key": "previous-step",
 			"value": ""
 		}
 	]
