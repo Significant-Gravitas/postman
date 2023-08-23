@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "fa0b0d9f-98ca-4f5d-948f-6e55907998a4",
+						"id": "ef077847-b7ca-4991-a105-a18125a260fc",
 						"type": "text/javascript",
 						"exec": [
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
@@ -2491,7 +2491,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7fed155a-f523-4561-83b9-d68287fcf8d2",
+						"id": "a5042dd8-85b3-44d2-b253-9ad8329bb6a5",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2547,7 +2547,7 @@
 							"    const responseCode = responses[pm.response.code];",
 							"    console.log(\"Response code in responses:\", responseCode);",
 							"    ",
-							"    console.log(\"Accessing the 'application/json' part of the response code...\");",
+							"    console.log(\"Accessing the content part of the response code...\");",
 							"    const content = responseCode['content'];",
 							"",
 							"    console.log(\"Accessing the 'application/json' part of the response code...\");",
@@ -3782,7 +3782,7 @@
 	],
 	"variable": [
 		{
-			"id": "d4ab1a37-61a2-4dd4-a3a8-0191e574e612",
+			"id": "f988be53-7006-4ffb-81d0-30bf5c51bf81",
 			"key": "coll-schema",
 			"value": ""
 		}
