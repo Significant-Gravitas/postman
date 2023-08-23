@@ -3730,5 +3730,12 @@
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060"
 		}
+	],
+	"variable": [
+		{
+			"id": "e2bac5d7-4f20-41f5-9176-a38c40f15acb",
+			"key": "coll-apiIds",
+			"value": ""
+		}
 	]
 }
