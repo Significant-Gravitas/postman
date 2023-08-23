@@ -155,8 +155,8 @@
 								},
 								"url": "{{url}}/agent/tasks"
 							},
-							"status": "Not Found",
-							"code": 404,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
