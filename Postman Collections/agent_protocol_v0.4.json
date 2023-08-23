@@ -3776,5 +3776,12 @@
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060"
 		}
+	],
+	"variable": [
+		{
+			"id": "881d119d-a3ea-4580-b903-0ad198301dcd",
+			"key": "coll-schema",
+			"value": ""
+		}
 	]
 }
