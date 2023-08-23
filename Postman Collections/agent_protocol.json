@@ -1422,6 +1422,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "453942b7-5e44-4670-aa31-e1d46b71396e",
 								"exec": [
 									"var artifacts = pm.response.json().artifacts;",
 									"",
@@ -1477,8 +1478,7 @@
 									"",
 									""
 								],
-								"type": "text/javascript",
-								"id": "453942b7-5e44-4670-aa31-e1d46b71396e"
+								"type": "text/javascript"
 							}
 						}
 					],
