@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "20aafd1c-da28-497a-ae1a-803d75d79dce",
+						"id": "218a1de1-db69-45de-b2c5-1dc3e2abd217",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2469,13 +2469,6 @@
 							"    pm.test(\"Validate JSON Schema\", () => {",
 							"        let isSchemaValid = tv4.validate(requestBody, schema);",
 							"        pm.expect(requestBody).to.have.jsonSchema(schema)",
-							"        // If the schema is not valid, log the error details",
-							"        if (!isSchemaValid) {",
-							"            console.log(\"Validation Error:\", tv4.error);",
-							"            pm.expect(true, \"Schema validation failed. Please check the console for details.\").to.be.false;",
-							"        }",
-							"        ",
-							"        pm.expect(isSchemaValid).to.be.true;",
 							"    });",
 							"} ",
 							"",
@@ -2486,7 +2479,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "df646cb8-402e-4e71-94d1-54fdd0b8bef2",
+						"id": "d3809b03-aa4a-40f7-a5d4-cf3e102698ef",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -3769,22 +3762,22 @@
 	],
 	"variable": [
 		{
-			"id": "df270cfd-216e-46ee-8c87-8fa3e77cd288",
+			"id": "187f2a78-8c89-408e-8888-aea600ec2cf5",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "fbc1bc7e-a60f-4a06-b377-4d3ef9105fa1",
+			"id": "6e0edc7d-e5e3-4db7-8735-4ec5478ef813",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "a64e6a50-daef-4430-b9f5-09afd7fc9add",
+			"id": "c98bf31f-2b03-492c-9d27-c78bac0df9ca",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "7dfbb65d-6fd3-4953-82d9-55924e46e6f1",
+			"id": "1116b595-08cb-4073-a289-d98fd4f49c53",
 			"key": "previous-step",
 			"value": ""
 		}
