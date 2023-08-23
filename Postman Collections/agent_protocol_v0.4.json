@@ -1703,7 +1703,7 @@
 									"    \"step_body\",",
 									"    JSON.stringify(",
 									"        {",
-									"            \"inputs\": JSON.parse(pm.request.body.raw).input",
+									"            \"input\": JSON.parse(pm.request.body.raw).input",
 									"        } ",
 									"    )",
 									"       ",
@@ -3685,17 +3685,17 @@
 	],
 	"variable": [
 		{
-			"id": "72c62b26-db49-4cf2-882c-596f64a1fb2a",
+			"id": "2642daf8-abf7-471a-a3b8-29e4b433f2ac",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "fe4d3e1f-94bd-4c8b-af9e-d3a3bace2c4b",
+			"id": "e2366572-da38-4720-88ef-7c3cac8c2f9c",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "9eae79b0-6a99-4a87-bcc6-478b5f7b71e9",
+			"id": "1a89588f-ec04-4713-ba15-4e7babbcb33b",
 			"key": "previous-step",
 			"value": ""
 		}
