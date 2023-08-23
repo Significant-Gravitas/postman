@@ -2422,7 +2422,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "4b7fafd7-902d-4d5c-a470-f9c8e3ecd76f",
+						"id": "6a128e06-55d7-46b6-b427-65924f493ad4",
 						"type": "text/javascript",
 						"exec": [
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
@@ -2489,7 +2489,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5cbceeb7-bc10-44a5-aa48-feee0d85d07c",
+						"id": "8db7146c-2e7b-4d14-860f-6a9f1d7aef45",
 						"type": "text/javascript",
 						"exec": [
 							"// Get the response body",
@@ -2529,8 +2529,7 @@
 							"        ",
 							"        pm.expect(true, errorMessage).to.be.false;",
 							"    });",
-							"}",
-							""
+							"}"
 						]
 					}
 				}
@@ -3723,17 +3722,17 @@
 	],
 	"variable": [
 		{
-			"id": "3848df2c-6785-4d19-b3b1-1ec94c05af5b",
+			"id": "ae892479-a027-465f-bfe8-f705ec40c86e",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "a9844aaf-1f71-40cc-ae1d-883babbfa207",
+			"id": "6e1b3df5-f4f7-42c2-b1c0-5425edc78bce",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "6b720b41-c7ad-4b53-84dd-372367ac9872",
+			"id": "4426bab4-1e8c-4ed1-933b-0855f7b84e80",
 			"key": "previous-step",
 			"value": ""
 		}
