@@ -3247,7 +3247,7 @@
 				}
 			],
 			"id": "4b743f46-e582-4565-ac7d-c6446a710ee1",
-			"description": "We create tasks"
+			"description": "Create tasks and consumes them."
 		},
 		{
 			"name": "Artifacts",
