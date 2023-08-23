@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e8866e86-6f40-474b-9339-5d9c4ac0c782",
+						"id": "13895508-4bed-4ee5-bb82-724cd5cc2d57",
 						"type": "text/javascript",
 						"exec": [
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
@@ -2491,7 +2491,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e80cb941-5b0a-4e9f-822d-80cc6512c402",
+						"id": "7b523d7f-5846-4d7b-8ae0-3da91be6e44b",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2546,12 +2546,10 @@
 							"    console.log(\"Accessing the response code in the responses...\");",
 							"    const responseCode = responses[pm.response.code];",
 							"    console.log(\"Response code in responses:\", responseCode);",
-							"    ",
-							"    console.log(\"Accessing the content part of the response code...\");",
-							"    const content = responseCode['content'];",
 							"",
 							"    console.log(\"Accessing the 'application/json' part of the response code...\");",
-							"    const applicationJson = content['application/json'];",
+							"    const content = responseCode['content'];",
+							"    const applicationJson = responseCode[content];",
 							"    console.log(\"'application/json' part of response code:\", applicationJson);",
 							"",
 							"    console.log(\"Accessing the schema of the 'application/json' part...\");",
@@ -3782,7 +3780,7 @@
 	],
 	"variable": [
 		{
-			"id": "177be937-c042-4b49-99d9-76ea0e0f656b",
+			"id": "d03d38e9-b39a-422d-beb6-1f446aade8e7",
 			"key": "coll-schema",
 			"value": ""
 		}
