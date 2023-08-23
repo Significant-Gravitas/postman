@@ -137,68 +137,6 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "[]"
-						},
-						{
-							"id": "41a7da47-3d64-4896-b780-cbb21ba0089d",
-							"name": "Give me all the tasks",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{url}}/agent/tasks"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Wed, 23 Aug 2023 13:48:12 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "111"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "x-srv-trace",
-									"value": "v=1;t=6f2c2496f0ec3aaa"
-								},
-								{
-									"key": "x-srv-span",
-									"value": "v=1;s=814ed07ec6316841"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"6f-daKRdi5BAXXdIQaG2UM9cFmP2EE\""
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"error\": {\n        \"name\": \"mockNotFoundError\",\n        \"header\": \"Unabledfsfdsfcdscsd to find mock\",\n        \"message\": \"Please refresh and try again.\"\n    }\n}"
 						}
 					]
 				},
