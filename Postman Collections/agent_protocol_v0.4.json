@@ -2422,7 +2422,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "7d85d5fb-74f2-4e70-802d-08e8c1645a5a",
+						"id": "d6f18b1a-6eb2-40df-bf88-10e84d17e03e",
 						"type": "text/javascript",
 						"exec": [
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
@@ -2489,11 +2489,14 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c442d964-6dd2-46fb-97a8-75afd77f1e70",
+						"id": "e7975ab5-e6ef-411d-a5c6-afd2cdd9c6b2",
 						"type": "text/javascript",
 						"exec": [
 							"// Get the response body",
 							"if (pm.response.json()) {",
+							"    const schemaString = pm.collectionVariables.get(\"coll-schema\");",
+							"    // Parse the schema if it's a string",
+							"    const api = JSON.parse(schemaString);",
 							"    const responseBody = pm.response.json();",
 							"",
 							"    console.log(\"ResponseBody:\");",
