@@ -2422,7 +2422,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "caaf790d-4048-4b56-9a57-82e18b8fd95b",
+						"id": "52c62c31-80dc-4a51-a102-8f6d843a30d4",
 						"type": "text/javascript",
 						"exec": [
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
@@ -2489,7 +2489,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a51cbaa7-35e1-4bcd-afe3-eaebe5ed8acd",
+						"id": "8e4b6f80-c441-4446-a8b7-0696c3593390",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2517,7 +2517,42 @@
 							"    console.log(\"Updated Paths:\", updatedPaths);",
 							"",
 							"    console.log(\"Retrieving the response schema...\");",
-							"    const responseSchema = api.paths[\"/\" + updatedPaths.join('/')][pm.request.method.toLowerCase()].responses[pm.response.code]['application/json'].schema;",
+							"    console.log(\"Constructing the path for the response schema...\");",
+							"    const pathWithUpdatedPaths = \"/\" + updatedPaths.join('/');",
+							"    console.log(\"Path with updated paths:\", pathWithUpdatedPaths);",
+							"",
+							"    console.log(\"Converting request method to lower case...\");",
+							"    const methodLowerCase = pm.request.method.toLowerCase();",
+							"    console.log(\"Method in lower case:\", methodLowerCase);",
+							"",
+							"    console.log(\"Accessing the paths in the API schema...\");",
+							"    const paths = api.paths;",
+							"    console.log(\"Paths in API schema:\", paths);",
+							"",
+							"    console.log(\"Accessing the specific path in the API schema...\");",
+							"    const specificPath = paths[pathWithUpdatedPaths];",
+							"    console.log(\"Specific path in API schema:\", specificPath);",
+							"",
+							"    console.log(\"Accessing the specific method in the API schema...\");",
+							"    const specificMethod = specificPath[methodLowerCase];",
+							"    console.log(\"Specific method in API schema:\", specificMethod);",
+							"",
+							"    console.log(\"Accessing the responses for the specific method...\");",
+							"    const responses = specificMethod.responses;",
+							"    console.log(\"Responses for the specific method:\", responses);",
+							"",
+							"    console.log(\"Accessing the response code in the responses...\");",
+							"    const responseCode = responses[pm.response.code];",
+							"    console.log(\"Response code in responses:\", responseCode);",
+							"",
+							"    console.log(\"Accessing the 'application/json' part of the response code...\");",
+							"    const applicationJson = responseCode['application/json'];",
+							"    console.log(\"'application/json' part of response code:\", applicationJson);",
+							"",
+							"    console.log(\"Accessing the schema of the 'application/json' part...\");",
+							"    const responseSchema = applicationJson.schema;",
+							"    console.log(\"Response Schema:\", responseSchema);",
+							"",
 							"    console.log(\"Response Schema:\");",
 							"    console.log(responseSchema);",
 							"",
@@ -3742,7 +3777,7 @@
 	],
 	"variable": [
 		{
-			"id": "185b6be4-5107-437f-8912-d91726709321",
+			"id": "71e5c535-0ceb-43f9-a38c-fea29c251809",
 			"key": "coll-schema",
 			"value": ""
 		}
