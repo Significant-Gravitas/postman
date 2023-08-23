@@ -1712,7 +1712,6 @@
 									"            \"input\": JSON.parse(pm.request.body.raw).input",
 									"        } ",
 									"    )",
-									"       ",
 									");",
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
@@ -3781,7 +3780,7 @@
 	],
 	"variable": [
 		{
-			"id": "e3ba4263-14ee-43fc-add0-6377f90a8832",
+			"id": "4f46c03b-66dc-43b2-b842-6f6c25f9d2e1",
 			"key": "coll-schema",
 			"value": ""
 		}
