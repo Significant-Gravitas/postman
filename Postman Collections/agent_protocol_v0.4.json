@@ -344,57 +344,6 @@
 							"response": []
 						},
 						{
-							"name": "Get Schema From URL",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "1591034a-71c3-4e65-a91d-60da6c568ef0",
-										"exec": [
-											"let responseSchema = pm.response.text();",
-											"",
-											"if(responseSchema.length != 0) {",
-											"    let success = true;",
-											"    try{",
-											"        const yaml = pm.environment.get('env-jsonToYaml');",
-											"        (new Function(yaml))();",
-											"",
-											"        const schema = jsyaml.load(responseSchema);",
-											"        pm.collectionVariables.set('coll-schema', JSON.stringify(schema));",
-											"        postman.setNextRequest('Get API Base Url');",
-											"    }",
-											"    catch(err){",
-											"        console.log(err);",
-											"        success = false;",
-											"        postman.setNextRequest(null);",
-											"    }",
-											"",
-											"    pm.test('Successfully converted provided schema', function(){",
-											"        pm.expect(success).to.be.true;",
-											"    }); ",
-											"} else {",
-											"    console.log(\"Error retrieving schema from URL - \" + pm.environment.get(\"env-schemaUrl\"));",
-											"    postman.setNextRequest(null);",
-											"}",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "878b5361-1804-4c2d-a659-ad26dc290887",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": "{{env-schemaUrl}}"
-							},
-							"response": []
-						},
-						{
 							"name": "Get API Base Url",
 							"event": [
 								{
@@ -3661,8 +3610,23 @@
 	],
 	"variable": [
 		{
-			"id": "5e0c006e-b6f8-48b1-9cd8-ba0e8f70d9d3",
+			"id": "a15fe321-3414-4c8c-9aad-cbbbb9003468",
 			"key": "coll-apiIds",
+			"value": ""
+		},
+		{
+			"id": "c3f73a9c-e45b-4537-b402-f9afe5df1a20",
+			"key": "coll-apiId",
+			"value": ""
+		},
+		{
+			"id": "9357f909-1393-450e-9664-4ad7d959dfdf",
+			"key": "coll-versionId",
+			"value": ""
+		},
+		{
+			"id": "ee50ffde-6e27-4dad-8281-baf225442766",
+			"key": "coll-schemaId",
 			"value": ""
 		}
 	]
