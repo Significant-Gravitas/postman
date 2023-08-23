@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "5be20e0f-b339-4dcb-bf9a-92f69853453c",
+						"id": "9a41abf1-f2fa-447f-844d-1d967119cc0a",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2497,7 +2497,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e0f0d986-f115-4ec4-9dd9-17a88df7174d",
+						"id": "54690b75-da7b-4ff9-9e3e-e0f5953f6e89",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2519,7 +2519,7 @@
 							"    console.log(responseBody);",
 							"",
 							"    requestPath = pm.collectionVariables.get(\"request-path\")",
-							"    console.log(\"requestPath\", pm.collectionVariables.get(\"request-path\"));",
+							"    console.log(\"requestPath\", requestPath);",
 							"",
 							"    console.log(\"Converting request method to lower case...\");",
 							"    const methodLowerCase = pm.request.method.toLowerCase();",
@@ -3780,12 +3780,12 @@
 	],
 	"variable": [
 		{
-			"id": "b6fb1dc7-5be8-4442-a165-af94cb15a2e4",
+			"id": "692ff0e5-20f3-4771-9aa9-3682927dcb14",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "c32eb65d-3ddd-4fde-afc6-8f3d7e486ae5",
+			"id": "7b6696db-bb50-4f6b-966e-bf32d071a0c4",
 			"key": "coll-schema",
 			"value": ""
 		}
