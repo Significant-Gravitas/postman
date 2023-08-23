@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9a41abf1-f2fa-447f-844d-1d967119cc0a",
+						"id": "08987eb3-2fb0-472e-ac02-320bb3aa18b7",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2497,7 +2497,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "54690b75-da7b-4ff9-9e3e-e0f5953f6e89",
+						"id": "4c54a68f-a3bc-4ddc-b7fb-c8a56abaaa44",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2530,7 +2530,7 @@
 							"    console.log(\"Paths in API schema:\", paths);",
 							"",
 							"    console.log(\"Accessing the specific path in the API schema...\");",
-							"    const specificPath = paths[pathWithUpdatedPaths];",
+							"    const specificPath = paths[requestPath];",
 							"    console.log(\"Specific path in API schema:\", specificPath);",
 							"",
 							"    console.log(\"Accessing the specific method in the API schema...\");",
@@ -3780,12 +3780,12 @@
 	],
 	"variable": [
 		{
-			"id": "692ff0e5-20f3-4771-9aa9-3682927dcb14",
+			"id": "180112ef-2d36-447f-a0df-dbad7ff719c6",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "7b6696db-bb50-4f6b-966e-bf32d071a0c4",
+			"id": "d50fbfea-fa28-44db-b664-20a4cc7df798",
 			"key": "coll-schema",
 			"value": ""
 		}
