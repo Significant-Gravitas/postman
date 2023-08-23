@@ -303,7 +303,7 @@
 										}
 									}
 								},
-								"url": "{{url}}/agent/tasks"
+								"url": "https://254cf904-70d9-4f0d-9452-d04347bf1cad.mock.pstmn.io/agent/tasks"
 							},
 							"status": "Not Found",
 							"code": 404,
