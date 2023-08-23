@@ -3719,22 +3719,5 @@
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060"
 		}
-	],
-	"variable": [
-		{
-			"id": "ae892479-a027-465f-bfe8-f705ec40c86e",
-			"key": "coll-schema",
-			"value": ""
-		},
-		{
-			"id": "6e1b3df5-f4f7-42c2-b1c0-5425edc78bce",
-			"key": "step-number",
-			"value": ""
-		},
-		{
-			"id": "4426bab4-1e8c-4ed1-933b-0855f7b84e80",
-			"key": "previous-step",
-			"value": ""
-		}
 	]
 }
