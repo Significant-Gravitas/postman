@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "08987eb3-2fb0-472e-ac02-320bb3aa18b7",
+						"id": "4bd92a39-7c61-4560-94aa-618d442ff2e4",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2432,7 +2432,7 @@
 							"    return path.replace(/{{/g, '{').replace(/}}/g, '}');",
 							"});",
 							"",
-							"pm.collectionVariables.set(\"request-path\", updatedPaths)",
+							"pm.collectionVariables.set(\"request-path\", \"/\" + updatedPaths.join('/'))",
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
 							"    console.log (\"pm.request.body\")",
 							"    console.log (pm.request.body)",
@@ -2497,7 +2497,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4c54a68f-a3bc-4ddc-b7fb-c8a56abaaa44",
+						"id": "6a4a0910-dfdd-4166-b709-e382eaa6c8e0",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -3780,12 +3780,12 @@
 	],
 	"variable": [
 		{
-			"id": "7caf567d-4bb1-4843-b94f-86a7e40a02c3",
+			"id": "8f92d017-ae6d-4e34-bff4-9ded846607ed",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "205ee50b-3e2c-431d-b51f-6e7398fee224",
+			"id": "6735ec71-4817-4a85-8c13-83638a42934e",
 			"key": "coll-schema",
 			"value": ""
 		}
