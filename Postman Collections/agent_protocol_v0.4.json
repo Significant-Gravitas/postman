@@ -3736,12 +3736,12 @@
 	],
 	"variable": [
 		{
-			"id": "5aad3e06-7a90-4cf3-a9ba-784947fb9238",
+			"id": "ba61d4c8-c6a5-46c1-8277-a8073f2ca075",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "01024b27-1c74-4514-8281-972e72610c19",
+			"id": "471f232b-9199-4286-8821-9cc164b1176e",
 			"key": "coll-schema",
 			"value": ""
 		}
