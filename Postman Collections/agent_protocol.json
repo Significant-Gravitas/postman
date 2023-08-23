@@ -42,7 +42,7 @@
 							}
 						}
 					],
-					"_postman_id": "2b00a38f-01cc-4a5b-b3d4-de1c6cd855be",
+					"id": "2b00a38f-01cc-4a5b-b3d4-de1c6cd855be",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -186,7 +186,7 @@
 							}
 						}
 					],
-					"_postman_id": "f02f1ec4-dc4c-43c8-a759-3848dc0058f5",
+					"id": "f02f1ec4-dc4c-43c8-a759-3848dc0058f5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -367,7 +367,7 @@
 							}
 						}
 					],
-					"_postman_id": "9b1507be-5797-4b30-91f1-5cd741250da6",
+					"id": "9b1507be-5797-4b30-91f1-5cd741250da6",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -535,7 +535,7 @@
 							}
 						}
 					],
-					"_postman_id": "39ed4ba8-5def-49d5-9ba8-c89b54fe8b86",
+					"id": "39ed4ba8-5def-49d5-9ba8-c89b54fe8b86",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -720,7 +720,7 @@
 							}
 						}
 					],
-					"_postman_id": "e9fe5e61-d46f-47ce-bbdf-b7d82773c07b",
+					"id": "e9fe5e61-d46f-47ce-bbdf-b7d82773c07b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -905,7 +905,7 @@
 							}
 						}
 					],
-					"_postman_id": "289c8ed9-1186-41ce-9b06-338366ce6a75",
+					"id": "289c8ed9-1186-41ce-9b06-338366ce6a75",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1091,7 +1091,7 @@
 							}
 						}
 					],
-					"_postman_id": "ee1931f1-071f-4c73-b762-4bd14bab0493",
+					"id": "ee1931f1-071f-4c73-b762-4bd14bab0493",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1276,7 +1276,7 @@
 							}
 						}
 					],
-					"_postman_id": "b4bee714-6cf2-4d85-845c-e26fd0c769df",
+					"id": "b4bee714-6cf2-4d85-845c-e26fd0c769df",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1461,7 +1461,7 @@
 							}
 						}
 					],
-					"_postman_id": "bf164891-8c0b-45ff-9c58-ceff56cd53b8",
+					"id": "bf164891-8c0b-45ff-9c58-ceff56cd53b8",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1597,7 +1597,7 @@
 							}
 						}
 					],
-					"_postman_id": "87092dd4-0210-45f0-bac6-660de5112ba5",
+					"id": "87092dd4-0210-45f0-bac6-660de5112ba5",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1708,7 +1708,7 @@
 					]
 				}
 			],
-			"_postman_id": "09d65649-5222-4237-bb75-b710a8d602b6"
+			"id": "09d65649-5222-4237-bb75-b710a8d602b6"
 		},
 		{
 			"name": "Tasks",
@@ -1736,7 +1736,7 @@
 							}
 						}
 					],
-					"_postman_id": "3faa8f92-ad77-48b5-b39a-bfffbe2a851e",
+					"id": "3faa8f92-ad77-48b5-b39a-bfffbe2a851e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1855,7 +1855,7 @@
 				},
 				{
 					"name": "Get the task",
-					"_postman_id": "2a094360-5861-40b4-9832-fa0d078b08dc",
+					"id": "2a094360-5861-40b4-9832-fa0d078b08dc",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1976,7 +1976,7 @@
 							}
 						}
 					],
-					"_postman_id": "690b9582-2af7-4c29-be9a-5ad100367bc1",
+					"id": "690b9582-2af7-4c29-be9a-5ad100367bc1",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2075,7 +2075,7 @@
 					]
 				}
 			],
-			"_postman_id": "82319e80-105b-4734-a3dd-65e28fe967dd"
+			"id": "82319e80-105b-4734-a3dd-65e28fe967dd"
 		},
 		{
 			"name": "Artifacts",
@@ -2095,7 +2095,7 @@
 							}
 						}
 					],
-					"_postman_id": "30360d43-ded6-4041-b144-d183bdff4a47",
+					"id": "30360d43-ded6-4041-b144-d183bdff4a47",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2216,7 +2216,7 @@
 							}
 						}
 					],
-					"_postman_id": "b0176878-a6a6-47da-ae09-fa8654113616",
+					"id": "b0176878-a6a6-47da-ae09-fa8654113616",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2241,8 +2241,7 @@
 									"value": "python/code",
 									"type": "text"
 								}
-							],
-							"options": {}
+							]
 						},
 						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
 					},
@@ -2250,7 +2249,7 @@
 				},
 				{
 					"name": "Upload multiple artifacts for the specified task",
-					"_postman_id": "a04f547f-61c4-4ac5-b0f9-b6b06408411b",
+					"id": "a04f547f-61c4-4ac5-b0f9-b6b06408411b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2280,8 +2279,7 @@
 									"value": "python/code",
 									"type": "text"
 								}
-							],
-							"options": {}
+							]
 						},
 						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
 					},
@@ -2304,7 +2302,7 @@
 							}
 						}
 					],
-					"_postman_id": "2b79015c-afe4-4385-9f19-5d2ec98fb265",
+					"id": "2b79015c-afe4-4385-9f19-5d2ec98fb265",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2431,7 +2429,7 @@
 							}
 						}
 					],
-					"_postman_id": "fec383de-3571-4806-bfcd-586a97c31600",
+					"id": "fec383de-3571-4806-bfcd-586a97c31600",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2542,7 +2540,7 @@
 					]
 				}
 			],
-			"_postman_id": "9d8c9563-dd3a-4fdb-9661-3d24d2d3b3f9"
+			"id": "9d8c9563-dd3a-4fdb-9661-3d24d2d3b3f9"
 		}
 	]
 }
