@@ -344,6 +344,104 @@
 							"response": []
 						},
 						{
+							"name": "Get API Schema",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"try {\r",
+											"    const jsonData = pm.response.json();\r",
+											"\r",
+											"    if(jsonData.schema.language.toLowerCase() == 'json'){\r",
+											"        pm.test('Schema is JSON', function(){\r",
+											"            pm.expect(1).to.equal(1);\r",
+											"            pm.collectionVariables.set('coll-schema', jsonData.schema.schema);\r",
+											"        });\r",
+											"    }\r",
+											"    else {\r",
+											"        pm.test('Schema translates to JSON', function(){\r",
+											"            try{\r",
+											"                const yaml = pm.environment.get('env-jsonToYaml');\r",
+											"                (new Function(yaml))();\r",
+											"\r",
+											"                const schema = jsyaml.load(jsonData.schema.schema);\r",
+											"                pm.collectionVariables.set('coll-schema', JSON.stringify(schema));\r",
+											"                pm.expect(1).to.equal(1);\r",
+											"            }\r",
+											"            catch(err){\r",
+											"                pm.expect(`${err.name} - ${err.message}`).to.equal(undefined);\r",
+											"            }    \r",
+											"        });\r",
+											"    }\r",
+											"}\r",
+											"catch(err) {\r",
+											"    console.log(err);\r",
+											"    pm.test('Unable to load schema', function(){\r",
+											"        pm.expect(0).to.equal(1);\r",
+											"        postman.setNextRequest(null);\r",
+											"    })\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"id": "69aa880e-dc19-42d7-86fc-65ec1bf3c000"
+									}
+								}
+							],
+							"id": "734da855-a17d-4f6e-bad0-3bcde1ca1b73",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{env-apiKey}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.getpostman.com/apis/:apiId/versions/:apiVersionId/schemas/:schemaId",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"apis",
+										":apiId",
+										"versions",
+										":apiVersionId",
+										"schemas",
+										":schemaId"
+									],
+									"variable": [
+										{
+											"id": "5af9f453-6702-48ce-bdbb-1459346a58f2",
+											"key": "apiId",
+											"value": "{{coll-apiId}}"
+										},
+										{
+											"id": "6181c0c2-e82c-444e-b710-3ea176c906d8",
+											"key": "apiVersionId",
+											"value": "{{coll-versionId}}"
+										},
+										{
+											"id": "ecc6aca5-e74d-4190-b260-9f4698d6c569",
+											"key": "schemaId",
+											"value": "{{coll-schemaId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Get API Base Url",
 							"event": [
 								{
@@ -3606,28 +3704,6 @@
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060",
 			"description": "Create Artifacts and consumes them."
-		}
-	],
-	"variable": [
-		{
-			"id": "a09bbc4c-3d84-4ea8-ac7f-20fa58579dcd",
-			"key": "coll-apiIds",
-			"value": ""
-		},
-		{
-			"id": "8b40e6fd-f461-47a2-a2d4-97ddc6b8d780",
-			"key": "coll-apiId",
-			"value": ""
-		},
-		{
-			"id": "eb07bee6-271c-4e8e-972d-debae241906d",
-			"key": "coll-versionId",
-			"value": ""
-		},
-		{
-			"id": "07498f10-9460-421b-aa01-99db004b23a1",
-			"key": "coll-schemaId",
-			"value": ""
 		}
 	]
 }
