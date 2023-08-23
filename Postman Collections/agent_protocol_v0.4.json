@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1ea570d2-cba8-479c-b63f-d507458c2a03",
+						"id": "0dcd8279-2e3f-4cdd-a670-687cf3544e16",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2479,11 +2479,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "afd9c3f1-f961-44d3-b7ba-c8263c50afdc",
+						"id": "97579f25-dc44-493f-862a-39caf3036c3b",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
-							"if (pm.request.url.path[0] == \"agent\" && pm.response.headers.has(\"Content-Type\",`application/json`))) {",
+							"if (pm.request.url.path[0] == \"agent\" && pm.response.headers.has(\"Content-Type\",`application/json`)) {",
 							"    console.log(pm.response)",
 							"    console.log(\"Retrieving schema from collection variable 'coll-schema'...\");",
 							"    const schemaString = pm.collectionVariables.get(\"coll-schema\");",
