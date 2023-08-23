@@ -3733,18 +3733,23 @@
 	],
 	"variable": [
 		{
-			"id": "a05a6f08-e010-48ae-b186-f8704e64461a",
+			"id": "e9c3ce7d-fa58-45a7-871e-2eb5eacf7e53",
 			"key": "coll-apiIds",
 			"value": ""
 		},
 		{
-			"id": "eaf88dd4-dadf-4d3f-a699-fa48340492e7",
+			"id": "b3e59ee8-6177-4694-aaf1-6a7b12730c53",
 			"key": "coll-apiId",
 			"value": ""
 		},
 		{
-			"id": "f3a0c408-4958-4e60-a611-8c893097449a",
+			"id": "08386046-0648-44e9-a596-dd88e4d421b9",
 			"key": "coll-versionId",
+			"value": ""
+		},
+		{
+			"id": "6df2a5f9-7bbe-4361-8562-a6c9f79fe2e5",
+			"key": "coll-schemaId",
 			"value": ""
 		}
 	]
