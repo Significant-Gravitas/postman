@@ -2128,7 +2128,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"step_id\": \"2a479290-3abc-11ee-be56-0242ac1209c1\",\n    \"status\": \"completed\",\n    \"output\": \"I used the write_to_file method to write the file output.txt\",\n    \"artifacts\": [\n                {\n          \"artifact_id\": \"2ba79290-3abc-11ee-be56-0242ac1209d3\",\n          \"agent_created\": true,\n          \"uri\": \"file://output.txt\"\n        }\n    ],\n    \"is_last\": true\n}"
+							"body": "{\n    \"task_id\": \"fde559f8-3ab8-11ee-be56-0242ac120002\",\n    \"step_id\": \"2a479290-3abc-11ee-be56-0242ac1209c1\",\n    \"input\": \"y\",\n    \"status\": \"completed\",\n    \"output\": \"I used the write_to_file method to write the file output.txt\",\n    \"artifacts\": [\n                {\n          \"artifact_id\": \"2ba79290-3abc-11ee-be56-0242ac1209d3\",\n          \"agent_created\": true,\n          \"uri\": \"file://output.txt\"\n        }\n    ],\n    \"is_last\": true\n}"
 						}
 					]
 				},
@@ -3737,12 +3737,12 @@
 	],
 	"variable": [
 		{
-			"id": "142bc949-c455-4d8c-a59d-18603c58cea8",
+			"id": "a0698b45-81c0-4fef-9f0c-e78db25e7951",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "756e12bc-0841-495c-b0dc-6ff037ed6023",
+			"id": "786945d9-1979-4fdc-9a0f-5a268e5710fc",
 			"key": "coll-schema",
 			"value": ""
 		}
