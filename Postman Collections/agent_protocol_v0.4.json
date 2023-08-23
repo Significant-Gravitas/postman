@@ -1593,7 +1593,13 @@
 							"name": "mock response",
 							"originalRequest": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "",
@@ -3777,7 +3783,7 @@
 	],
 	"variable": [
 		{
-			"id": "d81fb188-d4ab-462b-aecd-7b0738f2f365",
+			"id": "82493495-17ae-468e-aabd-9ec3036f1550",
 			"key": "coll-schema",
 			"value": ""
 		}
