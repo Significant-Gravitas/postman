@@ -3776,12 +3776,5 @@
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060"
 		}
-	],
-	"variable": [
-		{
-			"id": "aff548f8-f342-4359-a5fd-d62f909518e2",
-			"key": "coll-schema",
-			"value": ""
-		}
 	]
 }
