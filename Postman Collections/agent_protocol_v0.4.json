@@ -3729,27 +3729,5 @@
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060"
 		}
-	],
-	"variable": [
-		{
-			"id": "757b5f52-b762-4902-aae8-7226f8701da9",
-			"key": "request-path",
-			"value": ""
-		},
-		{
-			"id": "1638e67b-1261-4758-9d82-437ae0a9bcd7",
-			"key": "coll-schema",
-			"value": ""
-		},
-		{
-			"id": "9ab90e2e-3421-47ac-856c-255c5b6163f3",
-			"key": "step-number",
-			"value": ""
-		},
-		{
-			"id": "5779e7d0-042e-42bc-a244-d21cb68cab79",
-			"key": "previous-step",
-			"value": ""
-		}
 	]
 }
