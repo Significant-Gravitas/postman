@@ -60,7 +60,82 @@
 						},
 						"url": "{{url}}/agent/tasks"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "7c1ee201-5647-4035-bed1-8eecaca6c2b3",
+							"name": "Give me all the tasks",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/agent/tasks"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 23 Aug 2023 14:02:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "134"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=daef761e243c402b"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=2c0bd88502372360"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "115"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1691968334"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"input\": \"Write the word 'Washington' to a .txt file\",\n    \"additional_input\": null,\n    \"task_id\": \"121\",\n    \"artifacts\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "Create a new task",
