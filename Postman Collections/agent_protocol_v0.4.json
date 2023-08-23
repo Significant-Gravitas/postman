@@ -3708,8 +3708,18 @@
 	],
 	"variable": [
 		{
-			"id": "cd6248be-770b-45df-af58-d01f38adc7d4",
+			"id": "08a7a91e-d0c8-408c-8a61-8488e2a68a4e",
 			"key": "coll-apiIds",
+			"value": ""
+		},
+		{
+			"id": "fbe395b9-912d-4968-a9fb-23f03840953c",
+			"key": "coll-apiId",
+			"value": ""
+		},
+		{
+			"id": "4c121029-15e7-4121-824b-36b4653f18d4",
+			"key": "coll-versionId",
 			"value": ""
 		}
 	]
