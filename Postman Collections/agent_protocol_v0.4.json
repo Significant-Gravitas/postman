@@ -3685,8 +3685,18 @@
 	],
 	"variable": [
 		{
-			"id": "fcc62058-189a-4531-a731-594ad6a65810",
+			"id": "901d0049-e107-422b-9306-ef492e68c215",
 			"key": "coll-schema",
+			"value": ""
+		},
+		{
+			"id": "83c2582a-5a6d-4cea-b815-c43e4d663c09",
+			"key": "step-number",
+			"value": ""
+		},
+		{
+			"id": "cd76b953-2afc-4e68-ae84-8ba93e6b951e",
+			"key": "previous-step",
 			"value": ""
 		}
 	]
