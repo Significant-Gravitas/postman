@@ -2422,7 +2422,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0f353253-4653-48c2-837e-9c20ad61af60",
+						"id": "4b7fafd7-902d-4d5c-a470-f9c8e3ecd76f",
 						"type": "text/javascript",
 						"exec": [
 							"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
@@ -2489,9 +2489,47 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "bd5d8eb1-2939-478e-95fc-72aadd1aa9f3",
+						"id": "5cbceeb7-bc10-44a5-aa48-feee0d85d07c",
 						"type": "text/javascript",
 						"exec": [
+							"// Get the response body",
+							"const responseBody = pm.response.json();",
+							"",
+							"console.log(\"ResponseBody:\");",
+							"console.log(responseBody);",
+							"",
+							"// Retrieve the correct schema for the given method and path, for the response this time",
+							"var updatedPaths = pm.request.url.path.map(function(path) {",
+							"    return path.replace(/{{/g, '{').replace(/}}/g, '}');",
+							"});",
+							"",
+							"const responseSchema = api.paths[\"/\" + updatedPaths.join('/')][pm.request.method.toLowerCase()].responses[pm.response.code]['application/json'].schema;",
+							"console.log(\"Response Schema:\");",
+							"console.log(responseSchema);",
+							"",
+							"// First, test the JSON schema compliance",
+							"pm.test(\"Validate JSON Schema for Response\", () => {",
+							"    let isSchemaValid = tv4.validate(responseBody, responseSchema);",
+							"    ",
+							"    // If the schema is not valid, log the error details",
+							"    if (!isSchemaValid) {",
+							"        console.log(\"Validation Error for Response:\", tv4.error);",
+							"        pm.expect(true, \"Schema validation failed for response. Please check the console for details.\").to.be.false;",
+							"    }",
+							"    ",
+							"    pm.expect(isSchemaValid).to.be.true;",
+							"});",
+							"",
+							"// If the schema doesn't comply, run this test to add more information",
+							"if (!tv4.validate(responseBody, responseSchema)) {",
+							"    pm.test(\"Additional Information Regarding JSON Schema Failure for Response\", () => {",
+							"        let prettyResponseBody = JSON.stringify(responseBody, null, 2);",
+							"        let prettyResponseSchema = JSON.stringify(responseSchema, null, 2);",
+							"        let errorMessage = \"Response Body:\\n\" + prettyResponseBody + \"\\nExpected Schema:\\n\" + prettyResponseSchema;",
+							"        ",
+							"        pm.expect(true, errorMessage).to.be.false;",
+							"    });",
+							"}",
 							""
 						]
 					}
@@ -3685,17 +3723,17 @@
 	],
 	"variable": [
 		{
-			"id": "9a94f536-5d48-44ab-b2f2-cadf03003f80",
+			"id": "3848df2c-6785-4d19-b3b1-1ec94c05af5b",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "545fb365-b85f-4d0f-a9e5-8bb520f74a97",
+			"id": "a9844aaf-1f71-40cc-ae1d-883babbfa207",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "bf9a9e49-4179-457a-9a4b-ada9d903d76b",
+			"id": "6b720b41-c7ad-4b53-84dd-372367ac9872",
 			"key": "previous-step",
 			"value": ""
 		}
