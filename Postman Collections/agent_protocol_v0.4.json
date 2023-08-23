@@ -3732,13 +3732,23 @@
 	],
 	"variable": [
 		{
-			"id": "9dc16caa-41b1-4616-8eb4-863957a6428a",
+			"id": "fb909d35-39f5-4139-a1d1-bd1570b56638",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "034e3b99-e3ca-4a63-83a4-d05ddf2025d6",
+			"id": "a995e46f-ac97-4a0d-b9b0-1e572ca14a53",
 			"key": "coll-schema",
+			"value": ""
+		},
+		{
+			"id": "8cf7f2b1-488e-45f8-8c95-57e5512b1af6",
+			"key": "step-number",
+			"value": ""
+		},
+		{
+			"id": "d09da036-3a5f-42a8-b9b7-0a499bff567e",
+			"key": "previous-step",
 			"value": ""
 		}
 	]
