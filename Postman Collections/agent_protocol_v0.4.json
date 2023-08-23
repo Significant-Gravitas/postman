@@ -1717,9 +1717,7 @@
 									"",
 									"pm.test(\"Response status code is 200\", function () {",
 									"    pm.expect(pm.response.code).to.equal(200);",
-									"});",
-									"",
-									""
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -3783,7 +3781,7 @@
 	],
 	"variable": [
 		{
-			"id": "3ed0b6aa-e4d6-4256-826f-8ee81555a3e9",
+			"id": "e3ba4263-14ee-43fc-add0-6377f90a8832",
 			"key": "coll-schema",
 			"value": ""
 		}
