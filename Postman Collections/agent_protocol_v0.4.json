@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "3723c247-ae15-49db-b257-ea9bb7201c29",
+						"id": "6a37e1a4-2aaf-4174-90c1-74a1b4806df4",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2479,11 +2479,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "27f59c73-2189-40ef-bef2-9a99476c54d4",
+						"id": "29fd389e-ef25-4cb0-a152-46021eb53027",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
-							"if (pm.request.url.path[0] == \"agent\") {",
+							"if (pm.request.url.path[0] == \"agent\" && pm.response.headers.has(\"Content-type\",`application/json`))) {",
 							"    console.log(pm.response)",
 							"    console.log(\"Retrieving schema from collection variable 'coll-schema'...\");",
 							"    const schemaString = pm.collectionVariables.get(\"coll-schema\");",
@@ -3736,22 +3736,22 @@
 	],
 	"variable": [
 		{
-			"id": "45528ee7-2561-458b-8560-36caf12522d4",
+			"id": "3a0dde8a-0ea9-43a5-8ad5-cb7878d60b72",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "880707b3-c5ae-48c9-90e3-a43334af924a",
+			"id": "d9900216-7e9d-456c-97c0-86778cae7ef7",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "7695cd89-79d6-4532-96b7-e2be05f03e5c",
+			"id": "558b4330-bfbb-4249-874f-3f4ba87ed683",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "53bd2c70-6e27-4859-b656-3ce90d66786c",
+			"id": "e6847a02-8c67-42ef-9a35-2136c886d465",
 			"key": "previous-step",
 			"value": ""
 		}
