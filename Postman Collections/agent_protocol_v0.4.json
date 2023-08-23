@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "218a1de1-db69-45de-b2c5-1dc3e2abd217",
+						"id": "91844b89-068b-4e23-b2de-c2679f636883",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2479,7 +2479,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d3809b03-aa4a-40f7-a5d4-cf3e102698ef",
+						"id": "735c0afe-41f1-4188-9d0e-0554444f616f",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2541,31 +2541,8 @@
 							"    console.log(\"Response Schema:\");",
 							"    console.log(responseSchema);",
 							"",
-							"    // First, test the JSON schema compliance",
-							"    pm.test(\"Validate JSON Schema for Response\", () => {",
-							"        console.log(\"Validating the response against the schema...\");",
-							"        let isSchemaValid = tv4.validate(responseBody, responseSchema);",
+							"    pm.expect(requestBody).to.have.jsonSchema(schema)",
 							"",
-							"        // If the schema is not valid, log the error details",
-							"        if (!isSchemaValid) {",
-							"            console.log(\"Validation Error for Response:\", tv4.error);",
-							"            pm.expect(true, \"Schema validation failed for response. Please check the console for details.\").to.be.false;",
-							"        }",
-							"",
-							"        pm.expect(isSchemaValid).to.be.true;",
-							"    });",
-							"",
-							"    // If the schema doesn't comply, run this test to add more information",
-							"    if (!tv4.validate(responseBody, responseSchema)) {",
-							"        pm.test(\"Additional Information Regarding JSON Schema Failure for Response\", () => {",
-							"            console.log(\"Additional information regarding JSON Schema failure...\");",
-							"            let prettyResponseBody = JSON.stringify(responseBody, null, 2);",
-							"            let prettyResponseSchema = JSON.stringify(responseSchema, null, 2);",
-							"            let errorMessage = \"Response Body:\\n\" + prettyResponseBody + \"\\nExpected Schema:\\n\" + prettyResponseSchema;",
-							"",
-							"            pm.expect(true, errorMessage).to.be.false;",
-							"        });",
-							"    }",
 							"} else {",
 							"    console.log(\"Response is not JSON. Skipping validation.\");",
 							"}",
@@ -3762,22 +3739,22 @@
 	],
 	"variable": [
 		{
-			"id": "187f2a78-8c89-408e-8888-aea600ec2cf5",
+			"id": "8bbe6b47-3451-428a-96b1-de55bc07d700",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "6e0edc7d-e5e3-4db7-8735-4ec5478ef813",
+			"id": "07d7748a-4c7c-4201-ac14-cb0fbbb62fd2",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "c98bf31f-2b03-492c-9d27-c78bac0df9ca",
+			"id": "171e2ab2-fcb6-4154-b17b-6a7ad4c97523",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "1116b595-08cb-4073-a289-d98fd4f49c53",
+			"id": "e4906458-f76b-4f12-9ffb-bb803e687400",
 			"key": "previous-step",
 			"value": ""
 		}
