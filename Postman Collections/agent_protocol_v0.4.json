@@ -1469,81 +1469,6 @@
 			"name": "Basic User Experience",
 			"item": [
 				{
-					"name": "Cleanup Previous Run",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "0044fae0-e397-4e8d-9e10-8e5cf6ddd721",
-								"exec": [
-									"// See https://blog.postman.com/2019/05/28/pro-tip-dynamically-unset-postman-environment-variables/\r",
-									"// for more details on what we're doing here. \r",
-									"\r",
-									"cleanupCollectionVariables();\r",
-									"\r",
-									"function cleanupCollectionVariables() {\r",
-									"    const clean = _.keys(pm.collectionVariables.toObject());\r",
-									"\r",
-									"    _.each(clean, (arrItem) => {\r",
-									"        pm.collectionVariables.unset(arrItem);\r",
-									"    });\r",
-									"}"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "e5f01bc1-57fd-4a47-9291-cde6be37e344",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "be8c9c14-40ff-484f-b328-f784098ec661",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "https://postman-echo.com/delay/0"
-					},
-					"response": []
-				},
-				{
-					"name": "Get API Schema",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "03f62ade-b066-4bfa-bb6f-4ffd5c98e63c",
-								"exec": [
-									"const jsonData = pm.response.json();\r",
-									"pm.collectionVariables.set('coll-schema', JSON.stringify(jsonData));"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "31be2dae-5a9e-4e29-9e7a-c9a293a8df83",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": "https://raw.githubusercontent.com/merwanehamadi/agent-protocol/0.4/postman/schemas/openapi.json"
-					},
-					"response": []
-				},
-				{
 					"name": "Give me all the tasks",
 					"event": [
 						{
@@ -3732,6 +3657,23 @@
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060",
 			"description": "Create Artifacts and consumes them."
+		}
+	],
+	"variable": [
+		{
+			"id": "ffcc0a81-c0ab-49f0-9ecd-a7675541adb6",
+			"key": "coll-apiIds",
+			"value": ""
+		},
+		{
+			"id": "6d491f86-fc97-4591-b355-930f6b33a1f3",
+			"key": "coll-apiId",
+			"value": ""
+		},
+		{
+			"id": "b2606e55-27a7-47d9-9b75-bff9ed0fa5a6",
+			"key": "coll-versionId",
+			"value": ""
 		}
 	]
 }
