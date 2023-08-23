@@ -2424,7 +2424,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "2a69eda8-69b4-4e3b-b3af-f7814d968cd0",
+						"id": "b2082503-235f-471b-a624-fa134e3af2d6",
 						"type": "text/javascript",
 						"exec": [
 							"",
@@ -2497,7 +2497,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "973366d0-eb6f-4884-a105-229764a139e0",
+						"id": "bf90c629-296f-41bf-9f50-83026ad5eb7d",
 						"type": "text/javascript",
 						"exec": [
 							"// Checking if the response is JSON and logging",
@@ -2518,16 +2518,8 @@
 							"    console.log(\"ResponseBody:\");",
 							"    console.log(responseBody);",
 							"",
-							"    console.log(\"Updating paths...\");",
-							"    var updatedPaths = pm.request.url.path.map(function(path) {",
-							"        return path.replace(/{{/g, '{').replace(/}}/g, '}');",
-							"    });",
-							"    console.log(\"Updated Paths:\", updatedPaths);",
-							"",
-							"    console.log(\"Retrieving the response schema...\");",
-							"    console.log(\"Constructing the path for the response schema...\");",
-							"    const pathWithUpdatedPaths = \"/\" + updatedPaths.join('/');",
-							"    console.log(\"Path with updated paths:\", pathWithUpdatedPaths);",
+							"    ",
+							"    console.log(\"request-path\", pathWithUpdatedPaths);",
 							"",
 							"    console.log(\"Converting request method to lower case...\");",
 							"    const methodLowerCase = pm.request.method.toLowerCase();",
@@ -3788,7 +3780,7 @@
 	],
 	"variable": [
 		{
-			"id": "7714271f-3b5c-48af-8281-f755a22a65cd",
+			"id": "6e5c37c4-2ad5-4c9d-88bc-6795151bc706",
 			"key": "coll-schema",
 			"value": ""
 		}
