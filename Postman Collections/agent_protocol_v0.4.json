@@ -1463,7 +1463,7 @@
 				}
 			],
 			"id": "da96935b-d33d-4a91-89a7-a47b218733ef",
-			"description": "Automatically tests your API based on the openapi.yaml  \nThanks for Allen's great work[<br>https://github.com/allenheltondev/postman-contract-test-generator](https://github.com/allenheltondev/postman-contract-test-generator)"
+			"description": "Automatically tests your API based on the openapi.yaml  \nThanks to Allen for his great work![<br>https://github.com/allenheltondev/postman-contract-test-generator](https://github.com/allenheltondev/postman-contract-test-generator)"
 		},
 		{
 			"name": "Basic User Experience",
