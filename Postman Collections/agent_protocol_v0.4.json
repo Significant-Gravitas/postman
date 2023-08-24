@@ -344,100 +344,53 @@
 							"response": []
 						},
 						{
-							"name": "Get API Schema",
+							"name": "Get Schema From URL",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
+										"id": "03426d60-5828-44a6-a7a9-1cc77698944a",
 										"exec": [
-											"try {\r",
-											"    const jsonData = pm.response.json();\r",
-											"\r",
-											"    if(jsonData.schema.language.toLowerCase() == 'json'){\r",
-											"        pm.test('Schema is JSON', function(){\r",
-											"            pm.expect(1).to.equal(1);\r",
-											"            pm.collectionVariables.set('coll-schema', jsonData.schema.schema);\r",
-											"        });\r",
-											"    }\r",
-											"    else {\r",
-											"        pm.test('Schema translates to JSON', function(){\r",
-											"            try{\r",
-											"                const yaml = pm.environment.get('env-jsonToYaml');\r",
-											"                (new Function(yaml))();\r",
-											"\r",
-											"                const schema = jsyaml.load(jsonData.schema.schema);\r",
-											"                pm.collectionVariables.set('coll-schema', JSON.stringify(schema));\r",
-											"                pm.expect(1).to.equal(1);\r",
-											"            }\r",
-											"            catch(err){\r",
-											"                pm.expect(`${err.name} - ${err.message}`).to.equal(undefined);\r",
-											"            }    \r",
-											"        });\r",
-											"    }\r",
-											"}\r",
-											"catch(err) {\r",
-											"    console.log(err);\r",
-											"    pm.test('Unable to load schema', function(){\r",
-											"        pm.expect(0).to.equal(1);\r",
-											"        postman.setNextRequest(null);\r",
-											"    })\r",
-											"}"
+											"let responseSchema = pm.response.text();",
+											"",
+											"if(responseSchema.length != 0) {",
+											"    let success = true;",
+											"    try{",
+											"        const yaml = pm.environment.get('env-jsonToYaml');",
+											"        (new Function(yaml))();",
+											"",
+											"        const schema = jsyaml.load(responseSchema);",
+											"        pm.collectionVariables.set('coll-schema', JSON.stringify(schema));",
+											"        postman.setNextRequest('Get API Base Url');",
+											"    }",
+											"    catch(err){",
+											"        console.log(err);",
+											"        success = false;",
+											"        postman.setNextRequest(null);",
+											"    }",
+											"",
+											"    pm.test('Successfully converted provided schema', function(){",
+											"        pm.expect(success).to.be.true;",
+											"    }); ",
+											"} else {",
+											"    console.log(\"Error retrieving schema from URL - \" + pm.environment.get(\"env-schemaUrl\"));",
+											"    postman.setNextRequest(null);",
+											"}",
+											"",
+											""
 										],
-										"type": "text/javascript",
-										"id": "69aa880e-dc19-42d7-86fc-65ec1bf3c000"
+										"type": "text/javascript"
 									}
 								}
 							],
-							"id": "734da855-a17d-4f6e-bad0-3bcde1ca1b73",
+							"id": "18f24ae5-ed6b-4a2b-8a53-99a9d362e1b3",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "GET",
-								"header": [
-									{
-										"key": "X-Api-Key",
-										"value": "{{env-apiKey}}",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://api.getpostman.com/apis/:apiId/versions/:apiVersionId/schemas/:schemaId",
-									"protocol": "https",
-									"host": [
-										"api",
-										"getpostman",
-										"com"
-									],
-									"path": [
-										"apis",
-										":apiId",
-										"versions",
-										":apiVersionId",
-										"schemas",
-										":schemaId"
-									],
-									"variable": [
-										{
-											"id": "5af9f453-6702-48ce-bdbb-1459346a58f2",
-											"key": "apiId",
-											"value": "{{coll-apiId}}"
-										},
-										{
-											"id": "6181c0c2-e82c-444e-b710-3ea176c906d8",
-											"key": "apiVersionId",
-											"value": "{{coll-versionId}}"
-										},
-										{
-											"id": "ecc6aca5-e74d-4190-b260-9f4698d6c569",
-											"key": "schemaId",
-											"value": "{{coll-schemaId}}"
-										}
-									]
-								}
+								"header": [],
+								"url": "{{env-schemaUrl}}"
 							},
 							"response": []
 						},
@@ -3708,22 +3661,22 @@
 	],
 	"variable": [
 		{
-			"id": "fe941a34-8264-494e-bc39-c74d4d6fcae4",
+			"id": "248b5c0a-20cd-4517-9322-eff04e3c5016",
 			"key": "coll-apiIds",
 			"value": ""
 		},
 		{
-			"id": "392956c7-b58e-4e73-8e45-6a1991a4595a",
+			"id": "2fbc3d94-1138-4bc3-95fc-8a8323c1afe1",
 			"key": "coll-apiId",
 			"value": ""
 		},
 		{
-			"id": "28a1f6c6-78aa-4c40-a932-5e7d54dad86f",
+			"id": "12621f0b-ae6f-4afd-9de1-6044886ad01d",
 			"key": "coll-versionId",
 			"value": ""
 		},
 		{
-			"id": "f1ab2bff-38b3-427d-b779-47b5fafacb7c",
+			"id": "8ec9792d-a1d0-4cd3-82a4-746969f23649",
 			"key": "coll-schemaId",
 			"value": ""
 		}
