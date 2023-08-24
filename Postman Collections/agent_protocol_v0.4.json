@@ -3265,27 +3265,27 @@
 	],
 	"variable": [
 		{
-			"id": "64ce9b0f-43c0-4161-84a8-ddd1b3588eab",
+			"id": "4b2331c2-3982-4ac2-937d-9f6e2218bc09",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "5d4ab336-7bd5-41d8-9d29-b26fce8884f4",
+			"id": "60d893ad-eb88-4533-850c-4ffb4613a9f4",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "f4d22365-adc2-481d-bf26-710a991ac102",
+			"id": "2debf778-9daa-4510-ac03-699d1542e00e",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "7f0d234f-28d6-4caa-8ecc-4e76933d0e17",
+			"id": "de46af5c-8bf9-4288-8ead-7d9c0815b67e",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "0d2e6fca-3567-4f2f-a951-c836c179431a",
+			"id": "7db8d501-ec5c-413e-9392-ab57451d2be2",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
