@@ -1801,7 +1801,31 @@
 				}
 			],
 			"id": "4b743f46-e582-4565-ac7d-c6446a710ee1",
-			"description": "Create tasks and consumes them."
+			"description": "Create tasks and consumes them.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7f174c78-2068-4351-a64c-bd4c115470e8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef296737-8c06-47ed-90c3-bfe882c1aa40",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Artifacts",
@@ -3235,27 +3259,27 @@
 	],
 	"variable": [
 		{
-			"id": "67d51ef7-717d-4bd9-bc60-31bd639280f8",
+			"id": "81bba109-e059-4e9f-a881-6ec8f71da13c",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "3b4312ab-1bd3-445c-821b-72f4c1a260e0",
+			"id": "b3b90d5b-f56a-4676-a227-8620f3691616",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "573bda12-8f01-4f6c-8715-f0d8753ef3c4",
+			"id": "a54db222-6f9d-4719-99d3-f8186525bb3e",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "76f8e984-fae9-4376-99b0-858f2ebcef3c",
+			"id": "4fc80585-4dbf-4cad-a69d-4b8958f25437",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "d872304a-bb5e-475c-8874-fccd1c4d397d",
+			"id": "e7b5b07d-08de-497e-b3df-f4e5729774bc",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
