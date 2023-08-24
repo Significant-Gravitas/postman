@@ -3415,7 +3415,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "493a0585-ff74-4112-af8d-4bdf982e85ea",
+				"id": "b68c6664-19a7-4d23-9e04-d4850f7c54ef",
 				"type": "text/javascript",
 				"exec": [
 					"if (pm.request.url.path) {",
@@ -3464,14 +3464,15 @@
 					"        pm.expect(requestBody).to.have.jsonSchema(schema);",
 					"        console.log('JSON Schema validation passed');",
 					"    });",
-					"}"
+					"}",
+					""
 				]
 			}
 		},
 		{
 			"listen": "test",
 			"script": {
-				"id": "99dd4fed-0795-4145-9fcb-1cd01630a00f",
+				"id": "a23f1ab2-fa22-468b-826b-b857c9d4754d",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3544,27 +3545,27 @@
 	],
 	"variable": [
 		{
-			"id": "6d6a6bd8-d4a0-4bd3-b193-56e197152479",
+			"id": "8917fd00-846e-4d2d-ac67-7a9c168e365d",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "5f12e2b6-5c5e-4427-9c07-46ea507d220d",
+			"id": "a2688cbb-f3e2-4dc6-80bd-0de891a22bba",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "b1554001-e459-48d4-975a-f637b57a3fff",
+			"id": "fd79b851-7d5f-487a-91b9-caffc3acb30c",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "ea6b6c35-d9df-4b7a-96e1-35e58fa1ed0d",
+			"id": "99076857-0fa1-4067-9b7c-839be12b5653",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "c00a24ba-70f6-4877-b093-b37efbacf761",
+			"id": "2fe83b9a-f0da-454f-bada-a9cddd2394a3",
 			"key": "previous-step",
 			"value": ""
 		}
