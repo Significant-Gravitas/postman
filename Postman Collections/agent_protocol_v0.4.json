@@ -3312,7 +3312,8 @@
 					"response": []
 				}
 			],
-			"id": "5533f3da-7019-4599-a9ab-b3d99cc2d5e5"
+			"id": "5533f3da-7019-4599-a9ab-b3d99cc2d5e5",
+			"description": "Tests automatically generated from the API spec"
 		},
 		{
 			"name": "Finalize",
@@ -3538,27 +3539,27 @@
 	],
 	"variable": [
 		{
-			"id": "fe1b6fa0-1b9d-48fa-be4d-d633ef869be3",
+			"id": "c6f5abf5-e8f7-440d-8667-9794aa2fa869",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "81bc247b-3f59-46eb-94f3-f3de10571058",
+			"id": "21ad5109-05d7-4179-bd42-37224025de42",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "b7c12711-062a-4d77-aa0f-90a06f72103e",
+			"id": "dee17549-fb42-484a-a786-b5b415eebc0c",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "9f543863-6146-44df-a065-afb6c9a0442c",
+			"id": "be5cdbd3-cdb5-4514-9469-304f5f0c5df7",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "e1b57c1a-46df-47e0-a2bd-a1cfeb896c47",
+			"id": "fc0f6741-acf8-473f-93b3-c517546d9981",
 			"key": "previous-step",
 			"value": ""
 		}
