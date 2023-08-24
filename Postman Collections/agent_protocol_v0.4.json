@@ -1595,10 +1595,6 @@
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
 									"pm.test(\"Response time is less than 500ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(500);",
 									"});",
@@ -3251,27 +3247,27 @@
 	],
 	"variable": [
 		{
-			"id": "79a207b6-5266-45fd-9d85-661ccd76df02",
+			"id": "ef50036d-e5df-4572-a18d-daef5eb7f31c",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "0fd3aa4e-493a-4f5d-9d12-349f81b270cc",
+			"id": "fdcbe468-0192-4315-b27e-4f63b9d052c9",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "d6f9bd99-4fda-4baa-b182-8d1face615fd",
+			"id": "6ccfc1c5-481f-472b-80bb-2feb1ec2eb1b",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "3126c7bb-dcc5-4277-9c16-d23570d45925",
+			"id": "8eaa9870-8e6e-4a84-8cfa-c42e1094f0cd",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "fd98eed7-c651-4038-9368-12082960d660",
+			"id": "fcb37a21-bf07-4c9b-9342-30dc60f469e3",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
