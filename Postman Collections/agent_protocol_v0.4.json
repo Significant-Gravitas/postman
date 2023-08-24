@@ -3422,14 +3422,16 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "8e0d51f8-be82-43a5-85f3-4288aaa14286",
+				"id": "4768a31e-ad5b-4aa0-8f09-0966806b02d6",
 				"type": "text/javascript",
 				"exec": [
-					"console.log(pm.request.url);",
+					"if (pm.request.url) {",
+					"    var updatedPaths = pm.request.url.path.map(function(path) {",
+					"        return path.replace(/{{/g, '{').replace(/}}/g, '}');",
+					"    });",
+					"}",
 					"",
-					"var updatedPaths = pm.request.url.path.map(function(path) {",
-					"    return path.replace(/{{/g, '{').replace(/}}/g, '}');",
-					"});",
+					"",
 					"",
 					"pm.collectionVariables.set(\"request-path\", \"/\" + updatedPaths.join('/'))",
 					"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
@@ -3472,7 +3474,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a533e560-c9d5-4b49-bfe9-a2ab44bd84ff",
+				"id": "0fa5653e-206d-41f3-b8fa-a566f7e122b6",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3545,7 +3547,7 @@
 	],
 	"variable": [
 		{
-			"id": "7c2ba427-38fa-429f-948a-30f7c7171d01",
+			"id": "b53d55e8-d066-4bbe-b946-f833035e2923",
 			"key": "request-path",
 			"value": ""
 		}
