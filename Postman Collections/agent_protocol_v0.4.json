@@ -3220,7 +3220,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "78dce3bb-16f4-4953-9bb8-94c2026d92fb",
+				"id": "83327803-14a1-4371-a192-b1a80747feba",
 				"type": "text/javascript",
 				"exec": [
 					"if (pm.request.url.path && pm.request.body.raw) {",
@@ -3243,7 +3243,6 @@
 					"    console.log('Processing request body for path \"agent\"');",
 					"    // Parsing the request body",
 					"    const schemaString = pm.collectionVariables.get(\"coll-schema\");",
-					"    console.log('Retrieved schema string:', schemaString);",
 					"    const api = JSON.parse(schemaString);",
 					"    console.log('Parsed API schema:', api);",
 					"    let requestBody = pm.variables.replaceIn(pm.request.body.raw);",
@@ -3283,7 +3282,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "9226bb27-a5cc-4e87-afc6-6f5bc8913a54",
+				"id": "a0225f9e-d800-4480-baab-4b8fbf7d0b1d",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3356,27 +3355,27 @@
 	],
 	"variable": [
 		{
-			"id": "8fc66931-03e7-4867-8460-9b8964cfc917",
+			"id": "3c59b3cc-eb0e-4d66-b932-0f1fbebaf079",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "b13eb49a-517b-460e-aae2-0a8d31247432",
+			"id": "9b079b1f-7069-4a1e-90bf-ca3cf9022603",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "71a5807d-bf22-4133-974d-09ba4a52430b",
+			"id": "c7b112e5-973e-47a1-928b-35a6c6d9e00c",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "c4a75ab3-a149-4946-a002-34618ea007c3",
+			"id": "adef7f6a-1844-425e-8dd7-e61c50fa3acd",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "36a3b377-5b3f-43ef-b47b-3d448e21eae2",
+			"id": "43e223d6-4193-4dfa-a944-0a0f237b5dc8",
 			"key": "previous-step",
 			"value": ""
 		}
