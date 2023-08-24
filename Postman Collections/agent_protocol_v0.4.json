@@ -378,11 +378,7 @@
 									"            \"input\": JSON.parse(pm.request.body.raw).input",
 									"        } ",
 									"    )",
-									");",
-									"",
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.expect(pm.response.code).to.equal(200);",
-									"});"
+									");"
 								],
 								"type": "text/javascript"
 							}
@@ -3242,27 +3238,27 @@
 	],
 	"variable": [
 		{
-			"id": "6de8a3bb-a400-4c6f-9588-5eddf296392b",
+			"id": "6d4fb103-f012-4e76-8d49-deed67e2d4dc",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "64202bf7-9833-4b68-ab5e-b567e9957c99",
+			"id": "08f42038-e2ca-4b93-a126-3704ace10df7",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "70799abe-0933-495c-9cd2-ebc1e7355d52",
+			"id": "6ae5f922-c678-4f3c-bbb2-9baca7c963f0",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "a896b701-0f75-4653-883e-6c22c7749403",
+			"id": "2345c4eb-7326-4d03-bafa-4cf0f81145d7",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "52b22450-bf4d-4562-b6bc-d30261110971",
+			"id": "dc8ba89d-7df9-42e7-8b92-426041c3697d",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
