@@ -3355,12 +3355,12 @@
 	],
 	"variable": [
 		{
-			"id": "418e5982-d542-4e06-badb-7db204d2a29e",
+			"id": "bf40d9de-fd07-45de-b72d-dba6107f443f",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "adb5d3a6-d410-44da-a922-3b6a852df73b",
+			"id": "5612b329-17ef-40d4-aad6-1328ddc7448f",
 			"key": "coll-baseUrl",
 			"value": ""
 		}
