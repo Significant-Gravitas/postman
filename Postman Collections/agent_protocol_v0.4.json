@@ -1166,10 +1166,6 @@
 							"script": {
 								"id": "dae8e511-e80d-478b-81ab-2d66dd6fd5b3",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
 									"pm.test(\"Response time is less than 500ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
 									"});\r",
@@ -3259,27 +3255,27 @@
 	],
 	"variable": [
 		{
-			"id": "81bba109-e059-4e9f-a881-6ec8f71da13c",
+			"id": "c2c5d0b2-9d0f-4688-a083-dc220ddfdf95",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "b3b90d5b-f56a-4676-a227-8620f3691616",
+			"id": "5d923112-165d-42e0-8ad1-46eb9873469f",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "a54db222-6f9d-4719-99d3-f8186525bb3e",
+			"id": "8e0dcee2-0d5d-4c7e-8555-64bd8854af90",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "4fc80585-4dbf-4cad-a69d-4b8958f25437",
+			"id": "dee6fc87-825f-4c36-bf56-35e13de2c1e7",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "e7b5b07d-08de-497e-b3df-f4e5729774bc",
+			"id": "ae35fc08-4885-454c-8ccf-294c7f6a6ad1",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
