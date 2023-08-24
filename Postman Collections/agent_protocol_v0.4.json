@@ -2297,7 +2297,31 @@
 				}
 			],
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060",
-			"description": "Create Artifacts and consumes them."
+			"description": "Create Artifacts and consumes them.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "61be92ef-c1cd-4f2a-a77c-78e5913ea299",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7dcedb1e-4f42-48b1-ac9b-fd3b842b428b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Testing OpenAPI spec",
@@ -3247,27 +3271,27 @@
 	],
 	"variable": [
 		{
-			"id": "ef50036d-e5df-4572-a18d-daef5eb7f31c",
+			"id": "a8509780-910c-4cd6-a6f6-c12659c98c72",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "fdcbe468-0192-4315-b27e-4f63b9d052c9",
+			"id": "a7df45d0-6bfe-4aa8-9f11-c205410e1ca6",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "6ccfc1c5-481f-472b-80bb-2feb1ec2eb1b",
+			"id": "b87bba82-43b3-43e3-9514-02cf1879f558",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "8eaa9870-8e6e-4a84-8cfa-c42e1094f0cd",
+			"id": "e92b9726-8815-4877-9e0a-3d8f145390b5",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "fcb37a21-bf07-4c9b-9342-30dc60f469e3",
+			"id": "9c42ca93-e394-4b1f-ab65-29a3e59dc2e2",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
