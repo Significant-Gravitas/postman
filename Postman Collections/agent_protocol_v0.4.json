@@ -378,7 +378,11 @@
 									"            \"input\": JSON.parse(pm.request.body.raw).input",
 									"        } ",
 									"    )",
-									");"
+									");",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -3541,27 +3545,27 @@
 	],
 	"variable": [
 		{
-			"id": "9d07c88e-e2ca-418e-9fe8-23c86e3aa66a",
+			"id": "d0a3b182-1bb7-422a-9e20-f2304f2a0dfe",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "37ab5248-ee66-4d85-abb9-a4a076392d71",
+			"id": "2bfffec7-97e0-4ef6-8b4b-431e0d8c1c02",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "5da355a7-cb5b-435a-a471-f96e968491ec",
+			"id": "d1f82237-dda8-401e-a15c-e45e7d702b65",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "6bf481e3-6a5b-433b-9bb0-ed77c4f5b329",
+			"id": "fe74417b-5e38-4bec-9c90-cb13ebf7166e",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "cc2d770b-6b5c-4072-927b-c96eb0a73e33",
+			"id": "08c1b101-f3a0-4778-93c3-7352457c0d76",
 			"key": "previous-step",
 			"value": ""
 		}
