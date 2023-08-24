@@ -3422,18 +3422,19 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "10289eeb-8ea4-489f-8e02-70270f806a5a",
+				"id": "e6e509a2-5447-45bb-a5d1-5f9fd68c39ae",
 				"type": "text/javascript",
 				"exec": [
 					"if (pm.request.url.path) {",
 					"    var updatedPaths = pm.request.url.path.map(function(path) {",
 					"        return path.replace(/{{/g, '{').replace(/}}/g, '}');",
 					"    });",
+					"    pm.collectionVariables.set(\"request-path\", \"/\" + updatedPaths.join('/'))",
+					"",
 					"}",
 					"",
 					"",
 					"",
-					"pm.collectionVariables.set(\"request-path\", \"/\" + updatedPaths.join('/'))",
 					"if (pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
 					"    console.log (\"pm.request.body\")",
 					"    console.log (pm.request.body)",
@@ -3474,7 +3475,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "638612b5-1a4a-41d0-8f59-824a08c5e768",
+				"id": "7882bce8-55d3-418b-afe7-8b56a323b2d4",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3547,7 +3548,7 @@
 	],
 	"variable": [
 		{
-			"id": "962efa53-97c4-4b9d-b493-7d8ef7ea0f2a",
+			"id": "87e28b36-b004-481a-84a7-4f66dfe07d3a",
 			"key": "request-path",
 			"value": ""
 		}
