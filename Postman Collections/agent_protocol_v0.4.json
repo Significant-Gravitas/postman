@@ -3661,38 +3661,8 @@
 	],
 	"variable": [
 		{
-			"id": "e93feb2f-8bbd-4ea0-b008-3613e5c940bf",
-			"key": "coll-apiIds",
-			"value": ""
-		},
-		{
-			"id": "abe10b6b-7b94-41a7-9a69-4d49f977aac2",
-			"key": "coll-apiId",
-			"value": ""
-		},
-		{
-			"id": "cf81f8a2-4016-4af2-88d7-c7fc8f283b9d",
-			"key": "coll-versionId",
-			"value": ""
-		},
-		{
-			"id": "0cc22eb4-bac2-410c-833b-f63fc22ea7a6",
-			"key": "coll-schemaId",
-			"value": ""
-		},
-		{
-			"id": "b073d073-7afc-45a0-911f-2ba586c24bb2",
-			"key": "coll-schema",
-			"value": ""
-		},
-		{
-			"id": "b981ffe2-f70c-4e26-a21a-4ea87dc56f8f",
-			"key": "coll-baseUrl",
-			"value": ""
-		},
-		{
-			"id": "6cfb2622-0981-42e9-b591-15973de7b451",
-			"key": "coll-schemaTests",
+			"id": "4cd14c3e-fe19-464c-ab2f-613a7ae472ad",
+			"key": "request-path",
 			"value": ""
 		}
 	]
