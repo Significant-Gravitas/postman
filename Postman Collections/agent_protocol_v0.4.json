@@ -3708,18 +3708,23 @@
 	],
 	"variable": [
 		{
-			"id": "9149cc6d-2c60-4a7e-918a-d9b248e5234c",
+			"id": "bdada25d-457d-4ac4-8782-02754bc689c1",
 			"key": "coll-apiIds",
 			"value": ""
 		},
 		{
-			"id": "61842ea0-edd1-47ff-9b65-67bfdf89dbcc",
+			"id": "e30ddcb3-8676-451e-901f-e0759671466b",
 			"key": "coll-apiId",
 			"value": ""
 		},
 		{
-			"id": "88d761f4-732d-4e0d-b965-f0dafedc0e7d",
+			"id": "99ac8bdf-2af6-4abb-8ef7-e4c74880e311",
 			"key": "coll-versionId",
+			"value": ""
+		},
+		{
+			"id": "3d021c4a-5d2a-46a7-ba60-bcdbbf9dd678",
+			"key": "coll-schemaId",
 			"value": ""
 		}
 	]
