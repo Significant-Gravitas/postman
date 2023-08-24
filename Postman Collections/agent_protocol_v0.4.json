@@ -3415,60 +3415,63 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "6a045668-1859-4dc3-bb08-e297c3d958cd",
+				"id": "493a0585-ff74-4112-af8d-4bdf982e85ea",
 				"type": "text/javascript",
 				"exec": [
 					"if (pm.request.url.path) {",
+					"    console.log('URL path found:', pm.request.url.path);",
 					"    var updatedPaths = pm.request.url.path.map(function(path) {",
-					"        return path.replace(/{{/g, '{').replace(/}}/g, '}');",
+					"        console.log('Original path segment:', path);",
+					"        var updatedPath = path.replace(/{{/g, '{').replace(/}}/g, '}');",
+					"        console.log('Updated path segment:', updatedPath);",
+					"        return updatedPath;",
 					"    });",
-					"    pm.collectionVariables.set(\"request-path\", \"/\" + updatedPaths.join('/'))",
-					"",
+					"    var fullPath = \"/\" + updatedPaths.join('/');",
+					"    console.log('Updated full path:', fullPath);",
+					"    pm.collectionVariables.set(\"request-path\", fullPath);",
+					"    console.log('Set request-path variable to:', fullPath);",
+					"    // Updated path variables with replacements",
 					"}",
 					"",
 					"",
-					"",
 					"if (pm.request.body && pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
-					"    console.log (\"pm.request.body\")",
-					"    console.log (pm.request.body)",
-					"    // Get the schema from the collection variable",
+					"    console.log('Processing request body for path \"agent\"');",
+					"    // Parsing the request body",
 					"    const schemaString = pm.collectionVariables.get(\"coll-schema\");",
-					"    // Parse the schema if it's a string",
+					"    console.log('Retrieved schema string:', schemaString);",
 					"    const api = JSON.parse(schemaString);",
-					"    requestBody = pm.variables.replaceIn(pm.request.body.raw)",
-					"    requestBody = JSON.parse(requestBody)",
+					"    console.log('Parsed API schema:', api);",
+					"    let requestBody = pm.variables.replaceIn(pm.request.body.raw);",
+					"    console.log('Replaced variables in request body:', requestBody);",
+					"    requestBody = JSON.parse(requestBody);",
+					"    console.log('Parsed request body:', requestBody);",
 					"    ",
-					"    requestBody = pm.variables.replaceIn(requestBody)",
+					"    requestBody = pm.variables.replaceIn(requestBody);",
+					"    console.log('Replaced variables in request body (second pass):', requestBody);",
 					"    ",
-					"    console.log(\"RequestBody:\")",
-					"    console.log(requestBody)",
-					"    // Retrieve the correct schema for the given method and path",
-					"    console.log(\"debug\")",
-					"    console.log(pm.request.url.path.join('/'))",
-					"    console.log(api.paths)",
-					"    console.log(\"/\" + pm.request.url.path.join('/'))",
+					"    // Retrieving the correct schema for the given method and path",
 					"    var updatedPaths = pm.request.url.path.map(function(path) {",
 					"        return path.replace(/{{/g, '{').replace(/}}/g, '}');",
 					"    });",
-					"",
-					"    const schema = api.paths[\"/\" + updatedPaths.join('/')][pm.request.method.toLowerCase()].requestBody.content['application/json'].schema;",
-					"    console.log(\"Schema:\")",
-					"    console.log(schema)",
-					"",
-					"",
+					"    var fullPath = \"/\" + updatedPaths.join('/');",
+					"    console.log('Full path for schema retrieval:', fullPath);",
+					"    const schema = api.paths[fullPath][pm.request.method.toLowerCase()].requestBody.content['application/json'].schema;",
+					"    console.log('Retrieved specific schema for validation:', schema);",
+					"    ",
+					"    // Validating JSON Schema",
 					"    pm.test(\"Validate JSON Schema\", () => {",
-					"        pm.expect(requestBody).to.have.jsonSchema(schema)",
+					"        console.log('Starting JSON Schema validation for request body:', requestBody);",
+					"        pm.expect(requestBody).to.have.jsonSchema(schema);",
+					"        console.log('JSON Schema validation passed');",
 					"    });",
-					"} ",
-					"",
-					""
+					"}"
 				]
 			}
 		},
 		{
 			"listen": "test",
 			"script": {
-				"id": "24eac36a-05c1-48ac-9a0e-8a229061c12d",
+				"id": "99dd4fed-0795-4145-9fcb-1cd01630a00f",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3541,8 +3544,28 @@
 	],
 	"variable": [
 		{
-			"id": "300ca881-63eb-43f9-be17-141eb2fe540f",
+			"id": "062807e1-ce1f-4e78-ad58-93312f49d629",
 			"key": "request-path",
+			"value": ""
+		},
+		{
+			"id": "0d2864a6-45ca-468a-b51a-cf9c3a28540a",
+			"key": "coll-schema",
+			"value": ""
+		},
+		{
+			"id": "f05353a9-be0f-464b-8455-d7b4b5e7af90",
+			"key": "coll-baseUrl",
+			"value": ""
+		},
+		{
+			"id": "85c49d9f-6e93-4ef4-9cf5-950a4e1332ea",
+			"key": "step-number",
+			"value": ""
+		},
+		{
+			"id": "73dcdd71-8dd8-4295-97ef-5e98f1a765a9",
+			"key": "previous-step",
 			"value": ""
 		}
 	]
