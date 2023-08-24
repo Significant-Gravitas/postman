@@ -2629,7 +2629,7 @@
 			"id": "a2e03bbe-bd0f-44a2-bff2-f56c343fcda0"
 		},
 		{
-			"name": "Contract Tests",
+			"name": "Automatically Generated Tests",
 			"item": [
 				{
 					"name": "Build Schema Tests",
@@ -3538,27 +3538,27 @@
 	],
 	"variable": [
 		{
-			"id": "24c53858-1412-4dec-b7d1-28d2315b8c07",
+			"id": "fe1b6fa0-1b9d-48fa-be4d-d633ef869be3",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "9bc8ca5f-e111-4e59-8e6d-65afbf4e01be",
+			"id": "81bc247b-3f59-46eb-94f3-f3de10571058",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "0a829834-2908-4140-879e-2b841809d454",
+			"id": "b7c12711-062a-4d77-aa0f-90a06f72103e",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "dc382526-aaa2-4440-86d7-37df8ecdc211",
+			"id": "9f543863-6146-44df-a065-afb6c9a0442c",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "f889721b-bd88-407f-a5da-84d658a59d92",
+			"id": "e1b57c1a-46df-47e0-a2bd-a1cfeb896c47",
 			"key": "previous-step",
 			"value": ""
 		}
