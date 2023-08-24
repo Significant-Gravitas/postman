@@ -1094,7 +1094,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "75ef41e6-6fe0-496e-b1aa-b985cd5ee3ba",
+						"id": "1f74f7f2-ed1c-43d4-88ee-e9688e6caf45",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1104,10 +1104,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "caf6c0a3-cdbe-44cd-9ac0-733c140c0379",
+						"id": "fbbe4b1f-0708-452d-99b7-fe8ad882a7ba",
 						"type": "text/javascript",
 						"exec": [
-							""
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
 						]
 					}
 				}
@@ -3240,27 +3242,27 @@
 	],
 	"variable": [
 		{
-			"id": "87b18b63-3c4f-4bd9-b30e-9753b68e4dbc",
+			"id": "728d6f9e-1623-4af2-a782-fec3b8c93d47",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "59346c3e-e69b-40bd-89ad-c32401f184e4",
+			"id": "ce2e9243-bb30-43a7-bbb9-b0e8cb1eda9a",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "fb7d0035-8266-4014-afb6-16dc1d892a04",
+			"id": "e8ee1d9c-29f0-4d88-a33d-5879c9828a60",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "26d0a6a0-1236-44e8-8ae3-0d7d5a7d53e6",
+			"id": "ddaf92d5-0cc2-4de1-8637-16d1b1eb5ff5",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "0fc1b539-b7b7-4e01-97b9-9283a54ca0c3",
+			"id": "b4297eeb-947c-42cd-9fa7-7a1d260c314a",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
