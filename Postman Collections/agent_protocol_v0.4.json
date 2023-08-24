@@ -210,7 +210,7 @@
 			"name": "Basic User Experience",
 			"item": [
 				{
-					"name": "Give me all the tasks",
+					"name": "Get all the tasks",
 					"event": [
 						{
 							"listen": "test",
@@ -3548,17 +3548,17 @@
 	],
 	"variable": [
 		{
-			"id": "9dfd8539-3e48-4e13-8c2d-2dc52bf5982c",
+			"id": "3852cd50-2063-421c-8a2e-1e079441e4a0",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "be7daa2a-6651-4239-baa3-7e2ee06663f7",
+			"id": "4eb3838f-9c26-4c57-9aed-1990e9cacf71",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "76568503-adc0-46ae-ac79-12a944e8b362",
+			"id": "6b39c2a1-1857-4027-80ba-4bed6722d3da",
 			"key": "coll-baseUrl",
 			"value": ""
 		}
