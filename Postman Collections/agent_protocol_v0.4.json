@@ -3545,22 +3545,5 @@
 				]
 			}
 		}
-	],
-	"variable": [
-		{
-			"id": "c4cec7d5-041b-4e03-a188-a5e080f0d2e2",
-			"key": "request-path",
-			"value": ""
-		},
-		{
-			"id": "df05e015-e724-4294-81a7-e3663d6a83c0",
-			"key": "coll-schema",
-			"value": ""
-		},
-		{
-			"id": "6ca677ef-89d2-4707-a47a-8b909743f554",
-			"key": "coll-baseUrl",
-			"value": ""
-		}
 	]
 }
