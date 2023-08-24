@@ -412,7 +412,7 @@
 											"pm.test('Schema has server/baseUrl defined', function () {\r",
 											"    const servers = schema.servers;\r",
 											"    pm.expect(servers).to.not.be.undefined;\r",
-											"    const serverToTest = servers.find(s => s.server.toLowerCase() == server.toLowerCase());\r",
+											"    const serverToTest = servers.find(s => s.url.toLowerCase() == server.toLowerCase());\r",
 											"    pm.expect(serverToTest).to.not.be.undefined;\r",
 											"\r",
 											"    pm.expect(serverToTest).to.have.property('url');\r",
@@ -3661,27 +3661,27 @@
 	],
 	"variable": [
 		{
-			"id": "9947a343-aa1f-44ea-8baf-099c9e1e995d",
+			"id": "aa78ff07-a5ac-4c23-865e-e55c9a68dc1d",
 			"key": "coll-apiIds",
 			"value": ""
 		},
 		{
-			"id": "c307b064-16c3-4198-bae9-8829f18b1139",
+			"id": "83ef8953-7381-44c6-9fb5-8e71ab4e3393",
 			"key": "coll-apiId",
 			"value": ""
 		},
 		{
-			"id": "2db323ca-28ef-4b65-9a27-6f4c9557f9b2",
+			"id": "8446daf0-6da9-456c-be66-cd7cf66c1cba",
 			"key": "coll-versionId",
 			"value": ""
 		},
 		{
-			"id": "ee5e8640-f8da-4f6a-aa02-56c317cd0df5",
+			"id": "791ee3bb-bb68-49cc-87cf-d917281f4b1d",
 			"key": "coll-schemaId",
 			"value": ""
 		},
 		{
-			"id": "4dd8038a-6244-414f-8de0-2637ccc19bf4",
+			"id": "01156581-78e6-4a8d-9f1e-019e92ed520d",
 			"key": "coll-schema",
 			"value": ""
 		}
