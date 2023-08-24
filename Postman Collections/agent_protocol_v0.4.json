@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Contract Test Generator (Ignore)",
+			"name": "Contract Test Generator",
 			"item": [
 				{
 					"name": "API Validation",
@@ -3420,8 +3420,13 @@
 	],
 	"variable": [
 		{
-			"id": "1f3cd71b-a368-4d9b-8a38-b62c7cf8e265",
+			"id": "7965f12f-c932-4b63-8198-88c047fe5c46",
 			"key": "coll-schema",
+			"value": ""
+		},
+		{
+			"id": "9e119f7d-2ea8-4b45-b5c9-a4ec272d6f75",
+			"key": "coll-baseUrl",
 			"value": ""
 		}
 	]
