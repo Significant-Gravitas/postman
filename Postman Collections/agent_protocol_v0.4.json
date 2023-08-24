@@ -3661,8 +3661,13 @@
 	],
 	"variable": [
 		{
-			"id": "4cd14c3e-fe19-464c-ab2f-613a7ae472ad",
+			"id": "15767686-e999-49cb-84ca-a7a4d144499e",
 			"key": "request-path",
+			"value": ""
+		},
+		{
+			"id": "9db1a565-aa39-44d1-ad7f-d5cdd3660550",
+			"key": "coll-apiIds",
 			"value": ""
 		}
 	]
