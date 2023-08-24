@@ -3322,7 +3322,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "b68c6664-19a7-4d23-9e04-d4850f7c54ef",
+				"id": "4853cf88-d9df-4280-994b-970437e10650",
 				"type": "text/javascript",
 				"exec": [
 					"if (pm.request.url.path) {",
@@ -3362,7 +3362,13 @@
 					"    });",
 					"    var fullPath = \"/\" + updatedPaths.join('/');",
 					"    console.log('Full path for schema retrieval:', fullPath);",
-					"    const schema = api.paths[fullPath][pm.request.method.toLowerCase()].requestBody.content['application/json'].schema;",
+					"    const method = pm.request.method.toLowerCase();",
+					"    console.log('Method:', method);",
+					"    const requestBodyContent = api.paths[fullPath][method].requestBody.content;",
+					"    console.log('Request Body Content:', requestBodyContent);",
+					"    const schema = requestBodyContent['application/json'].schema;",
+					"    console.log('Schema:', schema);",
+					"",
 					"    console.log('Retrieved specific schema for validation:', schema);",
 					"    ",
 					"    // Validating JSON Schema",
@@ -3379,7 +3385,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a23f1ab2-fa22-468b-826b-b857c9d4754d",
+				"id": "f7d20b5d-8367-4231-b5a7-ac83f38e3565",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3452,27 +3458,27 @@
 	],
 	"variable": [
 		{
-			"id": "897c9d7f-6169-43a7-ba9d-1503bced5dce",
+			"id": "1543a5f6-7498-475d-b19b-03396eb38fa2",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "26a7343d-1bb3-448a-a890-cb52e3a72945",
+			"id": "e353e5d9-2391-4670-9e9d-15a353df7098",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "7b9eea91-d215-4485-8742-67b0fcb8262a",
+			"id": "f29653f8-7b4d-41ee-bbf1-050db3eb2029",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "4c855188-4a8a-4946-8438-e95444165fdf",
+			"id": "9164caab-a22d-4f37-a68d-9a041a7ba596",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "e3eaafa5-154d-4c23-81f0-563ebf75d63e",
+			"id": "02db97a2-99ef-4730-8f24-f852f7614bca",
 			"key": "previous-step",
 			"value": ""
 		}
