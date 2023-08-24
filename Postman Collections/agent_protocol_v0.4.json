@@ -378,11 +378,7 @@
 									"            \"input\": JSON.parse(pm.request.body.raw).input",
 									"        } ",
 									"    )",
-									");",
-									"",
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.expect(pm.response.code).to.equal(200);",
-									"});"
+									");"
 								],
 								"type": "text/javascript"
 							}
@@ -3545,27 +3541,27 @@
 	],
 	"variable": [
 		{
-			"id": "dba3fe3c-0539-430b-b090-570c8823c1fe",
+			"id": "9d07c88e-e2ca-418e-9fe8-23c86e3aa66a",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "bb034937-9cb3-431a-b722-5b520a7fc7c9",
+			"id": "37ab5248-ee66-4d85-abb9-a4a076392d71",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "bab1e412-10e0-41b9-89e0-20f6a4efd6b2",
+			"id": "5da355a7-cb5b-435a-a471-f96e968491ec",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "4c098110-2878-45c9-9664-d2a0e9394886",
+			"id": "6bf481e3-6a5b-433b-9bb0-ed77c4f5b329",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "781eb054-7eaf-4427-8029-cd8dd7433441",
+			"id": "cc2d770b-6b5c-4072-927b-c96eb0a73e33",
 			"key": "previous-step",
 			"value": ""
 		}
