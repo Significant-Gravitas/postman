@@ -2393,7 +2393,7 @@
 			"description": "Create Artifacts and consumes them."
 		},
 		{
-			"name": "Components",
+			"name": "Testing OpenAPI spec",
 			"item": [
 				{
 					"name": "Verify Component Adherence",
@@ -3538,27 +3538,27 @@
 	],
 	"variable": [
 		{
-			"id": "e05abace-3780-4ecd-91f7-68202b334f24",
+			"id": "24c53858-1412-4dec-b7d1-28d2315b8c07",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "a0418ee6-8963-4447-b295-280d3297e545",
+			"id": "9bc8ca5f-e111-4e59-8e6d-65afbf4e01be",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "f706e4c4-b46f-44cf-95c4-efa950d8c058",
+			"id": "0a829834-2908-4140-879e-2b841809d454",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "161b41a3-1944-4e0d-ad94-2dc15d5db0c6",
+			"id": "dc382526-aaa2-4440-86d7-37df8ecdc211",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "3d714f3b-b2c4-4e6f-b797-e58a8f834453",
+			"id": "f889721b-bd88-407f-a5da-84d658a59d92",
 			"key": "previous-step",
 			"value": ""
 		}
