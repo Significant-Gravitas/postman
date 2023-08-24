@@ -3237,5 +3237,32 @@
 				]
 			}
 		}
+	],
+	"variable": [
+		{
+			"id": "87b18b63-3c4f-4bd9-b30e-9753b68e4dbc",
+			"key": "coll-schema",
+			"value": ""
+		},
+		{
+			"id": "59346c3e-e69b-40bd-89ad-c32401f184e4",
+			"key": "coll-baseUrl",
+			"value": ""
+		},
+		{
+			"id": "fb7d0035-8266-4014-afb6-16dc1d892a04",
+			"key": "step-number",
+			"value": ""
+		},
+		{
+			"id": "26d0a6a0-1236-44e8-8ae3-0d7d5a7d53e6",
+			"key": "previous-step",
+			"value": ""
+		},
+		{
+			"id": "0fc1b539-b7b7-4e01-97b9-9283a54ca0c3",
+			"key": "coll-schemaTests",
+			"value": ""
+		}
 	]
 }
