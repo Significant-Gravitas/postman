@@ -558,8 +558,7 @@
 									"        pm.collectionVariables.set('previous-step', pm.response.json().step_id)",
 									"        postman.setNextRequest('Execute the steps until completion');",
 									"    }",
-									"}",
-									""
+									"}"
 								],
 								"type": "text/javascript"
 							}
@@ -3453,17 +3452,17 @@
 	],
 	"variable": [
 		{
-			"id": "f930e903-187b-49db-88fc-535ea2e84e0f",
+			"id": "46d7eee9-3de2-4d31-b456-8c8f1457486a",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "813117f3-c62f-48c4-8ffc-eb7fecf7f4a2",
+			"id": "0a6f8648-a62f-449d-b4c7-5f6eb3f86f16",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "1166d431-2ae3-4d24-843e-f86f9dbcff3a",
+			"id": "7bf6dc3d-afc7-4057-9dc2-066bb6cd75cf",
 			"key": "coll-baseUrl",
 			"value": ""
 		}
