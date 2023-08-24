@@ -3220,10 +3220,10 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "4853cf88-d9df-4280-994b-970437e10650",
+				"id": "f7ed0878-f371-4eb9-8f33-cc6b4408135b",
 				"type": "text/javascript",
 				"exec": [
-					"if (pm.request.url.path) {",
+					"if (pm.request.url.path && pm.request.body) {",
 					"    console.log('URL path found:', pm.request.url.path);",
 					"    var updatedPaths = pm.request.url.path.map(function(path) {",
 					"        console.log('Original path segment:', path);",
@@ -3283,7 +3283,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "f7d20b5d-8367-4231-b5a7-ac83f38e3565",
+				"id": "62bd439d-470d-497e-abe8-3cd20c1d5987",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3356,27 +3356,27 @@
 	],
 	"variable": [
 		{
-			"id": "6714a5ce-3d66-4773-b65b-82ffc46cd3dd",
+			"id": "fe481743-d5b4-44dc-a47a-fd44755d62b2",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "03ccf2ae-5edd-480a-ac6f-36d87b4e8965",
+			"id": "1e128f68-cbca-4a01-a4d8-1b21e335cbb0",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "1ef74c82-552d-4471-8ed4-c4f9011a06e7",
+			"id": "2dba53c5-789f-47ef-9237-e31b422dd841",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "a7aee5f7-db53-4ced-a7ea-2b8800bbc648",
+			"id": "30a3ca31-4163-4037-a70a-e804c132d8fa",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "ed1590e7-59ef-429b-b0a5-52b8268443a8",
+			"id": "e523c7bb-6251-42b0-889a-f81def11fbc1",
 			"key": "previous-step",
 			"value": ""
 		}
