@@ -2162,14 +2162,11 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "82829e0a-f8c7-4925-b28c-0513b018e83e",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
 									""
 								],
-								"type": "text/javascript",
-								"id": "82829e0a-f8c7-4925-b28c-0513b018e83e"
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -3268,27 +3265,27 @@
 	],
 	"variable": [
 		{
-			"id": "26b76c37-82be-4d09-9a93-c85f181d0c17",
+			"id": "20db0629-e591-4def-9fdf-76a4869267bd",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "e7b304b9-acc8-497c-9088-5994d35ce8fc",
+			"id": "72b5914b-4c37-4e99-820d-b4c9bde15b0a",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "a4b5bca3-5fbc-4c34-9149-02e9cef55176",
+			"id": "99f69e85-663e-4706-aa71-9a39f6a214b4",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "f1fdb285-fe0a-4965-9522-eb7accac8205",
+			"id": "d64a9484-4865-4632-8f66-e2d98c6d6f6a",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "19c6e2d8-0c94-42b0-8d5d-c0e790ca88d9",
+			"id": "11567a6f-5b73-40ba-8652-d27e9372c21a",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
