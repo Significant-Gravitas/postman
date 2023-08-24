@@ -3422,7 +3422,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "bd9605b2-d428-4f02-8ebd-39cb99861395",
+				"id": "6a045668-1859-4dc3-bb08-e297c3d958cd",
 				"type": "text/javascript",
 				"exec": [
 					"if (pm.request.url.path) {",
@@ -3435,7 +3435,7 @@
 					"",
 					"",
 					"",
-					"if (pm.request && pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
+					"if (pm.request.body && pm.request.body.raw && pm.request.url.path[0] == \"agent\") {",
 					"    console.log (\"pm.request.body\")",
 					"    console.log (pm.request.body)",
 					"    // Get the schema from the collection variable",
@@ -3475,7 +3475,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "eb075e6c-c78f-4891-8a30-2352f6bca0a5",
+				"id": "24eac36a-05c1-48ac-9a0e-8a229061c12d",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3548,7 +3548,7 @@
 	],
 	"variable": [
 		{
-			"id": "95ad123f-ef4c-4c06-b35a-336e961000ba",
+			"id": "b97e87cd-e7f0-47cd-b39d-30678984413f",
 			"key": "request-path",
 			"value": ""
 		}
