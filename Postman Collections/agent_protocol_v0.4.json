@@ -3661,13 +3661,8 @@
 	],
 	"variable": [
 		{
-			"id": "254fdf59-453f-4342-aa0e-d4d9d6073e65",
+			"id": "3d994b6d-a040-4715-9bf3-c533b7a4bf85",
 			"key": "coll-schema",
-			"value": ""
-		},
-		{
-			"id": "97f9cdb0-0df2-4b07-b48a-719a72b3e35b",
-			"key": "coll-baseUrl",
 			"value": ""
 		}
 	]
