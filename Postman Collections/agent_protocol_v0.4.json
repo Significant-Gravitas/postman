@@ -3542,5 +3542,12 @@
 				]
 			}
 		}
+	],
+	"variable": [
+		{
+			"id": "7c2ba427-38fa-429f-948a-30f7c7171d01",
+			"key": "request-path",
+			"value": ""
+		}
 	]
 }
