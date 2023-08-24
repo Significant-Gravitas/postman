@@ -1224,13 +1224,6 @@
 							"script": {
 								"id": "46ca258a-c625-4c17-b413-0c86023e705e",
 								"exec": [
-									"Object.keys(pm.globals.toObject()).forEach((key) => {",
-									"    pm.globals.unset(key);",
-									"});",
-									"Object.keys(pm.collectionVariables.toObject()).forEach((key) => {",
-									"    pm.collectionVariables.unset(key);",
-									"});",
-									"",
 									"var jsonData = pm.response.json();",
 									"pm.globals.set(\"taskId\", jsonData.task_id);",
 									"pm.globals.set(\"taskInput\", JSON.parse(pm.request.body.raw).input);"
@@ -3548,7 +3541,7 @@
 	],
 	"variable": [
 		{
-			"id": "5be45c9e-3d4c-47c8-9a7b-3a91840de844",
+			"id": "d025fc41-539b-428e-8d3e-f09952568130",
 			"key": "request-path",
 			"value": ""
 		}
