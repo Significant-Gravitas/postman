@@ -3422,9 +3422,10 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2c9e0ae3-c9de-4b2b-aaa2-7e741ce5b4a4",
+				"id": "8e0d51f8-be82-43a5-85f3-4288aaa14286",
 				"type": "text/javascript",
 				"exec": [
+					"console.log(pm.request.url);",
 					"",
 					"var updatedPaths = pm.request.url.path.map(function(path) {",
 					"    return path.replace(/{{/g, '{').replace(/}}/g, '}');",
@@ -3471,7 +3472,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "67996b4d-384e-48c7-b0a1-6c17e68e4800",
+				"id": "a533e560-c9d5-4b49-bfe9-a2ab44bd84ff",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3544,7 +3545,7 @@
 	],
 	"variable": [
 		{
-			"id": "eb04c4d6-1784-45f5-8b6b-afc0746e574f",
+			"id": "121ac97e-36e7-4797-9ec9-6a4a4d651605",
 			"key": "request-path",
 			"value": ""
 		}
