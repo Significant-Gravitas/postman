@@ -3548,17 +3548,17 @@
 	],
 	"variable": [
 		{
-			"id": "27b8209f-e96d-48ea-bbef-70b24074944a",
+			"id": "4c276737-7ea6-4155-9ed7-dd5d83210a25",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "3b2a0442-91a0-4787-898a-45aabf4948ef",
+			"id": "49a242b4-079d-4cd5-ab41-f25bfe13dc19",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "f4509bbb-8c84-4de3-ab96-4b0a0207ee8f",
+			"id": "d241a2bb-3745-400a-bf43-3eab7e1b6ee3",
 			"key": "coll-baseUrl",
 			"value": ""
 		}
