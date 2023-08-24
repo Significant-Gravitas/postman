@@ -3220,7 +3220,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "83327803-14a1-4371-a192-b1a80747feba",
+				"id": "55f64d28-2e63-4b71-9973-aee769b0b2ce",
 				"type": "text/javascript",
 				"exec": [
 					"if (pm.request.url.path && pm.request.body.raw) {",
@@ -3274,15 +3274,14 @@
 					"        pm.expect(requestBody).to.have.jsonSchema(schema);",
 					"        console.log('JSON Schema validation passed');",
 					"    });",
-					"}",
-					""
+					"}"
 				]
 			}
 		},
 		{
 			"listen": "test",
 			"script": {
-				"id": "a0225f9e-d800-4480-baab-4b8fbf7d0b1d",
+				"id": "55e81fee-f36a-4e37-a103-9fe394874e3c",
 				"type": "text/javascript",
 				"exec": [
 					"// Checking if the response is JSON and logging",
@@ -3355,12 +3354,12 @@
 	],
 	"variable": [
 		{
-			"id": "bf40d9de-fd07-45de-b72d-dba6107f443f",
+			"id": "a98832d9-6f76-4ed8-927a-2b699ca06a0f",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "5612b329-17ef-40d4-aad6-1328ddc7448f",
+			"id": "390ff071-9a95-4a0f-8f1f-0f6e846d2168",
 			"key": "coll-baseUrl",
 			"value": ""
 		}
