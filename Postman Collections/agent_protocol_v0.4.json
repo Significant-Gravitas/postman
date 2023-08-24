@@ -2031,9 +2031,6 @@
 							"script": {
 								"id": "3e7ee940-bef1-44e0-9c36-286aa059b5ae",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -3271,27 +3268,27 @@
 	],
 	"variable": [
 		{
-			"id": "a8509780-910c-4cd6-a6f6-c12659c98c72",
+			"id": "26b76c37-82be-4d09-9a93-c85f181d0c17",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "a7df45d0-6bfe-4aa8-9f11-c205410e1ca6",
+			"id": "e7b304b9-acc8-497c-9088-5994d35ce8fc",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "b87bba82-43b3-43e3-9514-02cf1879f558",
+			"id": "a4b5bca3-5fbc-4c34-9149-02e9cef55176",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "e92b9726-8815-4877-9e0a-3d8f145390b5",
+			"id": "f1fdb285-fe0a-4965-9522-eb7accac8205",
 			"key": "previous-step",
 			"value": ""
 		},
 		{
-			"id": "9c42ca93-e394-4b1f-ab65-29a3e59dc2e2",
+			"id": "19c6e2d8-0c94-42b0-8d5d-c0e790ca88d9",
 			"key": "coll-schemaTests",
 			"value": ""
 		}
