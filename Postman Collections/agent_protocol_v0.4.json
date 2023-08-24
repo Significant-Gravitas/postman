@@ -3355,28 +3355,13 @@
 	],
 	"variable": [
 		{
-			"id": "3c59b3cc-eb0e-4d66-b932-0f1fbebaf079",
-			"key": "request-path",
-			"value": ""
-		},
-		{
-			"id": "9b079b1f-7069-4a1e-90bf-ca3cf9022603",
+			"id": "418e5982-d542-4e06-badb-7db204d2a29e",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "c7b112e5-973e-47a1-928b-35a6c6d9e00c",
+			"id": "adb5d3a6-d410-44da-a922-3b6a852df73b",
 			"key": "coll-baseUrl",
-			"value": ""
-		},
-		{
-			"id": "adef7f6a-1844-425e-8dd7-e61c50fa3acd",
-			"key": "step-number",
-			"value": ""
-		},
-		{
-			"id": "43e223d6-4193-4dfa-a944-0a0f237b5dc8",
-			"key": "previous-step",
 			"value": ""
 		}
 	]
