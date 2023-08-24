@@ -3314,95 +3314,6 @@
 			],
 			"id": "5533f3da-7019-4599-a9ab-b3d99cc2d5e5",
 			"description": "Tests automatically generated from the API spec"
-		},
-		{
-			"name": "Finalize",
-			"item": [
-				{
-					"name": "More APIs to Process?",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"let apis = pm.collectionVariables.get('coll-apiIds');\r",
-									"if(apis){\r",
-									"    try{\r",
-									"        apis = JSON.parse(apis);\r",
-									"        if(apis.length > 0){\r",
-									"            postman.setNextRequest('Get Current API Version');\r",
-									"        }\r",
-									"    }\r",
-									"    catch(err){}    \r",
-									"}"
-								],
-								"type": "text/javascript",
-								"id": "f2264683-137d-47be-8ea8-f77566aee228"
-							}
-						}
-					],
-					"id": "33bf683a-b089-45c3-82ce-7878bec4485e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": "https://postman-echo.com/delay/0"
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Test Variables",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"// See https://blog.postman.com/2019/05/28/pro-tip-dynamically-unset-postman-environment-variables/\r",
-									"// for more details on what we're doing here. \r",
-									"\r",
-									"cleanupCollectionVariables();\r",
-									"\r",
-									"function cleanupCollectionVariables() {\r",
-									"    const clean = _.keys(pm.collectionVariables.toObject());\r",
-									"\r",
-									"    _.each(clean, (arrItem) => {\r",
-									"        pm.collectionVariables.unset(arrItem);\r",
-									"    });\r",
-									"}"
-								],
-								"type": "text/javascript",
-								"id": "8926e280-9e41-455f-a41c-8f57e72e120f"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"id": "a19a578f-51fe-4da6-b701-147b6336967b"
-							}
-						}
-					],
-					"id": "8f675e4a-5f46-4688-9f01-53930c8803ee",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "https://postman-echo.com/delay/0"
-					},
-					"response": []
-				}
-			],
-			"id": "9d6ecd19-5353-4db4-a585-0142b93748f4"
 		}
 	],
 	"event": [
@@ -3539,27 +3450,27 @@
 	],
 	"variable": [
 		{
-			"id": "c6f5abf5-e8f7-440d-8667-9794aa2fa869",
+			"id": "e3814ceb-7f1c-4a4e-b23c-bc6ec21b3eee",
 			"key": "request-path",
 			"value": ""
 		},
 		{
-			"id": "21ad5109-05d7-4179-bd42-37224025de42",
+			"id": "e3acabd5-4661-4736-b949-2acec4e10eed",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "dee17549-fb42-484a-a786-b5b415eebc0c",
+			"id": "df0383ed-8347-4ac5-89c2-4ad2c86cc449",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "be5cdbd3-cdb5-4514-9469-304f5f0c5df7",
+			"id": "504ecb57-5233-4ee4-a3c9-163e6c3ba5b6",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "fc0f6741-acf8-473f-93b3-c517546d9981",
+			"id": "a0b4dbbd-79c7-4d7e-ac9d-8abeed5870ea",
 			"key": "previous-step",
 			"value": ""
 		}
