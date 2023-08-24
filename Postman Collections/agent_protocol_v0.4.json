@@ -3545,5 +3545,12 @@
 				]
 			}
 		}
+	],
+	"variable": [
+		{
+			"id": "c2e8fe01-9994-4c29-91f3-102b852b0334",
+			"key": "request-path",
+			"value": ""
+		}
 	]
 }
