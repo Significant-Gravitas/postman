@@ -3658,5 +3658,17 @@
 			"id": "48e93b55-d463-452f-9d56-f59ee5e95060",
 			"description": "Create Artifacts and consumes them."
 		}
+	],
+	"variable": [
+		{
+			"id": "254fdf59-453f-4342-aa0e-d4d9d6073e65",
+			"key": "coll-schema",
+			"value": ""
+		},
+		{
+			"id": "97f9cdb0-0df2-4b07-b48a-719a72b3e35b",
+			"key": "coll-baseUrl",
+			"value": ""
+		}
 	]
 }
