@@ -3260,5 +3260,12 @@
 				]
 			}
 		}
+	],
+	"variable": [
+		{
+			"id": "24de382c-c9e2-435e-a950-48ad674fe6c7",
+			"key": "coll-schema",
+			"value": ""
+		}
 	]
 }
