@@ -3263,22 +3263,22 @@
 	],
 	"variable": [
 		{
-			"id": "ca094c69-8fbb-4b79-b411-83020ba8657e",
+			"id": "efa75ada-1788-4eb9-a5e4-6401176d693c",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "155c08eb-f869-4903-83c8-25411f80178b",
+			"id": "0881c15b-62d9-4cbb-8013-29e64c43218f",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "a78810e8-2521-4e50-836d-acd558cb86d2",
+			"id": "76513a10-58bb-480a-b5dd-38376842afe2",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "5e24569e-853a-412b-b88c-99c29184fdbd",
+			"id": "dcf45b4b-2b92-4588-ab18-873ab07efdd9",
 			"key": "previous-step",
 			"value": ""
 		}
