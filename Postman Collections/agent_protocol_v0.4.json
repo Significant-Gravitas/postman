@@ -386,7 +386,7 @@
 									"    const maxSteps = 10",
 									"    if(!pm.response.json().is_last && stepNumber <= maxSteps) {",
 									"        console.log(`Steps reached (${maxSteps})`);",
-									"        ",
+									"",
 									"        pm.collectionVariables.set('step-number', stepNumber + 1);",
 									"        pm.globals.set(",
 									"            \"step_body\",",
@@ -399,13 +399,6 @@
 									"",
 									"        pm.collectionVariables.set('previous-step', pm.response.json().step_id)",
 									"        postman.setNextRequest('Execute the steps until completion');",
-									"    } else {",
-									"        if (stepNumber > maxSteps) {",
-									"            console.log(`Max steps reached (${maxSteps})`)",
-									"            postman.setNextRequest('Execute the steps after completion');",
-									"        } else {",
-									"            postman.setNextRequest('Execute the steps until completion');",
-									"        }",
 									"    }",
 									"}"
 								],
@@ -2195,22 +2188,22 @@
 	],
 	"variable": [
 		{
-			"id": "12d20c16-857c-4d58-acc5-0cbedb1fbe36",
+			"id": "9a33b280-3db1-444d-8130-8402f571f9df",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "28095fea-14a1-4a79-80b9-249d0baf60cf",
+			"id": "cc559855-996a-4c2c-9693-1a84cfa34822",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "57f9de2f-05f8-4dcc-8199-453f1a9159e5",
+			"id": "340c9150-e704-48c4-8ddb-cb32d22ae5b8",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "983f0efb-1a15-4b3f-942b-d42adb7e25ca",
+			"id": "6b58b1a0-ef0e-42cf-b64d-331d4edab0ff",
 			"key": "previous-step",
 			"value": ""
 		}
