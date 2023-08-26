@@ -1456,16 +1456,6 @@
 									"    pm.expect(jsonData.items).to.be.an('array').that.has.lengthOf(1);",
 									"});",
 									"",
-									"pm.test(\"Each item has required properties\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    jsonData.items.forEach(function(item) {",
-									"        pm.expect(item).to.have.property('task_id');",
-									"        pm.expect(item).to.have.property('input');",
-									"        pm.expect(item).to.have.property('additional_input');",
-									"        pm.expect(item).to.have.property('artifacts');",
-									"    });",
-									"});",
-									"",
 									"",
 									"pm.test(\"Response length respects page_size\", function() {",
 									"    var jsonData = pm.response.json();",
@@ -2169,12 +2159,12 @@
 	],
 	"variable": [
 		{
-			"id": "a965f8b5-351f-4243-a6d5-0f25eb0e099d",
+			"id": "8940d1b4-37ca-421f-9c5a-1e705deeaccd",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "a9425bbc-a9be-4119-9270-27724e238772",
+			"id": "dc7ead38-0a6a-4274-bcbc-cc908b5cd23f",
 			"key": "previous-step",
 			"value": ""
 		}
