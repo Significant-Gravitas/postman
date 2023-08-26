@@ -1488,7 +1488,7 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"Response length respects page_size\", function() {",
+									"pm.test(\"Response length respects pageSize\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.items.length).to.be.at.most(1);",
 									"});",
@@ -2190,12 +2190,12 @@
 	],
 	"variable": [
 		{
-			"id": "31515036-acf6-48f6-9379-fbdfe0b5bfb2",
+			"id": "ee90eb71-c8f3-495f-9099-1b1504b3a303",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "17867445-553f-46bb-9f3e-324b1e4709b3",
+			"id": "e9a6a46f-7cc8-48f5-b6fa-69c384437321",
 			"key": "previous-step",
 			"value": ""
 		}
