@@ -2185,27 +2185,5 @@
 				]
 			}
 		}
-	],
-	"variable": [
-		{
-			"id": "9a33b280-3db1-444d-8130-8402f571f9df",
-			"key": "coll-schema",
-			"value": ""
-		},
-		{
-			"id": "cc559855-996a-4c2c-9693-1a84cfa34822",
-			"key": "coll-baseUrl",
-			"value": ""
-		},
-		{
-			"id": "340c9150-e704-48c4-8ddb-cb32d22ae5b8",
-			"key": "step-number",
-			"value": ""
-		},
-		{
-			"id": "6b58b1a0-ef0e-42cf-b64d-331d4edab0ff",
-			"key": "previous-step",
-			"value": ""
-		}
 	]
 }
