@@ -2188,12 +2188,12 @@
 	],
 	"variable": [
 		{
-			"id": "a4d7ca9e-a12f-4fb4-96e2-24d57fdbfcd5",
+			"id": "dcc25a34-7f7c-4207-8866-d2be3b118afc",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "bee3eff9-8ff9-48f2-96a6-e2e2e028d8d3",
+			"id": "d200e5fd-f77b-4dac-a2c3-538bfd689146",
 			"key": "previous-step",
 			"value": ""
 		}
