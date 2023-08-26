@@ -2148,22 +2148,22 @@
 	],
 	"variable": [
 		{
-			"id": "2d1f2918-a4ae-470c-8e6a-9782707002a3",
+			"id": "1d581f2d-9a11-4513-b2c5-e493f2d14902",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "f647fd73-c940-4687-b3f4-78bf84ddc3e4",
+			"id": "50113ea6-74ae-416c-93b9-f4c9561d4366",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "d691c788-c0a0-4223-b030-1f622fd41c57",
+			"id": "a9681980-b10f-4ca6-9fa7-223043445aac",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "6f5d91e1-29aa-4dee-88b6-c0658a7bd5f3",
+			"id": "cf30bc2f-1751-4f5d-a9ec-f70de3a78bd4",
 			"key": "previous-step",
 			"value": ""
 		}
