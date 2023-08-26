@@ -337,8 +337,9 @@
 									"        }",
 									"    }",
 									"    stepNumber = pm.collectionVariables.get(\"step-number\") ?? 1",
+									"    pm.collectionVariables.set('step-number', stepNumber + 1);",
+									"    ",
 									"    if(!pm.response.json().is_last){",
-									"        pm.collectionVariables.set('step-number', stepNumber + 1);",
 									"        pm.globals.set(",
 									"            \"step_body\",",
 									"            JSON.stringify(",
@@ -2139,22 +2140,22 @@
 	],
 	"variable": [
 		{
-			"id": "197ec8da-6d8c-4d19-aa5b-1bc6721b6bf2",
+			"id": "f5663273-8b3c-4c1e-8b03-01bcbb25e362",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "b61f5be9-60ee-45c5-a2aa-73d2892335f9",
+			"id": "01eba8f6-9a41-4d5c-9f6c-6282b8d10543",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "b71a71f7-3c3e-4ea7-9a1b-6715d1955ef3",
+			"id": "bb4baa86-d62f-4937-8ee8-8f2f5cafe4ee",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "66809b61-35db-4883-9d02-7cc4256433c4",
+			"id": "866e43e2-14bf-4b2b-b8ae-f56d5f0fcfcc",
 			"key": "previous-step",
 			"value": ""
 		}
