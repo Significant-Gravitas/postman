@@ -1778,11 +1778,6 @@
 									"key": "file",
 									"type": "file",
 									"src": "/path/to/your/file.txt"
-								},
-								{
-									"key": "uri",
-									"value": "file://file.txt",
-									"type": "text"
 								}
 							]
 						},
@@ -2109,12 +2104,12 @@
 	],
 	"variable": [
 		{
-			"id": "8375b0df-0f7c-48ed-9b0c-06be22526ccc",
+			"id": "ffe9dc93-78c8-48ce-9ed8-4247c8234323",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "10da73bd-9674-4dae-b5cd-425c1f1344d4",
+			"id": "1d7dc021-34f6-4a51-b411-e81b58ebb901",
 			"key": "previous-step",
 			"value": ""
 		}
