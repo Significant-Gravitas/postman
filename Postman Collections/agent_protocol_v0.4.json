@@ -1759,6 +1759,19 @@
 				},
 				{
 					"name": "Upload Artifact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6cf7a2c4-1b8a-4c11-8c1a-6b56b2eb80e6",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.globals.set(\"artifact_id\", jsonData.artifact_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "e71fee13-11cb-4b08-a4bb-c9c0f971efed",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1777,7 +1790,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/path/to/your/file.txt"
+									"src": "output.txt"
 								}
 							]
 						},
@@ -1971,12 +1984,12 @@
 	],
 	"variable": [
 		{
-			"id": "5516466b-d9e3-47c9-9a53-2a3dff2d164c",
+			"id": "b535cea2-d355-4fe4-b011-10007f38d8eb",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "592525ec-6e9f-40d0-b038-ff4d9ec33ef2",
+			"id": "914a8967-7378-4204-89da-17b190c01c08",
 			"key": "previous-step",
 			"value": ""
 		}
