@@ -386,6 +386,7 @@
 									"    const maxSteps = 10",
 									"    if(!pm.response.json().is_last && stepNumber <= maxSteps) {",
 									"        console.log(`Steps reached (${maxSteps})`);",
+									"        ",
 									"        pm.collectionVariables.set('step-number', stepNumber + 1);",
 									"        pm.globals.set(",
 									"            \"step_body\",",
@@ -2194,22 +2195,22 @@
 	],
 	"variable": [
 		{
-			"id": "4a90a7ed-4c04-4978-9fbf-edfc9a8a886f",
+			"id": "12d20c16-857c-4d58-acc5-0cbedb1fbe36",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "b6388a0e-c318-4fa1-8ff8-4878c8ac37d0",
+			"id": "28095fea-14a1-4a79-80b9-249d0baf60cf",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "b69aa00e-dd92-477e-87ef-1508291db9e9",
+			"id": "57f9de2f-05f8-4dcc-8199-453f1a9159e5",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "b206fe35-8d1c-4223-91c3-07c5fed4cb0d",
+			"id": "983f0efb-1a15-4b3f-942b-d42adb7e25ca",
 			"key": "previous-step",
 			"value": ""
 		}
