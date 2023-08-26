@@ -2185,5 +2185,17 @@
 				]
 			}
 		}
+	],
+	"variable": [
+		{
+			"id": "00eab9e4-e014-4b77-ad9a-b11cc2973748",
+			"key": "step-number",
+			"value": ""
+		},
+		{
+			"id": "cffefa9d-6300-4d81-9ef3-ad6d7b987514",
+			"key": "previous-step",
+			"value": ""
+		}
 	]
 }
