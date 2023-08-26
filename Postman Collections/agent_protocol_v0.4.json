@@ -1758,6 +1758,39 @@
 					]
 				},
 				{
+					"name": "Upload Artifact",
+					"id": "e71fee13-11cb-4b08-a4bb-c9c0f971efed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/path/to/your/file.txt"
+								},
+								{
+									"key": "uri",
+									"value": "file://file.txt",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
+					},
+					"response": []
+				},
+				{
 					"name": "Upload an artifact for the specified task",
 					"event": [
 						{
@@ -2159,12 +2192,12 @@
 	],
 	"variable": [
 		{
-			"id": "f13d5eef-65ef-46f6-9664-5d88388f5207",
+			"id": "10c9731d-1c34-4ea3-a727-a3d5b55e5421",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "18b59107-73b0-4d23-8a81-bcf06576a3ed",
+			"id": "f5808889-0226-42eb-93b3-4f08720eb3d9",
 			"key": "previous-step",
 			"value": ""
 		}
