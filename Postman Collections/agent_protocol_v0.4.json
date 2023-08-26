@@ -2139,22 +2139,22 @@
 	],
 	"variable": [
 		{
-			"id": "a413ed55-59c6-437a-8ae7-112913a34dad",
+			"id": "26578836-685c-4b75-a30f-22b37ef8fded",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "4d977e32-bdfc-48c2-9e6e-6004add93645",
+			"id": "3b8fba52-f440-4b55-ad0d-4333e37d9920",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "cd1cacd9-c456-4bfb-a005-4a272ee551e7",
+			"id": "731c019d-ca79-4bc0-9dcd-41fc9588c44f",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "8504dc50-01b6-4b21-b1f8-96444359b039",
+			"id": "4162a063-bf38-47a7-89cb-8290e4ad4699",
 			"key": "previous-step",
 			"value": ""
 		}
