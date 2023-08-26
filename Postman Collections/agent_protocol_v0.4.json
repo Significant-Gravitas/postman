@@ -384,7 +384,10 @@
 									"    }",
 									"    stepNumber = pm.collectionVariables.get(\"step-number\") ?? 1",
 									"    const maxSteps = 10",
-									"    if(!pm.response.json().is_last && stepNumber <= maxSteps) {",
+									"    if(!pm.response.json().is_last) {",
+									"        if (stepNumber > maxSteps) {",
+									"            console.log(`Max steps reached (${maxSteps})`);",
+									"        }",
 									"        console.log(`Steps reached (${stepNumber})`);",
 									"",
 									"        pm.collectionVariables.set('step-number', stepNumber + 1);",
@@ -399,6 +402,10 @@
 									"",
 									"        pm.collectionVariables.set('previous-step', pm.response.json().step_id)",
 									"        postman.setNextRequest('Execute the steps until completion');",
+									"    } else {",
+									"        pm.test(\"This task should only create 1 artifact\", function () {",
+									"            pm.expect.fail(\"More than one artifact was created.\");",
+									"        });",
 									"    }",
 									"}"
 								],
@@ -2188,12 +2195,12 @@
 	],
 	"variable": [
 		{
-			"id": "e83be306-8fe7-47e0-8e0a-9ffc7b54fccb",
+			"id": "b2d79cb9-1385-48b6-9c4f-046ab1f3b9c8",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "bf61e287-8792-4476-89d0-b74ef52b837c",
+			"id": "ec1be0fa-b6da-4ae7-a105-cc83bbd13c92",
 			"key": "previous-step",
 			"value": ""
 		}
