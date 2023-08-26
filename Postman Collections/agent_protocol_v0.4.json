@@ -1786,139 +1786,6 @@
 					"response": []
 				},
 				{
-					"name": "Upload Artifact",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "3e7ee940-bef1-44e0-9c36-286aa059b5ae",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "bc5e731b-103e-439e-93bf-e960e6be59a1",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "mock-match",
-								"value": "11",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
-					},
-					"response": [
-						{
-							"id": "58ffcb9c-8c44-4b50-bc76-3573c3a2cde2",
-							"name": "mock response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "mock-match",
-										"value": "11",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Date",
-									"value": "Mon, 14 Aug 2023 16:28:55 GMT",
-									"enabled": true
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8",
-									"enabled": true
-								},
-								{
-									"key": "Content-Length",
-									"value": "275",
-									"enabled": true
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive",
-									"enabled": true
-								},
-								{
-									"key": "x-srv-trace",
-									"value": "v=1;t=daef761e243c402b",
-									"enabled": true
-								},
-								{
-									"key": "x-srv-span",
-									"value": "v=1;s=2c0bd88502372360",
-									"enabled": true
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*",
-									"enabled": true
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "120",
-									"enabled": true
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "115",
-									"enabled": true
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "1691968334",
-									"enabled": true
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"96-S/5iQ2y1qqIInh5BwoPc+chvDJU\"",
-									"enabled": true
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding",
-									"enabled": true
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "Washington"
-						}
-					]
-				},
-				{
 					"name": "Download Artifact",
 					"event": [
 						{
@@ -2104,12 +1971,12 @@
 	],
 	"variable": [
 		{
-			"id": "2bdbc844-70c0-4e9a-b388-aced3c2536f1",
+			"id": "5516466b-d9e3-47c9-9a53-2a3dff2d164c",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "ca399f30-7bd0-4484-b7bd-adf3e533da05",
+			"id": "592525ec-6e9f-40d0-b038-ff4d9ec33ef2",
 			"key": "previous-step",
 			"value": ""
 		}
