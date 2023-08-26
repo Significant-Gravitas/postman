@@ -385,7 +385,7 @@
 									"    stepNumber = pm.collectionVariables.get(\"step-number\") ?? 1",
 									"    const maxSteps = 10",
 									"    if(!pm.response.json().is_last && stepNumber <= maxSteps) {",
-									"        console.log(`Steps reached (${maxSteps})`);",
+									"        console.log(`Steps reached (${stepNumber})`);",
 									"",
 									"        pm.collectionVariables.set('step-number', stepNumber + 1);",
 									"        pm.globals.set(",
@@ -2188,12 +2188,12 @@
 	],
 	"variable": [
 		{
-			"id": "bd41293b-d9f5-4ed9-8cc8-597f27f8a665",
+			"id": "1ec09024-29a8-4a62-ba99-24ef806925d2",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "66e9ce59-8e0f-48c1-83c5-6d53039d9186",
+			"id": "cf3ad4e7-b45f-4194-a79f-6236cc785b68",
 			"key": "previous-step",
 			"value": ""
 		}
