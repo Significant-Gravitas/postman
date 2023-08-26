@@ -1644,7 +1644,7 @@
 								"id": "65ad57a3-b776-4d7c-86f9-be6fbf17cac6",
 								"exec": [
 									"var jsonData = pm.response.json();",
-									"pm.globals.set(\"taskId\", jsonData.task_id);"
+									"pm.globals.set(\"task_id\", jsonData.task_id);"
 								],
 								"type": "text/javascript"
 							}
@@ -1984,12 +1984,12 @@
 	],
 	"variable": [
 		{
-			"id": "8bf23374-0eb2-4123-b061-d437bfcab344",
+			"id": "5a2993fe-7d86-4e5c-9317-c8054ea3c717",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "6c6c6176-26e2-4d19-9e24-a45f56d52711",
+			"id": "40ad7069-a2fe-4413-83db-f9049642a932",
 			"key": "previous-step",
 			"value": ""
 		}
