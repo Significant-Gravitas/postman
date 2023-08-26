@@ -388,7 +388,7 @@
 									"        if (stepNumber > maxSteps) {",
 									"            console.log(`Max steps reached (${maxSteps})`);",
 									"            pm.test(`This task should be completed after ${maxSteps} steps`, function () {",
-									"                pm.expect.fail();",
+									"                pm.expect.fail(`is_last should be true before max steps reached (${maxSteps})`);",
 									"            });",
 									"        } else {",
 									"            console.log(`Steps reached (${stepNumber})`);",
@@ -2196,12 +2196,12 @@
 	],
 	"variable": [
 		{
-			"id": "39107fbc-d59d-4d1c-afdb-8127a17a9432",
+			"id": "6415048b-4537-4c5f-b819-8de698770a43",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "c78e4a12-40f5-45d2-91d9-6107cb95e92b",
+			"id": "4e5955a2-2cb0-403b-96b7-142650f258e4",
 			"key": "previous-step",
 			"value": ""
 		}
