@@ -1836,44 +1836,6 @@
 					"response": []
 				},
 				{
-					"name": "Upload multiple artifacts for the specified task",
-					"id": "c9436f19-c266-4627-88b8-3eaf75257704",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "multipart/form-data"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file1",
-									"type": "file",
-									"src": "path/to/your/file1.txt"
-								},
-								{
-									"key": "file2",
-									"type": "file",
-									"src": "path/to/your/file2.txt"
-								},
-								{
-									"key": "relative_path",
-									"value": "python/code",
-									"type": "text"
-								}
-							]
-						},
-						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
-					},
-					"response": []
-				},
-				{
 					"name": "Upload Artifact",
 					"event": [
 						{
@@ -2192,12 +2154,12 @@
 	],
 	"variable": [
 		{
-			"id": "eb0da8ed-b1cc-4488-a0d2-ba9d85178d3c",
+			"id": "794002f0-7695-41bf-9b20-369b9c0dbecb",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "942fac0d-40c7-4661-a645-317f7c9d555f",
+			"id": "11ff673e-3ea9-4f31-b32a-e289bab20f6a",
 			"key": "previous-step",
 			"value": ""
 		}
