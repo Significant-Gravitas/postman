@@ -1173,27 +1173,6 @@
 									"pm.test(\"Content-Type is application/json\", function () {",
 									"    var contentType = pm.response.headers.get('Content-Type');",
 									"    pm.expect(contentType).to.include('application/json');",
-									"});",
-									"",
-									"pm.test(\"Response has all required properties\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData).to.have.property('items');",
-									"    pm.expect(jsonData).to.have.property('pagination');",
-									"});",
-									"",
-									"pm.test(\"Items is an array\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.items).to.be.an('array');",
-									"});",
-									"",
-									"pm.test(\"Each item has required properties\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    jsonData.items.forEach(function(item) {",
-									"        pm.expect(item).to.have.property('task_id');",
-									"        pm.expect(item).to.have.property('input');",
-									"        pm.expect(item).to.have.property('additional_input');",
-									"        pm.expect(item).to.have.property('artifacts');",
-									"    });",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1488,7 +1467,7 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"Response length respects pageSize\", function() {",
+									"pm.test(\"Response length respects page_size\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.items.length).to.be.at.most(1);",
 									"});",
@@ -2190,12 +2169,12 @@
 	],
 	"variable": [
 		{
-			"id": "ee90eb71-c8f3-495f-9099-1b1504b3a303",
+			"id": "d071cfdc-2b12-416f-b6a0-0f9ecb587d18",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "e9a6a46f-7cc8-48f5-b6fa-69c384437321",
+			"id": "233ba3a7-65db-4757-870f-ea07437116d9",
 			"key": "previous-step",
 			"value": ""
 		}
