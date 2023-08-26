@@ -9,6 +9,52 @@
 			"name": "Basic User Experience",
 			"item": [
 				{
+					"name": "Cleanup Previous Run Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// See https://blog.postman.com/2019/05/28/pro-tip-dynamically-unset-postman-environment-variables/\r",
+									"// for more details on what we're doing here. \r",
+									"\r",
+									"cleanupCollectionVariables();\r",
+									"\r",
+									"function cleanupCollectionVariables() {\r",
+									"    const clean = _.keys(pm.collectionVariables.toObject());\r",
+									"\r",
+									"    _.each(clean, (arrItem) => {\r",
+									"        pm.collectionVariables.unset(arrItem);\r",
+									"    });\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"id": "6e0312e1-1276-47b2-92be-b481545de5fb"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "acaabbd4-94fc-4444-8718-b9ca2c087721"
+							}
+						}
+					],
+					"id": "5da26248-515e-4feb-b7b5-c7de25a03857",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://postman-echo.com/delay/0"
+					},
+					"response": []
+				},
+				{
 					"name": "Get all the tasks",
 					"event": [
 						{
@@ -338,7 +384,7 @@
 									"    }",
 									"    stepNumber = pm.collectionVariables.get(\"step-number\") ?? 1",
 									"    ",
-									"    if(!pm.response.json().is_last){",
+									"    if(!pm.response.json().is_last && stepNumber <= maxSteps){",
 									"        pm.collectionVariables.set('step-number', stepNumber + 1);",
 									"        pm.globals.set(",
 									"            \"step_body\",",
@@ -2148,22 +2194,22 @@
 	],
 	"variable": [
 		{
-			"id": "986e2e8a-c96c-4735-af98-41a2f372b9f7",
+			"id": "b04a7dbc-1b12-4d98-8e1c-c5ccb0ad32d8",
 			"key": "coll-schema",
 			"value": ""
 		},
 		{
-			"id": "830180a1-08ef-41cc-b5ac-036311996623",
+			"id": "bced96c8-62da-48c6-a813-37594f9befce",
 			"key": "coll-baseUrl",
 			"value": ""
 		},
 		{
-			"id": "e287a1bb-bac6-4e25-ad7a-b3218914d462",
+			"id": "7ec90b2c-3e33-4000-aaa1-d954d29179e9",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "a7cc214a-ac99-4394-81e4-ea482294d95d",
+			"id": "6629c925-0ad1-454c-a03a-fcbacfce1bdb",
 			"key": "previous-step",
 			"value": ""
 		}
