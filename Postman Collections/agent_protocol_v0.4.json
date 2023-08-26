@@ -1794,7 +1794,7 @@
 								}
 							]
 						},
-						"url": "{{url}}/agent/tasks/{{taskId}}/artifacts"
+						"url": "{{url}}/agent/tasks/{{task_id}}/artifacts"
 					},
 					"response": []
 				},
@@ -1984,12 +1984,12 @@
 	],
 	"variable": [
 		{
-			"id": "2cae4cd9-9a15-4fb3-a4eb-e76869dee9a4",
+			"id": "8bf23374-0eb2-4123-b061-d437bfcab344",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "228a2193-6e28-433c-b4cb-0323468d0b1a",
+			"id": "6c6c6176-26e2-4d19-9e24-a45f56d52711",
 			"key": "previous-step",
 			"value": ""
 		}
