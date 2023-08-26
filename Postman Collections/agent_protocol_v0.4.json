@@ -1462,12 +1462,6 @@
 									"    pm.expect(contentType).to.include('application/json');",
 									"});",
 									"",
-									"pm.test(\"Response has all required properties\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData).to.have.property('items');",
-									"    pm.expect(jsonData).to.have.property('pagination');",
-									"});",
-									"",
 									"pm.test(\"Pagination is set\", function () {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.pagination).to.be.an('object');",
@@ -1494,7 +1488,7 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"Response length respects pageSize\", function() {",
+									"pm.test(\"Response length respects page_size\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    pm.expect(jsonData.items.length).to.be.at.most(1);",
 									"});",
@@ -1532,7 +1526,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/agent/tasks?pageSize=1&page=1",
+							"raw": "{{url}}/agent/tasks?page_size=1&current_page=1",
 							"host": [
 								"{{url}}"
 							],
@@ -1542,11 +1536,11 @@
 							],
 							"query": [
 								{
-									"key": "pageSize",
+									"key": "page_size",
 									"value": "1"
 								},
 								{
-									"key": "page",
+									"key": "current_page",
 									"value": "1"
 								}
 							]
@@ -2196,12 +2190,12 @@
 	],
 	"variable": [
 		{
-			"id": "de0cbb92-a91e-43e2-92bb-80e12aff2b79",
+			"id": "31515036-acf6-48f6-9379-fbdfe0b5bfb2",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "86beea41-a47c-4c5e-a1ee-66f896e5ca97",
+			"id": "17867445-553f-46bb-9f3e-324b1e4709b3",
 			"key": "previous-step",
 			"value": ""
 		}
