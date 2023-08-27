@@ -1981,17 +1981,5 @@
 				]
 			}
 		}
-	],
-	"variable": [
-		{
-			"id": "e20fe6c0-97c4-49e8-9885-d5e831973a7e",
-			"key": "step-number",
-			"value": ""
-		},
-		{
-			"id": "16c5d3e2-0914-44f2-a673-98ecdd2ea8f8",
-			"key": "previous-step",
-			"value": ""
-		}
 	]
 }
