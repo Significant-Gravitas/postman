@@ -1984,12 +1984,12 @@
 	],
 	"variable": [
 		{
-			"id": "0dd36f84-10c1-4ad3-bb96-b85585b571e0",
+			"id": "d80d06ec-e120-43ca-b8bf-c8e26b7912b3",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "b945cc68-e1df-4479-834b-2d91a484bf7f",
+			"id": "9d76cb8d-e6e0-4d99-bf58-ae00711fe62d",
 			"key": "previous-step",
 			"value": ""
 		}
