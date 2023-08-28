@@ -1459,7 +1459,7 @@
 									"",
 									"pm.test(\"Response length respects page_size\", function() {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.items.length).to.be.at.most(1);",
+									"    pm.expect(jsonData.tasks.length).to.be.at.most(1);",
 									"});",
 									"",
 									"if (jsonData.items && jsonData.items.length > 0) {",
@@ -1984,12 +1984,12 @@
 	],
 	"variable": [
 		{
-			"id": "57ea7970-0630-4439-bd65-6758f77e77c8",
+			"id": "105d088c-bf66-4f96-b9dc-da0f22907aee",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "10627f3c-71f2-49a1-bd86-da2a074727f6",
+			"id": "15abb081-21fd-4696-9e76-ee42d2f92fbe",
 			"key": "previous-step",
 			"value": ""
 		}
