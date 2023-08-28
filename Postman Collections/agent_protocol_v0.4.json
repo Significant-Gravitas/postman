@@ -1448,7 +1448,7 @@
 									"",
 									"pm.test(\"Page size is 1\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.pagination.pageSize).to.eql(1);",
+									"    pm.expect(jsonData.pagination.page_size).to.eql(1);",
 									"});",
 									"",
 									"pm.test(\"Items is an array with one item\", function () {",
@@ -1984,12 +1984,12 @@
 	],
 	"variable": [
 		{
-			"id": "719889c8-4706-4a03-a1ea-9a8d449727ec",
+			"id": "b25e05fb-6024-40ec-865f-51177f046883",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "bcb0dbd6-9888-4328-99cb-469c7ebb7181",
+			"id": "ba2fed20-f8c9-4f55-9e0e-149fec9417a1",
 			"key": "previous-step",
 			"value": ""
 		}
