@@ -1453,7 +1453,7 @@
 									"",
 									"pm.test(\"Items is an array with one item\", function () {",
 									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.items).to.be.an('array').that.has.lengthOf(1);",
+									"    pm.expect(jsonData.tasks).to.be.an('array').that.has.lengthOf(1);",
 									"});",
 									"",
 									"",
@@ -1984,12 +1984,12 @@
 	],
 	"variable": [
 		{
-			"id": "50707b43-35f0-4f43-9127-eaab3a32fe6f",
+			"id": "57ea7970-0630-4439-bd65-6758f77e77c8",
 			"key": "step-number",
 			"value": ""
 		},
 		{
-			"id": "e9e1d92e-c016-4608-9966-d57db50e3177",
+			"id": "10627f3c-71f2-49a1-bd86-da2a074727f6",
 			"key": "previous-step",
 			"value": ""
 		}
